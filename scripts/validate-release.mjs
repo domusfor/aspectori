@@ -2,8 +2,6 @@
 
 const required = [
   "NEXT_PUBLIC_SITE_URL",
-  "GOOGLE_SITE_VERIFICATION",
-  "BING_SITE_VERIFICATION",
   "PRIVACY_CONTROLLER_NAME",
   "PRIVACY_CONTACT_EMAIL",
   "PRIVACY_LEGAL_BASIS",
@@ -36,6 +34,9 @@ const license = process.env.SWISS_EPHEMERIS_LICENSE_MODE?.toLowerCase();
 if (license && !["agpl", "commercial"].includes(license)) {
   failures.push("SWISS_EPHEMERIS_LICENSE_MODE must be agpl or commercial");
 }
+if (license === "commercial" && process.env.SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED !== "true") {
+  failures.push("SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED must be true after the signed Astrodienst license is in force");
+}
 if (license === "agpl" && !process.env.NEXT_PUBLIC_SOURCE_URL?.trim()) {
   failures.push("NEXT_PUBLIC_SOURCE_URL is required for the AGPL release path");
 }
@@ -48,9 +49,14 @@ if (process.env.EDGE_RATE_LIMIT_CONFIRMED !== "true") {
   failures.push("EDGE_RATE_LIMIT_CONFIRMED must be true after the production /api/* rule is verified");
 }
 
+const warnings = ["GOOGLE_SITE_VERIFICATION", "BING_SITE_VERIFICATION"]
+  .filter((name) => !process.env[name]?.trim())
+  .map((name) => `${name} is not set; add it after webmaster-tool ownership is created`);
+
 if (failures.length) {
   console.error(`Release check failed (${failures.length}):\n- ${failures.join("\n- ")}`);
   process.exit(1);
 }
 
+if (warnings.length) console.warn(`Release check warnings (${warnings.length}):\n- ${warnings.join("\n- ")}`);
 console.log("Release configuration check passed.");

@@ -9,7 +9,7 @@ const birth = '1990-08-14~14:30~42.6975~23.3241~Europe/Sofia~Sofia, Bulgaria';
 const partner = '1988-03-05~09:15~42.6975~23.3241~Europe/Sofia~Sofia, Bulgaria';
 const params = new URLSearchParams({ b: birth, p: partner, pn: 'Alex', rel: 'friend' });
 const slugs = ['moon-sign','rising-sign','sun-moon-rising','house-systems','synastry','venus-sign','mars-sign','moon-phase','chart-ruler','annual-profections'];
-const routes = ['/', '/calculators', ...slugs.map(s=>'/calculators/'+s), '/learn', '/learn/how-to-read-a-birth-chart', '/learn/birth-chart-without-birth-time', '/learn/whole-sign-vs-placidus', '/learn/aspects-and-orbs', '/birth-chart-report', '/charts', '/charts/albert-einstein', '/charts/category/science', '/zodiac/aries', '/accuracy', '/method', '/privacy', '/#'+params, '/report#'+params];
+const routes = ['/', '/calculators', ...slugs.map(s=>'/calculators/'+s), '/learn', '/learn/how-to-read-a-birth-chart', '/learn/birth-chart-without-birth-time', '/learn/whole-sign-vs-placidus', '/learn/aspects-and-orbs', '/birth-chart-report', '/charts', '/charts/albert-einstein', '/charts/category/science', '/zodiac/aries', '/accuracy', '/method', '/privacy', '/#'+params, '/report#'+params, '/about', '/contact', '/terms'];
 fs.mkdirSync(out, { recursive: true });
 (async () => {
   const browser = await chromium.launch({headless: true});
@@ -39,7 +39,7 @@ fs.mkdirSync(out, { recursive: true });
         }));
       }
       await page.setViewportSize({width:375,height:812});
-      if ([0,2,5,6,17,24,25,26].includes(i)) await page.screenshot({path:path.join(out,`page-${i}-mobile.png`),fullPage:true});
+      if ([0,2,5,6,17,24,25,26,27,28,29].includes(i)) await page.screenshot({path:path.join(out,`page-${i}-mobile.png`),fullPage:true});
       if (i===25) await page.locator('.connection-result').screenshot({path:path.join(out,'comparison-wheels-mobile.png')});
       if (i===26) await page.locator('.report-cover').screenshot({path:path.join(out,'report-cover-mobile.png')});
       results.push({route,status:response.status(),metadata,axe,widths});

@@ -7,7 +7,7 @@ The application code and local production build pass the automated preproduction
 ## Verified build
 
 - Next.js 16.4.2 production build: passed with Turbopack
-- Generated static and partially prerendered pages: 405 after the deployment build optimization
+- Generated static and partially prerendered pages: 408 after the deployment build optimization
 - Unit tests: 205 passed across 12 files
 - ESLint: passed
 - TypeScript: passed
@@ -16,7 +16,7 @@ The application code and local production build pass the automated preproduction
 
 ## Chrome and mobile audit
 
-The production server was tested in Chromium across 27 representative states, including the home calculator, all calculator types, learning pages, chart explorer, famous chart, category, zodiac, accuracy, method, privacy, populated comparison, and report views.
+The production server was tested in Chromium across 30 representative states, including the home calculator, all calculator types, learning pages, chart explorer, famous chart, category, zodiac, accuracy, method, about, contact, privacy, terms, populated comparison, and report views.
 
 - Viewport widths: 320, 375, 390, 768, and 1440 pixels
 - HTTP failures: 0
@@ -29,8 +29,8 @@ The audit artifact is written to `/tmp/aspectori-quality/audit.json`, with scree
 
 ## SEO audit
 
-- Sitemap URLs: 8,705 unique URLs
-- Strategic and interval sample: 76 pages
+- Sitemap URLs: 8,708 unique URLs
+- Strategic and interval sample: 78 pages
 - Errors: 0
 - Warnings: 0
 - Every sampled indexable page has one title, description, H1, and canonical
@@ -45,11 +45,18 @@ The audit artifact is written to `/tmp/aspectori-quality/audit.json`, with scree
 
 `npm run release:check` intentionally blocks a release until these real production facts are configured:
 
-1. Final HTTPS domain and Google/Bing ownership tokens
-2. Data controller name, privacy email, legal basis, hosting provider, geocoder provider, log retention, and international-transfer wording
-3. Swiss Ephemeris commercial license, or the AGPL path with a public corresponding-source URL
-4. A commercially licensed or self-hosted geocoder endpoint
-5. A tested production edge/firewall rate limit for `/api/*`
+1. The real controller identity and completed privacy configuration. The public alias is `privacy@aspectori.com`; it must be backed by a working mailbox or forwarder before launch so the personal address stays private.
+2. The signed Swiss Ephemeris Professional license. The repository is private, so the AGPL release path is not selected. `SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED=true` may be set only after the license is in force.
+3. An Open-Meteo commercial subscription and customer geocoding endpoint/API key, or a licensed self-hosted alternative. The paid Open-Meteo route is selected because it preserves the existing response contract and keeps browser requests behind Aspectori.
+4. A successful gated production deployment, assignment of `aspectori.com` and `www.aspectori.com`, and the DNS records that Vercel reports for this project.
+
+Google and Bing ownership tokens are launch follow-ups rather than release blockers. The sitemap can be submitted as soon as the public domain is serving the successful production deployment.
+
+## Completed Vercel controls
+
+- The project is on Vercel Pro. The production privacy setting reflects Vercel's documented one-day runtime-log retention for that plan.
+- The active `rate-limit-production-api` firewall rule matches production paths starting with `/api/` and permits 60 requests per 60-second fixed window per IP before returning the rate-limit response. The published API response reports the rule as active and valid with no validation errors.
+- `NEXT_PUBLIC_SITE_URL=https://aspectori.com`, the verified Vercel provider and transfer wording, the selected commercial-license path, and the firewall confirmation are configured for Production. The commercial-license confirmation remains explicitly false until the signed license is in force.
 
 The required environment keys and provider notes are in `.env.example`. The gate is implemented in `scripts/validate-release.mjs`.
 

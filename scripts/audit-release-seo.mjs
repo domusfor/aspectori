@@ -61,7 +61,7 @@ try {
   if (urls.length > 50_000) add("ERROR", "/sitemap.xml", `${urls.length} URLs exceeds the single-sitemap limit`);
 
   const paths = urls.map((url) => url.pathname);
-  const strategic = ["/", "/calculators", "/calculators/moon-sign", "/charts", "/charts/albert-einstein", "/zodiac", "/zodiac/aries", "/learn", "/birth-chart-report", "/accuracy", "/method", "/privacy"];
+  const strategic = ["/", "/calculators", "/calculators/moon-sign", "/charts", "/charts/albert-einstein", "/zodiac", "/zodiac/aries", "/learn", "/birth-chart-report", "/accuracy", "/method", "/about", "/contact", "/privacy", "/terms"];
   const sampled = new Set([...strategic, ...paths.filter((_, index) => index % 137 === 0), paths.at(-1)].filter(Boolean));
   const titles = new Map();
   const descriptions = new Map();

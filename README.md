@@ -56,9 +56,10 @@ Add a chart to `src/data/astrocom-reference.json` whenever someone reports a mis
   and FAQ rich-result markup is deliberately omitted; visible search and FAQ content remains available to users.
 - `sitemap.xml` lists public charts, guides, tools, and category pagination. Every famous profile is linked from a category page. Private `/report` is excluded and carries `noindex`; crawlers can access it to read that instruction.
 - `/calculators` includes Moon, Rising, Big Three, house-system comparison and synastry tools; `/learn` supplies four supporting guides. `/birth-chart-report` is the public PDF landing page.
+- `/about`, `/method`, `/accuracy`, `/contact`, `/privacy`, and `/terms` form the public trust and operator-information layer.
 - Keywords map to useful pages, not duplicate pages for synonyms. FAQ content remains visible without obsolete FAQ rich-result markup.
 - Unknown URLs under dynamic routes return a real 404 (`src/proxy.ts`).
-- Set `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION`, then submit the sitemap in Search Console.
+- After launch, set `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` and submit the sitemap in both webmaster tools. These tokens are useful, but do not block a safe production build.
 
 ## How it fits together
 
@@ -81,10 +82,12 @@ application logs. Hosting infrastructure can still process technical request log
 
 - **Swiss Ephemeris license.** The `sweph` binding and the Swiss Ephemeris are AGPL-3.0. Serving them on a public
   site means offering this site's source to its users, unless you buy the Swiss Ephemeris professional license from
-  Astrodienst (which makes the binding LGPL-3.0).
+  Astrodienst and sign its license contract. Because this repository is private, production must use the
+  commercial path and set `SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED=true` only after the signed license is in force.
 - **Geocoder license.** Open-Meteo's free geocoder is non-commercial. Set `GEOCODER_URL`/`GEOCODER_API_KEY` for a
   paid plan, or point it at a self-hosted GeoNames service.
-- **Rate limiting.** The API has a per-instance limit. Add a Vercel Firewall rate-limit rule on `/api/*` too.
+- **Rate limiting.** The API has a per-instance limit. Vercel also has an active production `/api/` rule at 60
+  requests per 60 seconds per IP; keep that edge rule published and verify it after deployment changes.
 - **Release configuration.** Fill every production field in `.env.example`, then run `npm run release:check`. It blocks
   placeholder domains, incomplete privacy information, an unchosen Swiss Ephemeris license, the non-commercial
   Open-Meteo endpoint and an unconfirmed edge rate-limit rule.
@@ -98,8 +101,9 @@ prebuilt Linux binaries and is excluded from bundling (`serverExternalPackages`)
 into the API functions (`outputFileTracingIncludes`).
 
 Preview deployments build without production secrets. A Vercel production build runs `npm run release:check` first
-and stops until every value in `.env.example` is configured for the Production environment. After connecting the
-repository, add those variables, configure and test the `/api/*` firewall rate limit, set
+and stops until every required production value in `.env.example` is configured. Search-engine verification tokens
+remain optional until the webmaster accounts are created. After connecting the repository, add the required variables,
+configure and test the `/api/*` firewall rate limit, set
 `EDGE_RATE_LIMIT_CONFIRMED=true`, and redeploy. GitHub Actions independently runs lint, type checking, tests, and a
 full build on `main` and pull requests.
 
