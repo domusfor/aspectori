@@ -23,7 +23,12 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["sweph"],
   // Ephemeris and star catalogue are read from disk at runtime by every route that draws a chart.
   outputFileTracingIncludes: {
-    "/**": ["./ephe/*"],
+    "/**": [
+      "./ephe/*",
+      // `node-gyp-build` resolves this dynamically, so Next cannot discover it
+      // from the import graph. Vercel's Linux functions need the traced binary.
+      "./node_modules/sweph/prebuilds/linux-x64/sweph.node",
+    ],
   },
   async headers() {
     return [
