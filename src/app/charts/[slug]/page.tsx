@@ -7,9 +7,9 @@ import RouteLoading from "@/components/site/RouteLoading";
 import { ALL_FAMOUS, famousBySlug } from "@/data/people";
 import { allSummaries, famousChart, famousSummary } from "@/lib/famous-summary";
 
-// The best-known 500 are built ahead; the rest render on first visit and are cached.
+// The best-known 100 are built ahead; the rest render on first visit and are cached.
 export function generateStaticParams() {
-  return ALL_FAMOUS.slice(0, 500).map((f) => ({ slug: f.slug }));
+  return ALL_FAMOUS.slice(0, 100).map((f) => ({ slug: f.slug }));
 }
 
 type Props = { params: Promise<{ slug: string }> };

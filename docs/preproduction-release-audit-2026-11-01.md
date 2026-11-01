@@ -7,7 +7,7 @@ The application code and local production build pass the automated preproduction
 ## Verified build
 
 - Next.js 16.4.2 production build: passed with Turbopack
-- Generated static and partially prerendered pages: 805
+- Generated static and partially prerendered pages: 405 after the deployment build optimization
 - Unit tests: 205 passed across 12 files
 - ESLint: passed
 - TypeScript: passed
