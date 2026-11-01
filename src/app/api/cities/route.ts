@@ -1,8 +1,8 @@
 import { rateLimited } from "@/lib/rate-limit";
 
 // City lookup behind our own endpoint: the browser never talks to the geocoder directly,
-// so the provider can be swapped (a paid Open-Meteo plan, or self-hosted GeoNames) without
-// touching the client. Open-Meteo's free tier is for non-commercial use only.
+// so the provider can be swapped without touching the client. The deployed free,
+// ad-free project uses Open-Meteo's open-access tier as a noncommercial service.
 const GEOCODER = process.env.GEOCODER_URL ?? "https://geocoding-api.open-meteo.com/v1/search";
 const GEOCODER_KEY = process.env.GEOCODER_API_KEY;
 

@@ -13,7 +13,7 @@ import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
-import JsonLd, { siteUrl } from "@/components/seo/JsonLd";
+import JsonLd, { siteUrl, sourceUrl } from "@/components/seo/JsonLd";
 import Sky from "@/components/site/Sky";
 import "./globals.css";
 
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={{
           "@context": "https://schema.org",
           "@graph": [
-            { "@type": "Organization", "@id": `${siteUrl}/#org`, name: "Aspectori", url: siteUrl, logo: `${siteUrl}/brand/aspectori-logo.png` },
+            { "@type": "Organization", "@id": `${siteUrl}/#org`, name: "Aspectori", url: siteUrl, logo: `${siteUrl}/brand/aspectori-logo.png`, sameAs: [sourceUrl] },
             { "@type": "WebSite", "@id": `${siteUrl}/#site`, name: "Aspectori", url: siteUrl, publisher: { "@id": `${siteUrl}/#org` } },
           ],
         }} />

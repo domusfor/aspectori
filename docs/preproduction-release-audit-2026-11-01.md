@@ -2,7 +2,7 @@
 
 ## Decision
 
-The application code and local production build pass the automated preproduction checks. Production release remains gated on real operator, licensing, provider, domain, verification, and edge-rate-limit configuration. Those values must not be guessed.
+The application code and local production build pass the automated preproduction checks. Aspectori has selected the free-software release path: the complete corresponding source is public under AGPL-3.0-or-later, and the free, ad-free service uses Open-Meteo's open-access geocoder as a noncommercial project. Production release remains gated on real operator, contact and domain configuration.
 
 ## Verified build
 
@@ -46,9 +46,7 @@ The audit artifact is written to `/tmp/aspectori-quality/audit.json`, with scree
 `npm run release:check` intentionally blocks a release until these real production facts are configured:
 
 1. The real controller identity and completed privacy configuration. The public alias is `privacy@aspectori.com`; it must be backed by a working mailbox or forwarder before launch so the personal address stays private.
-2. The signed Swiss Ephemeris Professional license. The repository is private, so the AGPL release path is not selected. `SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED=true` may be set only after the license is in force.
-3. An Open-Meteo commercial subscription and customer geocoding endpoint/API key, or a licensed self-hosted alternative. The paid Open-Meteo route is selected because it preserves the existing response contract and keeps browser requests behind Aspectori.
-4. A successful gated production deployment, assignment of `aspectori.com` and `www.aspectori.com`, and the DNS records that Vercel reports for this project.
+2. A successful gated production deployment, assignment of `aspectori.com` and `www.aspectori.com`, and the DNS records that Vercel reports for this project.
 
 Google and Bing ownership tokens are launch follow-ups rather than release blockers. The sitemap can be submitted as soon as the public domain is serving the successful production deployment.
 
@@ -56,7 +54,7 @@ Google and Bing ownership tokens are launch follow-ups rather than release block
 
 - The project is on Vercel Pro. The production privacy setting reflects Vercel's documented one-day runtime-log retention for that plan.
 - The active `rate-limit-production-api` firewall rule matches production paths starting with `/api/` and permits 60 requests per 60-second fixed window per IP before returning the rate-limit response. The published API response reports the rule as active and valid with no validation errors.
-- `NEXT_PUBLIC_SITE_URL=https://aspectori.com`, the verified Vercel provider and transfer wording, the selected commercial-license path, and the firewall confirmation are configured for Production. The commercial-license confirmation remains explicitly false until the signed license is in force.
+- `NEXT_PUBLIC_SITE_URL=https://aspectori.com`, the verified Vercel provider and transfer wording, the AGPL source URL, the declared noncommercial geocoder mode, and the firewall confirmation are configured for Production.
 
 The required environment keys and provider notes are in `.env.example`. The gate is implemented in `scripts/validate-release.mjs`.
 

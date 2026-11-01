@@ -34,6 +34,8 @@ export default function AboutPage() {
 
       <Section title="Data and independence">
         <p>Famous birth dates and places are sourced from Wikidata, while curated timed charts identify their Rodden source rating. Aspectori currently carries no advertising trackers, behavioral analytics, sponsored rankings or paid placement.</p>
+        <p className="mt-3">Aspectori is free software. Its complete source is published under the GNU Affero General Public License so anyone can inspect the calculations, learn from the implementation and contribute improvements.</p>
+        <p className="mt-4"><a className="text-gold underline" href="https://github.com/domusfor/aspectori">View the Aspectori source on GitHub</a>.</p>
       </Section>
     </main>
   );

@@ -3,6 +3,9 @@
 A birth chart that shows its work: house-system comparisons, selected dated transits, focused calculators,
 and a free downloadable PDF. Readings show the placements that produced them.
 
+Aspectori is free software licensed under **AGPL-3.0-or-later**. The public service, complete corresponding source,
+calculators and reports are free. The project has no advertising trackers, paid placements or locked calculations.
+
 Personal charts automatically include **Your week ahead**, a free seven-day horoscope with up to three transit-based
 themes, sampled contact dates, calculation evidence and reflection prompts. The server sets the UTC window and checks
 six-hour samples within a 1° orb. Unknown birth times exclude Moon/Rising/Midheaven contacts and require both natal-day
@@ -80,17 +83,16 @@ application logs. Hosting infrastructure can still process technical request log
 
 ## Before launch
 
-- **Swiss Ephemeris license.** The `sweph` binding and the Swiss Ephemeris are AGPL-3.0. Serving them on a public
-  site means offering this site's source to its users, unless you buy the Swiss Ephemeris professional license from
-  Astrodienst and sign its license contract. Because this repository is private, production must use the
-  commercial path and set `SWISS_EPHEMERIS_COMMERCIAL_LICENSE_CONFIRMED=true` only after the signed license is in force.
-- **Geocoder license.** Open-Meteo's free geocoder is non-commercial. Set `GEOCODER_URL`/`GEOCODER_API_KEY` for a
-  paid plan, or point it at a self-hosted GeoNames service.
+- **Swiss Ephemeris license.** The public repository and deployed service use the AGPL path. `LICENSE` contains the
+  project license and `NEXT_PUBLIC_SOURCE_URL` points every user to the complete corresponding source.
+- **Geocoder use.** Aspectori is free, open source, ad-free and noncommercial. It uses Open-Meteo's open-access
+  geocoder within the published limits and identifies that use with `GEOCODER_USE_MODE=noncommercial`. If the funding
+  model changes, review the provider terms before deployment rather than silently retaining this setting.
 - **Rate limiting.** The API has a per-instance limit. Vercel also has an active production `/api/` rule at 60
   requests per 60 seconds per IP; keep that edge rule published and verify it after deployment changes.
 - **Release configuration.** Fill every production field in `.env.example`, then run `npm run release:check`. It blocks
-  placeholder domains, incomplete privacy information, an unchosen Swiss Ephemeris license, the non-commercial
-  Open-Meteo endpoint and an unconfirmed edge rate-limit rule.
+  placeholder domains, incomplete privacy information, a missing public AGPL source URL, a geocoder whose declared
+  use mode does not match its endpoint, and an unconfirmed edge rate-limit rule.
 - **Report offer.** `/report#b=…&hs=…` is free for everyone now. It generates a PDF in the browser with selectable text, an embedded Noto Sans font (SIL OFL in `public/fonts/OFL.txt`), a chart wheel, placements, readings, major aspects and selected transits. No checkout, signup, email or feature flag is required. The font and PDF generator load only when exporting. `src/lib/report.ts` owns the current offer; a future paid release needs real server-side entitlements and checkout, not a hidden button or a changed label.
 
 ## Deploy (Vercel)
@@ -135,3 +137,5 @@ to accessible explanations of placements and aspects, with calculation evidence,
 
 The [1 November preproduction release audit](docs/preproduction-release-audit-2026-11-01.md) records the clean build,
 mobile Chrome, accessibility, security, dependency, and SEO results, and lists the external production facts still required.
+
+Copyright (C) 2026 Aspectori contributors. Licensed under AGPL-3.0-or-later; see [LICENSE](LICENSE).

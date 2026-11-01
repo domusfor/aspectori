@@ -7,6 +7,8 @@ export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
 
+export const sourceUrl = process.env.NEXT_PUBLIC_SOURCE_URL ?? "https://github.com/domusfor/aspectori";
+
 export function breadcrumbs(items: [string, string][]) {
   return {
     "@context": "https://schema.org",

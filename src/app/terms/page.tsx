@@ -31,11 +31,11 @@ export default function TermsPage() {
       </Section>
 
       <Section title="Sources and intellectual property">
-        <p>Third-party datasets, software, fonts and astronomical data remain subject to their respective licenses. Aspectori&apos;s original design, writing and software may not be republished as a competing service without permission or an applicable open-source right.</p>
+        <p>Aspectori&apos;s complete source is available under the GNU Affero General Public License, version 3 or later. You may use, study, modify and redistribute it under that license, including its corresponding-source requirements for modified network services. Third-party datasets, software, fonts and astronomical data remain subject to their respective licenses and notices.</p>
       </Section>
 
       <Section title="Liability">
-        <p>To the extent permitted by applicable law, Aspectori is not responsible for decisions made from interpretive content or for indirect loss arising from use, interruption or unavailability of the service. Rights that cannot legally be excluded remain unaffected.</p>
+        <p>The software and service are provided without warranty to the extent permitted by applicable law. Aspectori is not responsible for decisions made from interpretive content or for indirect loss arising from use, interruption or unavailability of the service. Rights that cannot legally be excluded remain unaffected.</p>
       </Section>
 
       <Section title="Contact and changes">

@@ -10,11 +10,11 @@ export default function SiteFooter() {
           <Image src="/brand/aspectori-logo.png" alt="Aspectori" width={140} height={121} className="h-auto w-[120px]" />
           <p className="mt-4 max-w-xs text-xs leading-relaxed text-muted">
             For entertainment. Positions from the Swiss Ephemeris, checked against Astro.com. Famous birth dates from
-            Wikidata and Astro-Databank.
+            Wikidata and Astro-Databank. City search powered by <a className="underline hover:text-ink" href="https://open-meteo.com/">Open-Meteo</a>.
           </p>
         </div>
         <FooterCol title="Explore" links={[["/", "Birth chart calculator"], ["/calculators", "All calculators"], ["/birth-chart-report", "Free PDF report"], ["/charts", "Famous birth charts"], ["/zodiac", "Zodiac signs"]]} />
-        <FooterCol title="About & trust" links={[["/about", "About Aspectori"], ["/method", "How it is calculated"], ["/accuracy", "Accuracy"], ["/contact", "Contact"], ["/privacy", "Privacy"], ["/terms", "Terms"]]} />
+        <FooterCol title="About & trust" links={[["/about", "About Aspectori"], ["/method", "How it is calculated"], ["/accuracy", "Accuracy"], ["https://github.com/domusfor/aspectori", "Open source"], ["/contact", "Contact"], ["/privacy", "Privacy"], ["/terms", "Terms"]]} />
       </div>
     </footer>
   );

@@ -11,6 +11,7 @@ const required = [
   "PRIVACY_TRANSFER_INFO",
   "SWISS_EPHEMERIS_LICENSE_MODE",
   "GEOCODER_URL",
+  "GEOCODER_USE_MODE",
 ];
 
 const failures = required.filter((name) => !process.env[name]?.trim()).map((name) => `${name} is missing`);
@@ -40,10 +41,27 @@ if (license === "commercial" && process.env.SWISS_EPHEMERIS_COMMERCIAL_LICENSE_C
 if (license === "agpl" && !process.env.NEXT_PUBLIC_SOURCE_URL?.trim()) {
   failures.push("NEXT_PUBLIC_SOURCE_URL is required for the AGPL release path");
 }
+if (license === "agpl" && process.env.NEXT_PUBLIC_SOURCE_URL) {
+  try {
+    const source = new URL(process.env.NEXT_PUBLIC_SOURCE_URL);
+    if (source.protocol !== "https:" || source.hostname !== "github.com") {
+      failures.push("NEXT_PUBLIC_SOURCE_URL must be the public HTTPS GitHub repository");
+    }
+  } catch {
+    failures.push("NEXT_PUBLIC_SOURCE_URL must be a valid absolute URL");
+  }
+}
 
 const geocoder = process.env.GEOCODER_URL?.trim() ?? "";
-if (/^https:\/\/geocoding-api\.open-meteo\.com/i.test(geocoder)) {
-  failures.push("GEOCODER_URL points to Open-Meteo's non-commercial endpoint; configure the customer endpoint or a licensed alternative");
+const geocoderUse = process.env.GEOCODER_USE_MODE?.trim().toLowerCase();
+if (geocoderUse && !["noncommercial", "commercial", "self-hosted"].includes(geocoderUse)) {
+  failures.push("GEOCODER_USE_MODE must be noncommercial, commercial or self-hosted");
+}
+if (/^https:\/\/geocoding-api\.open-meteo\.com/i.test(geocoder) && geocoderUse !== "noncommercial") {
+  failures.push("Open-Meteo's open-access endpoint requires GEOCODER_USE_MODE=noncommercial");
+}
+if (geocoderUse === "commercial" && !process.env.GEOCODER_API_KEY?.trim()) {
+  failures.push("GEOCODER_API_KEY is required for commercial geocoding");
 }
 if (process.env.EDGE_RATE_LIMIT_CONFIRMED !== "true") {
   failures.push("EDGE_RATE_LIMIT_CONFIRMED must be true after the production /api/* rule is verified");
