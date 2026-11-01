@@ -1,0 +1,839 @@
+{
+  "sitemapUrls": 8704,
+  "origins": [
+    "http://localhost:3000"
+  ],
+  "publicPagesChecked": 58,
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Free Birth Chart Calculator with Exact Degrees | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000",
+      "description": "Calculate your Sun, Moon and Rising signs, compare Placidus and whole sign houses, and download a free birth chart PDF. No account or email required.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts",
+      "status": 200,
+      "title": "Famous Birth Charts: Zodiac Signs of 8,000+ Celebrities | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts",
+      "description": "The birth charts and zodiac signs of more than 8,000 famous people: Sun, Moon and Rising signs with exact degrees, how reliable each birth time is, and a compatibility check with your own chart.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac",
+      "status": 200,
+      "title": "The 12 Zodiac Signs: Dates, Traits and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac",
+      "description": "All twelve zodiac signs with their dates, element, modality and ruling planet, what each means as a Sun, Moon and Rising sign, and the famous people born under it.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/accuracy",
+      "status": 200,
+      "title": "How Accurate Is Aspectori? Checked Against Astro.com | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/accuracy",
+      "description": "Our birth chart calculator against Astro.com, chart by chart: Sun, Moon and Ascendant for 22 famous people, matched to the arcminute. Plus where historical time zones differ.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/method",
+      "status": 200,
+      "title": "How the chart is calculated | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/method",
+      "description": "How Aspectori calculates planetary positions, historical time zones, houses and transits, and handles your birth details.",
+      "noindex": false,
+      "schema": [
+        true
+      ]
+    },
+    {
+      "route": "/calculators",
+      "status": 200,
+      "title": "Free Astrology Calculators: Signs, Moon Phase & Profections | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators",
+      "description": "Explore 10 free astrology tools: Venus, Mars, Moon, Rising, Big Three, birth Moon phase, chart ruler, annual profections, houses and synastry. No account required.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/venus-sign",
+      "status": 200,
+      "title": "Free Venus Sign Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/venus-sign",
+      "description": "Find your Venus sign, degree and birth-time uncertainty. Explore symbolic themes of appreciation and relationships, with houses when your birth time is known.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/mars-sign",
+      "status": 200,
+      "title": "Free Mars Sign Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/mars-sign",
+      "description": "Calculate your Mars sign, degree and houses. See unknown-time ranges and explore astrological themes of initiative, effort and boundaries for free.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/moon-phase",
+      "status": 200,
+      "title": "Birth Moon Phase Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/moon-phase",
+      "description": "See the Moon phase and illuminated fraction at your birth. Includes a lunar illustration, Sun–Moon angle and hourly samples when your birth time is unknown.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/chart-ruler",
+      "status": 200,
+      "title": "Chart Ruler Calculator: Traditional & Modern | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/chart-ruler",
+      "description": "Find the planet ruling your Rising sign, its natal sign, degree and houses. Compare traditional and modern chart rulers with clear birth-time requirements.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/annual-profections",
+      "status": 200,
+      "title": "Annual Profection Calculator: House & Time Lord | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/annual-profections",
+      "description": "Find your annual profection house, sign and traditional time lord. Explore a 12-year cycle by age, with birthday dates and honest unknown-time limits.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/moon-sign",
+      "status": 200,
+      "title": "Free Moon Sign Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/moon-sign",
+      "description": "Find your Moon sign and degree from your birth date, time and place. Unknown birth time? See both possible signs and the local time of a sign change.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/rising-sign",
+      "status": 200,
+      "title": "Free Rising Sign & Ascendant Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/rising-sign",
+      "description": "Calculate your Rising sign, also called the Ascendant, with its exact degree. Enter your birth time and birthplace; learn why a missing time cannot be guessed.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/sun-moon-rising",
+      "status": 200,
+      "title": "Sun, Moon & Rising Sign Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/sun-moon-rising",
+      "description": "Find your Big Three: Sun, Moon and Rising signs, with degrees and clear birth-time uncertainty. Free tropical astrology calculator with a downloadable report.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/house-systems",
+      "status": 200,
+      "title": "Placidus vs Whole Sign House Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/house-systems",
+      "description": "Compare Placidus and whole sign houses for the same birth chart. See which planets change houses, with a Porphyry comparison and polar-latitude handling.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/calculators/synastry",
+      "status": 200,
+      "title": "Free Synastry & Birth Chart Compatibility Calculator | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/calculators/synastry",
+      "description": "Compare two birth charts with free synastry, planetary aspects and house overlays in both directions. Explore whole sign, Placidus and a free comparison PDF.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/learn",
+      "status": 200,
+      "title": "Learn to Read Your Birth Chart | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/learn",
+      "description": "Practical guides to birth charts, unknown birth times, Placidus and whole sign houses, aspects and orbs. Understand the calculations behind your reading.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/learn/birth-chart-without-birth-time",
+      "status": 200,
+      "title": "Birth Chart Without a Birth Time: What You Can Know | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/learn/birth-chart-without-birth-time",
+      "description": "Learn what a natal chart can show without a birth time, why Rising and houses are missing, and how to handle a Moon sign that changes during the day.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/learn/whole-sign-vs-placidus",
+      "status": 200,
+      "title": "Whole Sign vs Placidus: Why Your Houses Change | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/learn/whole-sign-vs-placidus",
+      "description": "Understand how whole sign and Placidus assign houses, what stays the same, and how to compare both systems using identical birth details.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/learn/how-to-read-a-birth-chart",
+      "status": 200,
+      "title": "How to Read a Birth Chart: A Practical Beginner’s Guide | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/learn/how-to-read-a-birth-chart",
+      "description": "Read your natal chart step by step: verify birth data, find Sun, Moon and Rising, understand planets and houses, then examine aspects with their orbs.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/learn/aspects-and-orbs",
+      "status": 200,
+      "title": "Astrology Aspects and Orbs Explained | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/learn/aspects-and-orbs",
+      "description": "Understand conjunctions, squares, trines, oppositions and sextiles, how orbs are measured, and why astrology calculators may include different aspects.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/birth-chart-report",
+      "status": 200,
+      "title": "Free Birth Chart PDF Report — No Signup | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/birth-chart-report",
+      "description": "Download a free natal chart PDF with your chart wheel, planetary placements, house comparison, readings, major aspects and dated transits. No account or email required.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/albert-einstein",
+      "status": 200,
+      "title": "Albert Einstein Birth Chart & Zodiac Sign: Pisces Sun, Sagittarius Moon, Cancer Rising | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/albert-einstein",
+      "description": "Albert Einstein's zodiac sign is Pisces, with the Moon in Sagittarius and Cancer rising. Rodden AA birth time, checked against Astro.com. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/jacinda-ardern",
+      "status": 200,
+      "title": "Jacinda Ardern Birth Chart & Zodiac Sign: Leo Sun, Capricorn Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/jacinda-ardern",
+      "description": "Jacinda Ardern's zodiac sign is Leo, with the Moon in Capricorn. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/roberto-benigni",
+      "status": 200,
+      "title": "Roberto Benigni Birth Chart & Zodiac Sign: Scorpio Sun, Aquarius Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/roberto-benigni",
+      "description": "Roberto Benigni's zodiac sign is Scorpio, with the Moon in Aquarius. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/jean-anouilh",
+      "status": 200,
+      "title": "Jean Anouilh Birth Chart & Zodiac Sign: Cancer Sun, Capricorn Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/jean-anouilh",
+      "description": "Jean Anouilh's zodiac sign is Cancer, with the Moon in Capricorn. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/nellie-bly",
+      "status": 200,
+      "title": "Nellie Bly Birth Chart & Zodiac Sign: Taurus Sun, Taurus Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/nellie-bly",
+      "description": "Nellie Bly's zodiac sign is Taurus, with the Moon in Taurus. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/ollanta-humala",
+      "status": 200,
+      "title": "Ollanta Humala Birth Chart & Zodiac Sign: Cancer Sun, Taurus Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/ollanta-humala",
+      "description": "Ollanta Humala's zodiac sign is Cancer, with the Moon in Taurus. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/carl-theodor-dreyer",
+      "status": 200,
+      "title": "Carl Theodor Dreyer Birth Chart & Zodiac Sign: Aquarius Sun, Pisces or Aries Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/carl-theodor-dreyer",
+      "description": "Carl Theodor Dreyer's zodiac sign is Aquarius, with the Moon in Pisces or Aries. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/ferdinand-i-of-romania",
+      "status": 200,
+      "title": "Ferdinand I of Romania Birth Chart & Zodiac Sign: Virgo Sun, Libra Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/ferdinand-i-of-romania",
+      "description": "Ferdinand I of Romania's zodiac sign is Virgo, with the Moon in Libra. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/brian-jones",
+      "status": 200,
+      "title": "Brian Jones Birth Chart & Zodiac Sign: Pisces Sun, Leo Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/brian-jones",
+      "description": "Brian Jones's zodiac sign is Pisces, with the Moon in Leo. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/edward-tatum",
+      "status": 200,
+      "title": "Edward Tatum Birth Chart & Zodiac Sign: Sagittarius Sun, Capricorn Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/edward-tatum",
+      "description": "Edward Tatum's zodiac sign is Sagittarius, with the Moon in Capricorn. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/jose-luis-chilavert",
+      "status": 200,
+      "title": "José Luis Chilavert Birth Chart & Zodiac Sign: Leo Sun, Cancer or Leo Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/jose-luis-chilavert",
+      "description": "José Luis Chilavert's zodiac sign is Leo, with the Moon in Cancer or Leo. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/daisuke-ichikawa",
+      "status": 200,
+      "title": "Daisuke Ichikawa Birth Chart & Zodiac Sign: Taurus Sun, Taurus Moon | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/daisuke-ichikawa",
+      "description": "Daisuke Ichikawa's zodiac sign is Taurus, with the Moon in Taurus. Birth time not recorded, so no Rising sign is guessed. See the full natal chart and compare it with yours.",
+      "noindex": false,
+      "schema": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/art",
+      "status": 200,
+      "title": "Birth Charts of Famous Artists and architects | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/art",
+      "description": "Browse the birth charts and zodiac signs of famous artists and architects, with birth-time reliability and Sun, Moon and Rising placements.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/thought",
+      "status": 200,
+      "title": "Birth Charts of Famous Philosophers and thinkers | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/thought",
+      "description": "Browse the birth charts and zodiac signs of famous philosophers and thinkers, with birth-time reliability and Sun, Moon and Rising placements.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/film/page/5",
+      "status": 200,
+      "title": "Famous actors and filmmakers birth charts — Page 5 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/film/page/5",
+      "description": "Page 5 of birth charts for famous actors and filmmakers. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/film/page/13",
+      "status": 200,
+      "title": "Famous actors and filmmakers birth charts — Page 13 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/film/page/13",
+      "description": "Page 13 of birth charts for famous actors and filmmakers. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/music/page/5",
+      "status": 200,
+      "title": "Famous singers and musicians birth charts — Page 5 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/music/page/5",
+      "description": "Page 5 of birth charts for famous singers and musicians. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/politics/page/6",
+      "status": 200,
+      "title": "Famous politicians and leaders birth charts — Page 6 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/politics/page/6",
+      "description": "Page 6 of birth charts for famous politicians and leaders. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/politics/page/14",
+      "status": 200,
+      "title": "Famous politicians and leaders birth charts — Page 14 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/politics/page/14",
+      "description": "Page 14 of birth charts for famous politicians and leaders. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/science/page/4",
+      "status": 200,
+      "title": "Famous scientists and inventors birth charts — Page 4 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/science/page/4",
+      "description": "Page 4 of birth charts for famous scientists and inventors. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/sport/page/3",
+      "status": 200,
+      "title": "Famous athletes birth charts — Page 3 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/sport/page/3",
+      "description": "Page 3 of birth charts for famous athletes. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/sport/page/11",
+      "status": 200,
+      "title": "Famous athletes birth charts — Page 11 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/sport/page/11",
+      "description": "Page 11 of birth charts for famous athletes. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/thought/page/3",
+      "status": 200,
+      "title": "Famous philosophers and thinkers birth charts — Page 3 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/thought/page/3",
+      "description": "Page 3 of birth charts for famous philosophers and thinkers. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/charts/category/writing/page/9",
+      "status": 200,
+      "title": "Famous writers and poets birth charts — Page 9 | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/charts/category/writing/page/9",
+      "description": "Page 9 of birth charts for famous writers and poets. Browse dated sources, zodiac signs and birth-time ratings.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/aries",
+      "status": 200,
+      "title": "Aries Zodiac Sign: Dates, Traits and Famous Ariess | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/aries",
+      "description": "Aries (March 21 – April 19) is a cardinal fire sign ruled by Mars. What Aries means as a Sun, Moon and Rising sign, and the famous people born with the Sun in Aries.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/aries-sun-gemini-moon",
+      "status": 200,
+      "title": "Aries Sun Gemini Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/aries-sun-gemini-moon",
+      "description": "What it means to have the Sun in Aries and the Moon in Gemini: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/taurus-sun-leo-moon",
+      "status": 200,
+      "title": "Taurus Sun Leo Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/taurus-sun-leo-moon",
+      "description": "What it means to have the Sun in Taurus and the Moon in Leo: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/gemini-sun-libra-moon",
+      "status": 200,
+      "title": "Gemini Sun Libra Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/gemini-sun-libra-moon",
+      "description": "What it means to have the Sun in Gemini and the Moon in Libra: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/cancer-sun-sagittarius-moon",
+      "status": 200,
+      "title": "Cancer Sun Sagittarius Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/cancer-sun-sagittarius-moon",
+      "description": "What it means to have the Sun in Cancer and the Moon in Sagittarius: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/leo-sun-aquarius-moon",
+      "status": 200,
+      "title": "Leo Sun Aquarius Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/leo-sun-aquarius-moon",
+      "description": "What it means to have the Sun in Leo and the Moon in Aquarius: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/libra-sun-aries-moon",
+      "status": 200,
+      "title": "Libra Sun Aries Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/libra-sun-aries-moon",
+      "description": "What it means to have the Sun in Libra and the Moon in Aries: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/scorpio-sun-gemini-moon",
+      "status": 200,
+      "title": "Scorpio Sun Gemini Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/scorpio-sun-gemini-moon",
+      "description": "What it means to have the Sun in Scorpio and the Moon in Gemini: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/sagittarius-sun-leo-moon",
+      "status": 200,
+      "title": "Sagittarius Sun Leo Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/sagittarius-sun-leo-moon",
+      "description": "What it means to have the Sun in Sagittarius and the Moon in Leo: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/capricorn-sun-libra-moon",
+      "status": 200,
+      "title": "Capricorn Sun Libra Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/capricorn-sun-libra-moon",
+      "description": "What it means to have the Sun in Capricorn and the Moon in Libra: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/aquarius-sun-sagittarius-moon",
+      "status": 200,
+      "title": "Aquarius Sun Sagittarius Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/aquarius-sun-sagittarius-moon",
+      "description": "What it means to have the Sun in Aquarius and the Moon in Sagittarius: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    },
+    {
+      "route": "/zodiac/pisces-sun-pisces-moon",
+      "status": 200,
+      "title": "Pisces Sun Pisces Moon: Meaning, Personality and Famous People | Aspectori",
+      "h1": 1,
+      "canonical": "http://localhost:3000/zodiac/pisces-sun-pisces-moon",
+      "description": "What it means to have the Sun in Pisces and the Moon in Pisces: the personality, how the two signs get along, and famous people born with this combination.",
+      "noindex": false,
+      "schema": [
+        true,
+        true
+      ]
+    }
+  ],
+  "missing": [
+    "/calculators/not-a-tool",
+    "/learn/not-a-guide",
+    "/charts/not-a-person",
+    "/zodiac/not-a-sign",
+    "/charts/category/science/page/999999"
+  ],
+  "privateReportNoindex": true,
+  "publicContentWithoutJavaScript": true,
+  "lab": {
+    "description": "Single cold local production run per route; 390x844 Chromium emulation, 150ms latency, 1.6Mbps download, 4x CPU slowdown. Not field CWV, Lighthouse or physical-device results. CLS is observed total during navigation only.",
+    "results": [
+      {
+        "route": "/",
+        "lcpMs": 1148,
+        "cls": 0.0020687510294767264,
+        "transferBytes": 529520,
+        "jsBytes": 268687,
+        "fontRequests": 7
+      },
+      {
+        "route": "/calculators/moon-sign",
+        "lcpMs": 900,
+        "cls": 0.0009434632821827384,
+        "transferBytes": 531424,
+        "jsBytes": 271569,
+        "fontRequests": 7
+      },
+      {
+        "route": "/charts",
+        "lcpMs": 1164,
+        "cls": 0.000944212105015697,
+        "transferBytes": 530756,
+        "jsBytes": 268687,
+        "fontRequests": 7
+      }
+    ]
+  }
+}

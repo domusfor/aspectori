@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Crumbs from "@/components/seo/Crumbs";
+import { GUIDES } from "@/data/guides";
+export const metadata: Metadata = { title: "Learn to Read Your Birth Chart", description: "Practical guides to birth charts, unknown birth times, Placidus and whole sign houses, aspects and orbs. Understand the calculations behind your reading.", alternates: { canonical: "/learn" } };
+export default function Page() { return <main className="mx-auto max-w-[1120px] px-4 sm:px-8 pb-12"><Crumbs items={[["Home", "/"], ["Learn", "/learn"]]} /><h1 className="font-serif text-5xl mt-10">Learn to read your chart</h1><p className="text-ink-2 mt-5 max-w-2xl">Understand the inputs, the placements and the limits. Each guide connects to a calculator so you can explore the idea in your own chart.</p><div className="grid gap-5 md:grid-cols-2 mt-10">{GUIDES.map((guide) => <Link key={guide.slug} href={`/learn/${guide.slug}`} className="panel p-6 hover:border-gold"><h2 className="font-serif text-2xl">{guide.title}</h2><p className="mt-3 text-sm text-ink-2 leading-relaxed">{guide.summary}</p><span className="inline-block mt-5 text-sm text-gold">Read the guide →</span></Link>)}</div></main>; }

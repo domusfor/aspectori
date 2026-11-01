@@ -1,0 +1,123 @@
+{
+  "results": [
+    {
+      "name": "known",
+      "selections": 34,
+      "wheelSelection": true,
+      "focusMoved": true,
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "clipped": [],
+          "fontSize": 16
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "unknown",
+      "selections": 21,
+      "wheelSelection": true,
+      "focusMoved": true,
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "clipped": [],
+          "fontSize": 16
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "polar",
+      "selections": 34,
+      "wheelSelection": true,
+      "focusMoved": true,
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "clipped": [],
+          "fontSize": 16
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "clipped": [],
+          "fontSize": 16
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "famousChart": true,
+  "errors": []
+}

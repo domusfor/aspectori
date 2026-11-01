@@ -1,27 +1,50 @@
 {
-  "name": "astronomy",
+  "name": "aspectori",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "verify": "vitest run tests/astrocom.test.ts",
+    "typecheck": "tsc --noEmit",
+    "seo:audit": "node scripts/audit-release-seo.mjs",
+    "release:check": "node scripts/validate-release.mjs",
+    "data:import": "tsx scripts/import-famous.ts && tsx --conditions=react-server scripts/build-summaries.ts",
+    "data:summaries": "tsx --conditions=react-server scripts/build-summaries.ts"
   },
   "dependencies": {
+    "@fontsource/cinzel": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/jost": "^5.3.0",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^4.2.1",
+    "luxon": "^3.7.2",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "sweph": "^2.10.3-8"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/luxon": "^3.7.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
+    "geo-tz": "^8.1.10",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vite": "^6.4.5",
+    "vitest": "^4.1.12"
+  },
+  "engines": {
+    "node": ">=20.19"
   }
 }

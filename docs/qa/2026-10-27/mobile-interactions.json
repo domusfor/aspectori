@@ -1,0 +1,120 @@
+{
+  "modes": [
+    {
+      "slug": "moon-sign",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "moon-sign",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "rising-sign",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "rising-sign",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "sun-moon-rising",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "sun-moon-rising",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "house-systems",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "house-systems",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "synastry",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "synastry",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "venus-sign",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "venus-sign",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "mars-sign",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "mars-sign",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "moon-phase",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "moon-phase",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "chart-ruler",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "chart-ruler",
+      "unknown": true,
+      "passed": true
+    },
+    {
+      "slug": "annual-profections",
+      "unknown": false,
+      "passed": true
+    },
+    {
+      "slug": "annual-profections",
+      "unknown": true,
+      "passed": true
+    }
+  ],
+  "allMonthsAtWidths": [
+    320,
+    375,
+    430,
+    768
+  ],
+  "touchCityRetry": true,
+  "keyboardTable": true,
+  "famousSearch": true,
+  "skyRetry": true,
+  "pdfBytes": 306470,
+  "liveGeocoder": {
+    "status": 200,
+    "resultCount": 8
+  },
+  "errors": []
+}

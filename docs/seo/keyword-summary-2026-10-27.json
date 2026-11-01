@@ -1,0 +1,21 @@
+{
+  "keywords": 844,
+  "new_review_date_rows": 282,
+  "clusters": 36,
+  "search_queries": 46,
+  "shortlist": 58,
+  "priorities": {
+    "P0": 12,
+    "P1": 383,
+    "P2": 397,
+    "P3": 52
+  },
+  "evidence": {
+    "searched query": 24,
+    "inferred variant": 306,
+    "inferred intent variant": 274,
+    "enumerated hypothesis": 240
+  },
+  "implemented_or_existing_destination_rows": 685,
+  "unmapped_backlog_rows": 159
+}

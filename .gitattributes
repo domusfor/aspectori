@@ -1,0 +1,5 @@
+# Preserve scientific catalog bytes and keep generated research datasets out of
+# code-oriented whitespace checks and pull-request diffs.
+ephe/** -text -diff
+data-src/** -diff
+docs/seo/*.csv -diff

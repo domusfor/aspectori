@@ -1,0 +1,34 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function SiteFooter() {
+  return (
+    <footer className="no-print relative z-10 mx-auto mt-24 w-full max-w-[1120px] px-4 pb-10 sm:px-8">
+      <div className="hairline mb-8" />
+      <div className="grid gap-8 sm:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <Image src="/brand/aspectori-logo.png" alt="Aspectori" width={140} height={121} className="h-auto w-[120px]" />
+          <p className="mt-4 max-w-xs text-xs leading-relaxed text-muted">
+            For entertainment. Positions from the Swiss Ephemeris, checked against Astro.com. Famous birth dates from
+            Wikidata and Astro-Databank.
+          </p>
+        </div>
+        <FooterCol title="Explore" links={[["/", "Birth chart calculator"], ["/calculators", "All calculators"], ["/birth-chart-report", "Free PDF report"], ["/charts", "Famous birth charts"], ["/zodiac", "Zodiac signs"]]} />
+        <FooterCol title="Learn & verify" links={[["/learn", "Birth chart guides"], ["/accuracy", "Accuracy"], ["/method", "How it is calculated"], ["/privacy", "Privacy"]]} />
+      </div>
+    </footer>
+  );
+}
+
+function FooterCol({ title, links }: { title: string; links: [string, string][] }) {
+  return (
+    <div>
+      <p className="kicker text-gold">{title}</p>
+      <ul className="mt-3 grid gap-2 text-sm text-ink-2">
+        {links.map(([href, label]) => (
+          <li key={href}><Link href={href} className="hover:text-ink">{label}</Link></li>
+        ))}
+      </ul>
+    </div>
+  );
+}

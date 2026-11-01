@@ -1,0 +1,2734 @@
+{
+  "base": "http://localhost:3143",
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "metadata": {
+        "title": "Free Birth Chart Calculator with Exact Degrees | Aspectori",
+        "h1": [
+          "Your birth chart. Every degree, explained."
+        ],
+        "canonical": "http://localhost:3000",
+        "description": "Calculate your Sun, Moon and Rising signs, compare Placidus and whole sign houses, and download a free birth chart PDF. No account or email required.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Aspectori birth chart calculator",
+            "url": "http://localhost:3000",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can I download my birth chart as a free PDF?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Create your chart and choose Free PDF report. Your download includes a chart wheel, placements, a reading, major aspects and selected dated transits. No account, email or payment is required."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need my exact birth time?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Without a time you still get your Sun, Moon and planets, and aspects supported by both local-day endpoint samples. These samples do not guarantee that a contact held at every moment between them. We hide the Rising sign and houses instead of guessing them, and if the Moon changed sign that day we show both signs and the time it switched."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do different calculators show different houses?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Different house systems divide a chart differently. We show Placidus and whole sign side by side, with a Porphyry comparison too. Check the birth time, time zone and selected house system when comparing results."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How accurate is Aspectori?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Positions come from the Swiss Ephemeris, the engine Astro.com uses. Every release is tested against 22 charts from Astro-Databank and must match Astro.com's Sun, Moon and Ascendant to the arcminute."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens to my birth data?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Your birth details are sent to our server to calculate the chart, then kept in the fragment of your page address. We do not store them in a database. Anyone you share the chart link with can read those details."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I get a free personalized weekly horoscope?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Your week ahead appears automatically with your birth chart. It selects up to three themes from actual transits over the next seven UTC calendar days, with sampled dates, the underlying calculations and reflection prompts. Interpretations are for entertainment, not predictions. Missing birth times reduce the available themes. No account or payment is required."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators",
+      "status": 200,
+      "metadata": {
+        "title": "Free Astrology Calculators: Signs, Moon Phase & Profections | Aspectori",
+        "h1": [
+          "Free astrology calculators"
+        ],
+        "canonical": "http://localhost:3000/calculators",
+        "description": "Explore 10 free astrology tools: Venus, Mars, Moon, Rising, Big Three, birth Moon phase, chart ruler, annual profections, houses and synastry. No account required.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/moon-sign",
+      "status": 200,
+      "metadata": {
+        "title": "Free Moon Sign Calculator | Aspectori",
+        "h1": [
+          "Free Moon Sign Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/moon-sign",
+        "description": "Find your Moon sign and degree from your birth date, time and place. Unknown birth time? See both possible signs and the local time of a sign change.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Free Moon Sign Calculator",
+                "item": "http://localhost:3000/calculators/moon-sign"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Free Moon Sign Calculator",
+            "description": "Find your Moon sign and degree from your birth date, time and place. Unknown birth time? See both possible signs and the local time of a sign change.",
+            "url": "http://localhost:3000/calculators/moon-sign",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/rising-sign",
+      "status": 200,
+      "metadata": {
+        "title": "Free Rising Sign & Ascendant Calculator | Aspectori",
+        "h1": [
+          "Free Rising Sign & Ascendant Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/rising-sign",
+        "description": "Calculate your Rising sign, also called the Ascendant, with its exact degree. Enter your birth time and birthplace; learn why a missing time cannot be guessed.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Free Rising Sign & Ascendant Calculator",
+                "item": "http://localhost:3000/calculators/rising-sign"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Free Rising Sign & Ascendant Calculator",
+            "description": "Calculate your Rising sign, also called the Ascendant, with its exact degree. Enter your birth time and birthplace; learn why a missing time cannot be guessed.",
+            "url": "http://localhost:3000/calculators/rising-sign",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/sun-moon-rising",
+      "status": 200,
+      "metadata": {
+        "title": "Sun, Moon & Rising Sign Calculator | Aspectori",
+        "h1": [
+          "Sun, Moon & Rising Sign Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/sun-moon-rising",
+        "description": "Find your Big Three: Sun, Moon and Rising signs, with degrees and clear birth-time uncertainty. Free tropical astrology calculator with a downloadable report.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Sun, Moon & Rising Sign Calculator",
+                "item": "http://localhost:3000/calculators/sun-moon-rising"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Sun, Moon & Rising Sign Calculator",
+            "description": "Find your Big Three: Sun, Moon and Rising signs, with degrees and clear birth-time uncertainty. Free tropical astrology calculator with a downloadable report.",
+            "url": "http://localhost:3000/calculators/sun-moon-rising",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/house-systems",
+      "status": 200,
+      "metadata": {
+        "title": "Placidus vs Whole Sign House Calculator | Aspectori",
+        "h1": [
+          "Placidus vs Whole Sign House Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/house-systems",
+        "description": "Compare Placidus and whole sign houses for the same birth chart. See which planets change houses, with a Porphyry comparison and polar-latitude handling.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Placidus vs Whole Sign House Calculator",
+                "item": "http://localhost:3000/calculators/house-systems"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Placidus vs Whole Sign House Calculator",
+            "description": "Compare Placidus and whole sign houses for the same birth chart. See which planets change houses, with a Porphyry comparison and polar-latitude handling.",
+            "url": "http://localhost:3000/calculators/house-systems",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/synastry",
+      "status": 200,
+      "metadata": {
+        "title": "Free Synastry & Birth Chart Compatibility Calculator | Aspectori",
+        "h1": [
+          "Free Synastry & Birth Chart Compatibility Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/synastry",
+        "description": "Compare two birth charts with free synastry, planetary aspects and house overlays in both directions. Explore whole sign, Placidus and a free comparison PDF.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Free Synastry & Birth Chart Compatibility Calculator",
+                "item": "http://localhost:3000/calculators/synastry"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Free Synastry & Birth Chart Compatibility Calculator",
+            "description": "Compare two birth charts with free synastry, planetary aspects and house overlays in both directions. Explore whole sign, Placidus and a free comparison PDF.",
+            "url": "http://localhost:3000/calculators/synastry",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/venus-sign",
+      "status": 200,
+      "metadata": {
+        "title": "Free Venus Sign Calculator | Aspectori",
+        "h1": [
+          "Free Venus Sign Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/venus-sign",
+        "description": "Find your Venus sign, degree and birth-time uncertainty. Explore symbolic themes of appreciation and relationships, with houses when your birth time is known.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Free Venus Sign Calculator",
+                "item": "http://localhost:3000/calculators/venus-sign"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Free Venus Sign Calculator",
+            "description": "Find your Venus sign, degree and birth-time uncertainty. Explore symbolic themes of appreciation and relationships, with houses when your birth time is known.",
+            "url": "http://localhost:3000/calculators/venus-sign",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/mars-sign",
+      "status": 200,
+      "metadata": {
+        "title": "Free Mars Sign Calculator | Aspectori",
+        "h1": [
+          "Free Mars Sign Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/mars-sign",
+        "description": "Calculate your Mars sign, degree and houses. See unknown-time ranges and explore astrological themes of initiative, effort and boundaries for free.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Free Mars Sign Calculator",
+                "item": "http://localhost:3000/calculators/mars-sign"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Free Mars Sign Calculator",
+            "description": "Calculate your Mars sign, degree and houses. See unknown-time ranges and explore astrological themes of initiative, effort and boundaries for free.",
+            "url": "http://localhost:3000/calculators/mars-sign",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/moon-phase",
+      "status": 200,
+      "metadata": {
+        "title": "Birth Moon Phase Calculator | Aspectori",
+        "h1": [
+          "Birth Moon Phase Calculator"
+        ],
+        "canonical": "http://localhost:3000/calculators/moon-phase",
+        "description": "See the Moon phase and illuminated fraction at your birth. Includes a lunar illustration, Sun–Moon angle and hourly samples when your birth time is unknown.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Birth Moon Phase Calculator",
+                "item": "http://localhost:3000/calculators/moon-phase"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Birth Moon Phase Calculator",
+            "description": "See the Moon phase and illuminated fraction at your birth. Includes a lunar illustration, Sun–Moon angle and hourly samples when your birth time is unknown.",
+            "url": "http://localhost:3000/calculators/moon-phase",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/chart-ruler",
+      "status": 200,
+      "metadata": {
+        "title": "Chart Ruler Calculator: Traditional & Modern | Aspectori",
+        "h1": [
+          "Chart Ruler Calculator: Traditional & Modern"
+        ],
+        "canonical": "http://localhost:3000/calculators/chart-ruler",
+        "description": "Find the planet ruling your Rising sign, its natal sign, degree and houses. Compare traditional and modern chart rulers with clear birth-time requirements.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Chart Ruler Calculator: Traditional & Modern",
+                "item": "http://localhost:3000/calculators/chart-ruler"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Chart Ruler Calculator: Traditional & Modern",
+            "description": "Find the planet ruling your Rising sign, its natal sign, degree and houses. Compare traditional and modern chart rulers with clear birth-time requirements.",
+            "url": "http://localhost:3000/calculators/chart-ruler",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/calculators/annual-profections",
+      "status": 200,
+      "metadata": {
+        "title": "Annual Profection Calculator: House & Time Lord | Aspectori",
+        "h1": [
+          "Annual Profection Calculator: House & Time Lord"
+        ],
+        "canonical": "http://localhost:3000/calculators/annual-profections",
+        "description": "Find your annual profection house, sign and traditional time lord. Explore a 12-year cycle by age, with birthday dates and honest unknown-time limits.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "http://localhost:3000/calculators"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Annual Profection Calculator: House & Time Lord",
+                "item": "http://localhost:3000/calculators/annual-profections"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Annual Profection Calculator: House & Time Lord",
+            "description": "Find your annual profection house, sign and traditional time lord. Explore a 12-year cycle by age, with birthday dates and honest unknown-time limits.",
+            "url": "http://localhost:3000/calculators/annual-profections",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/learn",
+      "status": 200,
+      "metadata": {
+        "title": "Learn to Read Your Birth Chart | Aspectori",
+        "h1": [
+          "Learn to read your chart"
+        ],
+        "canonical": "http://localhost:3000/learn",
+        "description": "Practical guides to birth charts, unknown birth times, Placidus and whole sign houses, aspects and orbs. Understand the calculations behind your reading.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Learn",
+                "item": "http://localhost:3000/learn"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/learn/how-to-read-a-birth-chart",
+      "status": 200,
+      "metadata": {
+        "title": "How to Read a Birth Chart: A Practical Beginner’s Guide | Aspectori",
+        "h1": [
+          "How to Read a Birth Chart: A Practical Beginner’s Guide"
+        ],
+        "canonical": "http://localhost:3000/learn/how-to-read-a-birth-chart",
+        "description": "Read your natal chart step by step: verify birth data, find Sun, Moon and Rising, understand planets and houses, then examine aspects with their orbs.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Learn",
+                "item": "http://localhost:3000/learn"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "How to Read a Birth Chart: A Practical Beginner’s Guide",
+                "item": "http://localhost:3000/learn/how-to-read-a-birth-chart"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Read a Birth Chart: A Practical Beginner’s Guide",
+            "description": "Read your natal chart step by step: verify birth data, find Sun, Moon and Rising, understand planets and houses, then examine aspects with their orbs.",
+            "datePublished": "2026-10-18",
+            "author": {
+              "@type": "Organization",
+              "name": "Aspectori",
+              "url": "http://localhost:3000"
+            },
+            "publisher": {
+              "@id": "http://localhost:3000/#org"
+            },
+            "mainEntityOfPage": "http://localhost:3000/learn/how-to-read-a-birth-chart"
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/learn/birth-chart-without-birth-time",
+      "status": 200,
+      "metadata": {
+        "title": "Birth Chart Without a Birth Time: What You Can Know | Aspectori",
+        "h1": [
+          "Birth Chart Without a Birth Time: What You Can Know"
+        ],
+        "canonical": "http://localhost:3000/learn/birth-chart-without-birth-time",
+        "description": "Learn what a natal chart can show without a birth time, why Rising and houses are missing, and how to handle a Moon sign that changes during the day.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Learn",
+                "item": "http://localhost:3000/learn"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Birth Chart Without a Birth Time: What You Can Know",
+                "item": "http://localhost:3000/learn/birth-chart-without-birth-time"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Birth Chart Without a Birth Time: What You Can Know",
+            "description": "Learn what a natal chart can show without a birth time, why Rising and houses are missing, and how to handle a Moon sign that changes during the day.",
+            "datePublished": "2026-10-18",
+            "author": {
+              "@type": "Organization",
+              "name": "Aspectori",
+              "url": "http://localhost:3000"
+            },
+            "publisher": {
+              "@id": "http://localhost:3000/#org"
+            },
+            "mainEntityOfPage": "http://localhost:3000/learn/birth-chart-without-birth-time"
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/learn/whole-sign-vs-placidus",
+      "status": 200,
+      "metadata": {
+        "title": "Whole Sign vs Placidus: Why Your Houses Change | Aspectori",
+        "h1": [
+          "Whole Sign vs Placidus: Why Your Houses Change"
+        ],
+        "canonical": "http://localhost:3000/learn/whole-sign-vs-placidus",
+        "description": "Understand how whole sign and Placidus assign houses, what stays the same, and how to compare both systems using identical birth details.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Learn",
+                "item": "http://localhost:3000/learn"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Whole Sign vs Placidus: Why Your Houses Change",
+                "item": "http://localhost:3000/learn/whole-sign-vs-placidus"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Whole Sign vs Placidus: Why Your Houses Change",
+            "description": "Understand how whole sign and Placidus assign houses, what stays the same, and how to compare both systems using identical birth details.",
+            "datePublished": "2026-10-18",
+            "author": {
+              "@type": "Organization",
+              "name": "Aspectori",
+              "url": "http://localhost:3000"
+            },
+            "publisher": {
+              "@id": "http://localhost:3000/#org"
+            },
+            "mainEntityOfPage": "http://localhost:3000/learn/whole-sign-vs-placidus"
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/learn/aspects-and-orbs",
+      "status": 200,
+      "metadata": {
+        "title": "Astrology Aspects and Orbs Explained | Aspectori",
+        "h1": [
+          "Astrology Aspects and Orbs Explained"
+        ],
+        "canonical": "http://localhost:3000/learn/aspects-and-orbs",
+        "description": "Understand conjunctions, squares, trines, oppositions and sextiles, how orbs are measured, and why astrology calculators may include different aspects.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Learn",
+                "item": "http://localhost:3000/learn"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Astrology Aspects and Orbs Explained",
+                "item": "http://localhost:3000/learn/aspects-and-orbs"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Astrology Aspects and Orbs Explained",
+            "description": "Understand conjunctions, squares, trines, oppositions and sextiles, how orbs are measured, and why astrology calculators may include different aspects.",
+            "datePublished": "2026-10-18",
+            "author": {
+              "@type": "Organization",
+              "name": "Aspectori",
+              "url": "http://localhost:3000"
+            },
+            "publisher": {
+              "@id": "http://localhost:3000/#org"
+            },
+            "mainEntityOfPage": "http://localhost:3000/learn/aspects-and-orbs"
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/birth-chart-report",
+      "status": 200,
+      "metadata": {
+        "title": "Free Birth Chart PDF Report — No Signup | Aspectori",
+        "h1": [
+          "Your birth chart, ready to keep."
+        ],
+        "canonical": "http://localhost:3000/birth-chart-report",
+        "description": "Download a free natal chart PDF with your chart wheel, planetary placements, house comparison, readings, major aspects and dated transits. No account or email required.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Free PDF report",
+                "item": "http://localhost:3000/birth-chart-report"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/charts",
+      "status": 200,
+      "metadata": {
+        "title": "Famous Birth Charts: Zodiac Signs of 8,000+ Celebrities | Aspectori",
+        "h1": [
+          "The birth charts of 8,434 famous people."
+        ],
+        "canonical": "http://localhost:3000/charts",
+        "description": "The birth charts and zodiac signs of more than 8,000 famous people: Sun, Moon and Rising signs with exact degrees, how reliable each birth time is, and a compatibility check with your own chart.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Famous charts",
+                "item": "http://localhost:3000/charts"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/charts/albert-einstein",
+      "status": 200,
+      "metadata": {
+        "title": "Albert Einstein Birth Chart & Zodiac Sign: Pisces Sun, Sagittarius Moon, Cancer Rising | Aspectori",
+        "h1": [
+          "Albert Einstein"
+        ],
+        "canonical": "http://localhost:3000/charts/albert-einstein",
+        "description": "Albert Einstein's zodiac sign is Pisces, with the Moon in Sagittarius and Cancer rising. Rodden AA birth time, checked against Astro.com. See the full natal chart and compare it with yours.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Albert Einstein",
+            "description": "Physicist whose relativity papers rewrote space, time and gravity.",
+            "birthDate": "1879-03-14",
+            "birthPlace": {
+              "@type": "Place",
+              "name": "Ulm, Germany"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Albert Einstein's zodiac sign?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Albert Einstein's zodiac (Sun) sign is Pisces."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Albert Einstein's Moon sign?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Moon was in Sagittarius at the recorded birth time, rated Rodden AA."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Albert Einstein's Rising sign?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cancer, from a birth time rated Rodden AA."
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Famous charts",
+                "item": "http://localhost:3000/charts"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Science",
+                "item": "http://localhost:3000/charts/category/science"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Albert Einstein",
+                "item": "http://localhost:3000/charts/albert-einstein"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/charts/category/science",
+      "status": 200,
+      "metadata": {
+        "title": "Birth Charts of Famous Scientists and inventors | Aspectori",
+        "h1": [
+          "Birth charts of famous scientists and inventors"
+        ],
+        "canonical": "http://localhost:3000/charts/category/science",
+        "description": "Browse the birth charts and zodiac signs of famous scientists and inventors, with birth-time reliability and Sun, Moon and Rising placements.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Famous charts",
+                "item": "http://localhost:3000/charts"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Science",
+                "item": "http://localhost:3000/charts/category/science"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/zodiac/aries",
+      "status": 200,
+      "metadata": {
+        "title": "Aries Zodiac Sign: Dates, Traits and Famous Ariess | Aspectori",
+        "h1": [
+          "Aries zodiac sign"
+        ],
+        "canonical": "http://localhost:3000/zodiac/aries",
+        "description": "Aries (March 21 – April 19) is a cardinal fire sign ruled by Mars. What Aries means as a Sun, Moon and Rising sign, and the famous people born with the Sun in Aries.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Zodiac signs",
+                "item": "http://localhost:3000/zodiac"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Aries",
+                "item": "http://localhost:3000/zodiac/aries"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/accuracy",
+      "status": 200,
+      "metadata": {
+        "title": "How Accurate Is Aspectori? Checked Against Astro.com | Aspectori",
+        "h1": [
+          "22 of 22 charts match Astro.com to the arcminute."
+        ],
+        "canonical": "http://localhost:3000/accuracy",
+        "description": "Our birth chart calculator against Astro.com, chart by chart: Sun, Moon and Ascendant for 22 famous people, matched to the arcminute. Plus where historical time zones differ.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "http://localhost:3000/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Accuracy",
+                "item": "http://localhost:3000/accuracy"
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/method",
+      "status": 200,
+      "metadata": {
+        "title": "How the chart is calculated | Aspectori",
+        "h1": [
+          "How the chart is calculated"
+        ],
+        "canonical": "http://localhost:3000/method",
+        "description": "How Aspectori calculates planetary positions, historical time zones, houses and transits, and handles your birth details.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/#b=1990-08-14%7E14%3A30%7E42.6975%7E23.3241%7EEurope%2FSofia%7ESofia%2C+Bulgaria&p=1988-03-05%7E09%3A15%7E42.6975%7E23.3241%7EEurope%2FSofia%7ESofia%2C+Bulgaria&pn=Alex&rel=friend",
+      "status": 200,
+      "metadata": {
+        "title": "Free Birth Chart Calculator with Exact Degrees | Aspectori",
+        "h1": [
+          "Your chart. Your connections."
+        ],
+        "canonical": "http://localhost:3000",
+        "description": "Calculate your Sun, Moon and Rising signs, compare Placidus and whole sign houses, and download a free birth chart PDF. No account or email required.",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Aspectori birth chart calculator",
+            "url": "http://localhost:3000",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    },
+    {
+      "route": "/report#b=1990-08-14%7E14%3A30%7E42.6975%7E23.3241%7EEurope%2FSofia%7ESofia%2C+Bulgaria&p=1988-03-05%7E09%3A15%7E42.6975%7E23.3241%7EEurope%2FSofia%7ESofia%2C+Bulgaria&pn=Alex&rel=friend",
+      "status": 200,
+      "metadata": {
+        "title": "Your Free Birth Chart PDF Report | Aspectori",
+        "h1": [
+          "The shapeof your sky."
+        ],
+        "canonical": "http://localhost:3000/report",
+        "description": "Download your personal natal chart report, placements, readings and year ahead as a free PDF.",
+        "robots": "noindex, nofollow",
+        "schema": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "http://localhost:3000/#org",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "logo": "http://localhost:3000/brand/aspectori-logo.png"
+              },
+              {
+                "@type": "WebSite",
+                "@id": "http://localhost:3000/#site",
+                "name": "Aspectori",
+                "url": "http://localhost:3000",
+                "publisher": {
+                  "@id": "http://localhost:3000/#org"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "http://localhost:3000/charts?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "axe": [],
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 375,
+          "documentWidth": 375,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "overflowing": [],
+          "clippedSelects": []
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "overflowing": [],
+          "clippedSelects": []
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
