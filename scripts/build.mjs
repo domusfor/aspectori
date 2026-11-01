@@ -15,4 +15,4 @@ if (process.env.VERCEL_ENV === "production") {
   run(process.execPath, ["scripts/validate-release.mjs"]);
 }
 
-run(process.platform === "win32" ? "npx.cmd" : "npx", ["next", "build"]);
+run(process.execPath, ["node_modules/next/dist/bin/next", "build"]);
