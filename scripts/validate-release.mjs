@@ -4,9 +4,12 @@ const required = [
   "NEXT_PUBLIC_SITE_URL",
   "PRIVACY_CONTROLLER_NAME",
   "PRIVACY_CONTACT_EMAIL",
+  "CONTACT_FROM_EMAIL",
+  "RESEND_API_KEY",
   "PRIVACY_LEGAL_BASIS",
   "PRIVACY_HOSTING_PROVIDER",
   "PRIVACY_GEOCODER_PROVIDER",
+  "PRIVACY_EMAIL_PROVIDER",
   "PRIVACY_LOG_RETENTION",
   "PRIVACY_TRANSFER_INFO",
   "SWISS_EPHEMERIS_LICENSE_MODE",
@@ -29,6 +32,9 @@ if (siteUrl) {
 
 if (process.env.PRIVACY_CONTACT_EMAIL && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.PRIVACY_CONTACT_EMAIL)) {
   failures.push("PRIVACY_CONTACT_EMAIL must be a valid email address");
+}
+if (process.env.CONTACT_RECIPIENT_EMAIL && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.CONTACT_RECIPIENT_EMAIL)) {
+  failures.push("CONTACT_RECIPIENT_EMAIL must be a valid email address");
 }
 
 const license = process.env.SWISS_EPHEMERIS_LICENSE_MODE?.toLowerCase();

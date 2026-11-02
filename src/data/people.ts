@@ -22,6 +22,15 @@ const IMPORTED: Famous[] = (raw as Row[]).map((r) => ({
 /** Every famous chart, curated first, then by how widely known the person is. */
 export const ALL_FAMOUS: Famous[] = [...FAMOUS, ...IMPORTED].sort((a, b) => b.popularity - a.popularity);
 
+/**
+ * Search launch cohort. Keep the full directory available to people while only
+ * asking search engines to index the strongest profiles initially.
+ */
+export const FAMOUS_INDEX_LIMIT = 1_000;
+export const INDEXABLE_FAMOUS = ALL_FAMOUS.slice(0, FAMOUS_INDEX_LIMIT);
+const INDEXABLE_SLUGS = new Set(INDEXABLE_FAMOUS.map((f) => f.slug));
+export const isFamousIndexable = (slug: string) => INDEXABLE_SLUGS.has(slug);
+
 const BY_SLUG = new Map(ALL_FAMOUS.map((f) => [f.slug, f]));
 export const famousBySlug = (slug: string) => BY_SLUG.get(slug);
 

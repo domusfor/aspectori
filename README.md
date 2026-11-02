@@ -57,7 +57,7 @@ Add a chart to `src/data/astrocom-reference.json` whenever someone reports a mis
   Sign", "[Sun] Sun [Moon] Moon".
 - Structured data: Organization, WebSite, WebApplication, Person and BreadcrumbList. Unsupported Google search-box
   and FAQ rich-result markup is deliberately omitted; visible search and FAQ content remains available to users.
-- `sitemap.xml` lists public charts, guides, tools, and category pagination. Every famous profile is linked from a category page. Private `/report` is excluded and carries `noindex`; crawlers can access it to read that instruction.
+- `sitemap.xml` lists core pages, guides, tools, and category pagination. `/charts/sitemap.xml` contains the 1,000-profile search-launch cohort; other profiles stay usable but carry `noindex, follow`. Every famous profile remains linked from a category page. Private `/report` is excluded and carries `noindex`; crawlers can access it to read that instruction.
 - `/calculators` includes Moon, Rising, Big Three, house-system comparison and synastry tools; `/learn` supplies four supporting guides. `/birth-chart-report` is the public PDF landing page.
 - `/about`, `/method`, `/accuracy`, `/contact`, `/privacy`, and `/terms` form the public trust and operator-information layer.
 - Keywords map to useful pages, not duplicate pages for synonyms. FAQ content remains visible without obsolete FAQ rich-result markup.
@@ -73,7 +73,7 @@ Add a chart to `src/data/astrocom-reference.json` whenever someone reports a mis
 | `src/lib/astro/aspects.ts` | Orbs, and endpoint-sampled aspects when the time is unknown; matching samples are not a full-day guarantee |
 | `src/lib/astro/library.ts` | The fixed text library. Nothing is generated at request time |
 | `src/lib/astro/reading.ts` | Assembles card lines and the "why this sentence" rows |
-| `src/app/api/*` | `chart`, `couple`, `year` (POST), `cities` (GET, proxies the geocoder) |
+| `src/app/api/*` | Calculation endpoints, city search, and rate-limited contact-form delivery |
 | `src/components/*` | Card, wheel, reading rows, houses table, couple card, year, printable report |
 | `ephe/` | Swiss Ephemeris data files (1800–2400). Must ship with the functions |
 
@@ -90,6 +90,9 @@ application logs. Hosting infrastructure can still process technical request log
   model changes, review the provider terms before deployment rather than silently retaining this setting.
 - **Rate limiting.** The API has a per-instance limit. Vercel also has an active production `/api/` rule at 60
   requests per 60 seconds per IP; keep that edge rule published and verify it after deployment changes.
+- **Contact delivery.** Verify `aspectori.com` with Resend, use a domain sender in `CONTACT_FROM_EMAIL`, and keep
+  `RESEND_API_KEY` server-side. Messages go to `CONTACT_RECIPIENT_EMAIL` (currently `support@karai.bg`) and use the
+  visitor's address only as Reply-To.
 - **Release configuration.** Fill every production field in `.env.example`, then run `npm run release:check`. It blocks
   placeholder domains, incomplete privacy information, a missing public AGPL source URL, a geocoder whose declared
   use mode does not match its endpoint, and an unconfirmed edge rate-limit rule.

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import FamousChart from "@/components/famous/FamousChart";
 import JsonLd from "@/components/seo/JsonLd";
 import RouteLoading from "@/components/site/RouteLoading";
-import { ALL_FAMOUS, famousBySlug } from "@/data/people";
+import { ALL_FAMOUS, famousBySlug, isFamousIndexable } from "@/data/people";
 import { allSummaries, famousChart, famousSummary } from "@/lib/famous-summary";
 
 // The best-known 100 are built ahead; the rest render on first visit and are cached.
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: `${title} | Aspectori` },
     description: `${shortName}: ${both(s.sun)} Sun, ${both(s.moon)} Moon${s.rising ? `, ${s.rising} Rising` : ""}. ${timeNote} View the natal chart, source rating and comparison.`,
     alternates: { canonical: `/charts/${s.slug}` },
+    ...(!isFamousIndexable(s.slug) ? { robots: { index: false, follow: true } } : {}),
     openGraph: { title, type: "profile" },
   };
 }

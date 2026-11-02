@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Aspectori",
   description: "Contact Aspectori about privacy, calculation errors, birth-data sources or the website.",
   alternates: { canonical: "/contact" },
 };
-
-const email = process.env.PRIVACY_CONTACT_EMAIL?.trim();
 
 export default function ContactPage() {
   return (
@@ -18,13 +17,10 @@ export default function ContactPage() {
       </p>
 
       <section className="panel mt-9 p-6 sm:p-8">
-        <h2 className="font-serif text-3xl">Email</h2>
-        {email ? (
-          <p className="mt-4 text-ink-2"><a className="text-gold underline" href={`mailto:${email}`}>{email}</a></p>
-        ) : (
-          <p className="mt-4 text-tense" role="alert">The public contact address is awaiting production configuration.</p>
-        )}
-        <p className="mt-5 text-sm leading-relaxed text-muted">Include the page address and enough detail to reproduce the issue. Do not email identity documents, payment information or other sensitive records.</p>
+        <h2 className="font-serif text-3xl">Send a message</h2>
+        <p className="mt-3 leading-relaxed text-ink-2">Use this form and we&apos;ll reply to the address you provide.</p>
+        <ContactForm />
+        <p className="mt-5 text-sm leading-relaxed text-muted">Include the page address and enough detail to reproduce the issue. Do not send identity documents, payment information or other sensitive records.</p>
       </section>
 
       <section className="mt-10">

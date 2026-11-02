@@ -19,6 +19,7 @@ export function proxy(req: NextRequest) {
     section === "calculators" ? CALCULATORS.some((tool) => tool.slug === a)
     : section === "learn" ? GUIDES.some((guide) => guide.slug === a)
     : section === "zodiac" ? ZODIAC.has(a)
+    : section === "charts" && a === "sitemap.xml" ? true
     : a === "category" ? CATS.has(b) && (!segment || segment === "page" && /^[1-9]\d*$/.test(page ?? "") && Number(page) <= categoryPages(b))
     : PEOPLE.has(a);
   if (!known) return NextResponse.rewrite(new URL("/not-found-page", req.url), { status: 404 });

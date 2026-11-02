@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy notice",
@@ -14,6 +15,7 @@ export default function PrivacyPage() {
   const legalBasis = value("PRIVACY_LEGAL_BASIS");
   const hosting = value("PRIVACY_HOSTING_PROVIDER");
   const geocoder = value("PRIVACY_GEOCODER_PROVIDER");
+  const emailProvider = value("PRIVACY_EMAIL_PROVIDER");
   const retention = value("PRIVACY_LOG_RETENTION");
   const transfers = value("PRIVACY_TRANSFER_INFO");
   const missing = [
@@ -22,6 +24,7 @@ export default function PrivacyPage() {
     ["legal basis", legalBasis],
     ["hosting provider", hosting],
     ["geocoding provider", geocoder],
+    ["email delivery provider", emailProvider],
     ["technical-log retention", retention],
     ["international-transfer information", transfers],
   ].filter(([, configured]) => !configured).map(([label]) => label);
@@ -30,7 +33,7 @@ export default function PrivacyPage() {
     <main className="mx-auto w-full max-w-3xl px-4 pb-16 sm:px-8">
       <p className="kicker mt-10 text-gold">Privacy</p>
       <h1 className="mt-3 font-serif text-5xl font-medium leading-tight">Privacy notice</h1>
-      <p className="mt-5 text-sm text-muted">Last updated 1 November 2026</p>
+      <p className="mt-5 text-sm text-muted">Last updated 2 November 2026</p>
 
       {missing.length > 0 && (
         <div className="mt-8 rounded border border-tense p-5 text-sm leading-relaxed text-ink-2" role="alert">
@@ -41,7 +44,7 @@ export default function PrivacyPage() {
 
       <Section title="Who is responsible">
         <p>The controller for this service is <Value>{controller}</Value>.</p>
-        <p className="mt-3">Privacy questions and rights requests: {email ? <a className="text-gold underline" href={`mailto:${email}`}>{email}</a> : <Value />}</p>
+        <p className="mt-3">For privacy questions and rights requests, use the <Link className="text-gold underline" href="/contact">contact form</Link>. {email ? "Its recipient address is configured privately." : <>Recipient: <Value /></>}</p>
       </Section>
 
       <Section title="What the service processes">
@@ -49,6 +52,7 @@ export default function PrivacyPage() {
           <li>Birth date, local birth time when provided, birthplace coordinates, time zone and any optional comparison label.</li>
           <li>City-search text used to find coordinates and a historical time zone.</li>
           <li>Technical request information handled by the hosting service, such as IP address, timestamp, endpoint, browser information and security events.</li>
+          <li>When you contact Aspectori: your name, email address, selected topic, message and any page address you choose to include.</li>
         </ul>
       </Section>
 
@@ -61,12 +65,14 @@ export default function PrivacyPage() {
         <p>Your saved chart is encoded after the <code>#</code> in the page address. Browsers do not send that fragment in ordinary HTTP requests, but anyone who receives the complete link can read the details in it.</p>
         <p className="mt-3">Calculations send the entered details to Aspectori in a POST request. The application does not write calculation bodies to its database or application logs. The hosting infrastructure may still process technical request logs under its own configured retention controls.</p>
         <p className="mt-3">City-search text goes first to Aspectori, then to the configured geocoding provider. The provider receives the search text and the server connection, rather than a direct request from your browser.</p>
+        <p className="mt-3">Contact-form details go to Aspectori&apos;s configured email delivery provider and recipient mailbox so the operator can read and answer your message. They are not added to a marketing list.</p>
       </Section>
 
       <Section title="Providers, retention and transfers">
         <dl className="grid gap-3 sm:grid-cols-[11rem_1fr]">
           <dt className="text-ink">Hosting</dt><dd><Value>{hosting}</Value></dd>
           <dt className="text-ink">Geocoding</dt><dd><Value>{geocoder}</Value></dd>
+          <dt className="text-ink">Email delivery</dt><dd><Value>{emailProvider}</Value></dd>
           <dt className="text-ink">Technical-log retention</dt><dd><Value>{retention}</Value></dd>
           <dt className="text-ink">International transfers</dt><dd><Value>{transfers}</Value></dd>
         </dl>
@@ -75,7 +81,7 @@ export default function PrivacyPage() {
 
       <Section title="Your choices and rights">
         <p>You can use an unknown birth time, avoid adding another person, keep the link private, or close the page without saving it. Because Aspectori has no account or chart database, it normally cannot retrieve a chart from your identity.</p>
-        <p className="mt-3">Where data-protection law applies, you may request access, correction, deletion, restriction, objection or portability, and may withdraw consent where consent is the basis. You may also complain to the supervisory authority where you live or work. Contact the controller above to exercise a right.</p>
+        <p className="mt-3">Where data-protection law applies, you may request access, correction, deletion, restriction, objection or portability, and may withdraw consent where consent is the basis. You may also complain to the supervisory authority where you live or work. Use the contact form to exercise a right.</p>
       </Section>
     </main>
   );
