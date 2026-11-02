@@ -45,7 +45,7 @@ The audit artifact is written to `/tmp/aspectori-quality/audit.json`, with scree
 
 `npm run release:check` intentionally blocks a release until these real production facts are configured:
 
-1. The real controller identity and completed privacy configuration. The public alias is `privacy@aspectori.com`; it must be backed by a working mailbox or forwarder before launch so the personal address stays private.
+1. Production privacy configuration uses `Aspectori` as the public controller name and `support@karai.bg` as the contact address.
 2. A successful gated production deployment, assignment of `aspectori.com` and `www.aspectori.com`, and the DNS records that Vercel reports for this project.
 
 Google and Bing ownership tokens are launch follow-ups rather than release blockers. The sitemap can be submitted as soon as the public domain is serving the successful production deployment.
