@@ -83,7 +83,7 @@ export default function PrivacyPage() {
       </Section>
 
       <section id="analytics" className="scroll-mt-8"><Section title="Analytics, only if you accept">
-        <p>If you choose Accept, Aspectori loads Google Tag Manager and Google Analytics, provided by Google. They set cookies and send Google information such as the pages you visit, how far you scroll, links and downloads you use, your browser and device, and your approximate location. This helps us see which pages are useful. The legal basis is your consent.</p>
+        <p>If you choose Accept, Aspectori loads Google Tag Manager and Google Analytics, provided by Google. They set cookies and send Google information such as the pages you visit, how far you scroll, links and downloads you use, your browser and device, and your approximate location. This helps us see which pages are useful. The legal basis is your consent. Google may process this data outside the European Economic Area, including in the United States, under the safeguards in its data-processing terms.</p>
         <p className="mt-3">We report the page path without the part of the address that holds birth details. We do not send your birth date, time or place, or a comparison label, to Google as analytics. If you choose Decline, or choose nothing, none of this loads. You can change your choice at any time from the link in the site footer.</p>
       </Section></section>
 
