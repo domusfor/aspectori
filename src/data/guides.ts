@@ -1,11 +1,18 @@
+import { RISING_GUIDES } from "./rising-guides";
+import type { Sign } from "@/lib/astro/zodiac";
+
 export interface Guide {
   slug: string; title: string; description: string; summary: string;
   sections: { title: string; paragraphs: string[] }[];
   tool: string; sources: [string, string][];
+  /** ISO date, shown on the page. Defaults to the launch date of the first guides. */
+  published?: string;
+  /** Set on the twelve Rising sign guides. */
+  rising?: Sign;
 }
-export const GUIDES: Guide[] = [
+export const CORE_GUIDES: Guide[] = [
   {
-    slug: "birth-chart-without-birth-time", title: "Birth Chart Without a Birth Time: What You Can Know",
+    slug: "birth-chart-without-birth-time", title: "Birth Chart Without a Birth Time: What to Know",
     description: "Learn what a natal chart can show without a birth time, why Rising and houses are missing, and how to handle a Moon sign that changes during the day.",
     summary: "You can calculate useful planetary information without a birth time. The honest result shows a range where the sky changes during the day and leaves time-sensitive angles out.",
     tool: "moon-sign",
@@ -13,7 +20,7 @@ export const GUIDES: Guide[] = [
       { title: "Start with what is recorded", paragraphs: ["Use the birth date and the actual birthplace. Check whether the time is absent, approximate, or recorded precisely. A family memory of ‘around breakfast’ is different from a written clock time; replacing uncertainty with 12:00 makes the input look more precise than it is.", "In Aspectori, select ‘I don’t know my birth time’. The engine resolves the beginning and end of the local calendar day using the historical time zone. It then compares positions across that interval rather than presenting noon as your actual birth moment."] },
       { title: "Which parts can remain useful?", paragraphs: ["A planet may stay in one zodiac sign throughout the day even though its degree changes. In that case the sign is stable and the degree is shown as a range. Near a sign boundary, two signs may remain possible. This can apply to the Sun as well as the Moon and other planets.", "For example, our regression fixture for 14 August 1990 in Sofia has the Moon crossing from Taurus into Gemini during the local morning. Entering an unknown time should preserve both possibilities. It should not quietly choose the Moon sign at noon."] },
       { title: "Why Rising and houses disappear", paragraphs: ["The Ascendant depends on the orientation of the local horizon at a particular moment. House assignments depend on the selected house system and birth time. Without a time, Aspectori omits the Rising sign and houses instead of claiming a complete chart.", "This does not make the person less individual, and it does not make the remaining astronomy invalid. It sets a boundary around what the supplied information supports. Changing to whole sign houses does not remove the need for a time: whole sign still needs the Ascendant’s sign."] },
-      { title: "How aspects and transits are handled", paragraphs: ["For unknown-time charts, the major aspects shown are those that remain within the selected orb at the day samples used by the engine. The displayed orb can be a range. Contacts that cannot be supported throughout that interval are omitted.", "The year view excludes transits to the Moon, Ascendant and Midheaven when the birth time is unknown. That narrower output is more useful than precise-looking dates derived from an invented time. Your PDF carries the same limitations, so the exported file does not imply more certainty than the screen."] },
+      { title: "How aspects and transits are handled", paragraphs: ["For unknown-time charts, we show only the major aspects that are within orb at both the start and end of the birth day. The orb can be shown as a range, and contacts missing at either check are left out.", "The year view excludes transits to the Moon, Ascendant and Midheaven when the birth time is unknown. That narrower output is more useful than precise-looking dates derived from an invented time. Your PDF carries the same limitations, so the exported file does not imply more certainty than the screen."] },
       { title: "If you later find a time", paragraphs: ["Check records available to you, such as a birth record, hospital documentation or a family record. Availability differs by place and period. If you find an approximate range, calculate its earliest and latest plausible times and see which placements change.", "Do not use a personality description as proof of a missing time. Save the source of any time you adopt, and review your Rising sign, houses and Moon again when better information becomes available."] },
     ],
     sources: [["Astrodienst: birth time and unknown-time entries", "https://www.astro.com/faq/fq_de_time_e.htm"], ["Aspectori accuracy reference", "/accuracy"]],
@@ -33,7 +40,7 @@ export const GUIDES: Guide[] = [
     sources: [["Astrodienst: overview of house systems", "https://www.astro.com/faq/fq_fh_owhouse_e.htm"], ["Astrodienst: introduction to houses", "https://www.astro.com/astrology/in_house1_e.htm"]],
   },
   {
-    slug: "how-to-read-a-birth-chart", title: "How to Read a Birth Chart: A Practical Beginner’s Guide",
+    slug: "how-to-read-a-birth-chart", title: "How to Read a Birth Chart: A Beginner’s Guide",
     description: "Read your natal chart step by step: verify birth data, find Sun, Moon and Rising, understand planets and houses, then examine aspects with their orbs.",
     summary: "Read a chart in layers. Check the input first, identify a few important placements, and use the supporting positions to understand why an interpretation appears.",
     tool: "sun-moon-rising",
@@ -56,9 +63,24 @@ export const GUIDES: Guide[] = [
       { title: "Read an orb with a concrete example", paragraphs: ["If two points are 89 degrees apart, they are one degree from an exact square. Their square orb is therefore 1 degree. An orb of 0 degrees 20 arcminutes is closer to exact than an orb of 4 degrees.", "The zodiac wraps around at 360 degrees. A point at 359 degrees and another at 1 degree are only 2 degrees apart, not 358. The calculation uses the shorter angular separation when looking for the major relationships."] },
       { title: "Our settings are explicit", paragraphs: ["Natal calculations allow up to 8 degrees for conjunctions and oppositions, 7 degrees for squares and trines, and 5 degrees for sextiles. Synastry uses three quarters of those allowances: 6, 5.25 and 3.75 degrees respectively.", "These are the application’s chosen conventions, not universal physical constants. Another calculator can correctly calculate the same planetary positions while retaining a different set of aspects because it uses different limits or includes additional aspect types."] },
       { title: "Why the highlighted list is shorter", paragraphs: ["The main chart card favors a close contact that involves a personal factor. Slow-planet pairs can be shared by many people born in a similar period, so the personal reading does not give them the same emphasis. The report includes the calculated natal major-aspect list for reference.", "The synastry card highlights three contacts. Its dedicated calculator also displays all qualifying contacts retained by the comparison method. This is not every possible astrological contact: the aspect method excludes slow-planet pairs and does not add minor aspects or composite-chart factors. Separate house-overlay tables place each person’s planets in the other person’s whole sign and Placidus houses, with birth-time limitations shown in each direction."] },
-      { title: "Unknown times change the list", paragraphs: ["When a time is missing, a planet’s position can vary across the day. An aspect shown at noon might fall outside the chosen orb earlier or later. Aspectori retains contacts supported by the day samples and shows the orb range where appropriate.", "A missing contact therefore need not mean the relationship is absent at every possible birth time. It means the supplied data does not establish it under the selected method. Likewise, no collection of astrological contacts can supply a validated compatibility percentage or a guaranteed prediction."] },
+      { title: "Unknown times change the list", paragraphs: ["When a time is missing, a planet’s position can vary across the day. An aspect shown at noon might fall outside the chosen orb earlier or later. Aspectori keeps only contacts present at both the start and end of the day, and shows the orb as a range where needed.", "A missing contact therefore need not mean the relationship is absent at every possible birth time. It means the supplied data does not establish it under the selected method. Likewise, no collection of astrological contacts can supply a validated compatibility percentage or a guaranteed prediction."] },
     ],
     sources: [["Aspectori method and orb settings", "/method"], ["Astrodienst: astrology knowledge resources", "https://www.astro.com/astrology/in_intro_e.htm"]],
   },
+  {
+    slug: "birth-chart-houses-explained", title: "Birth Chart Houses Explained: The 12 Houses",
+    description: "What the twelve astrological houses represent, why houses need a birth time, how angular houses work, and how to read a planet in a house in your own chart.",
+    summary: "Houses divide a birth chart into twelve areas of life. A planet’s sign describes its symbolic style, and its house describes where that style is said to show up.",
+    tool: "house-systems", published: "2026-11-05",
+    sections: [
+      { title: "What a house adds", paragraphs: ["A planet’s zodiac sign comes from where it is along the ecliptic, and is the same for everyone born at that moment. Its house depends on the local horizon, so it also depends on the birth time and place. Two babies born minutes apart in the same hospital can differ here even when every planet sign matches.", "A simple reading framework: the planet supplies the theme, the sign supplies the style and the house supplies the setting. Venus in the tenth house and Venus in the fourth share a theme, but astrologers would look for it at work in the first case and at home in the second."] },
+      { title: "The first six houses", paragraphs: ["First: self-presentation and the body, beginning at or around the Ascendant. Second: money, possessions and what you value. Third: siblings, neighbors, daily communication and learning. Fourth: home, family and roots.", "Fifth: creativity, romance, play and children. Sixth: daily work, routines and health habits. These are traditional associations, and practitioners do not all assign them identically. They are interpretive categories rather than measured facts about your life."] },
+      { title: "The last six houses", paragraphs: ["Seventh: partners and open opponents, opposite the first house. Eighth: shared resources, debt, inheritance and loss. Ninth: travel, study, belief and publishing. Tenth: career and public standing.", "Eleventh: friends, groups and long-term hopes. Twelfth: solitude, retreat and what happens out of view. Each house faces its opposite, so reading them in pairs is often more useful than reading them singly: self and other, mine and ours, home and career."] },
+      { title: "Angular, succedent and cadent", paragraphs: ["Houses one, four, seven and ten are called angular because they begin at or near the chart’s four angles, the Ascendant, IC, Descendant and Midheaven. Traditional astrology treats a planet here as more prominent. Succedent houses two, five, eight and eleven follow them, and cadent houses three, six, nine and twelve come last.", "An empty house means no planet is there at the moment of birth. It is not a missing part of life. With ten planets and twelve houses, some houses are always empty. Astrologers read an empty house through the sign on its cusp and that sign’s ruler."] },
+      { title: "Why your house can change between calculators", paragraphs: ["The house system changes how the twelve divisions are drawn. A planet can sit in your seventh house by whole sign and in your eighth by Placidus without moving at all. If two sites disagree, first check which system each one uses and confirm that they have the same birth time and time zone.", "Without a birth time, houses cannot be calculated, and any site that displays them is assuming a time. An approximate time gives an approximate answer: the Birth Time Explorer shows how much your Rising sign, and with it your whole sign houses, could shift across a range."] },
+    ],
+    sources: [["Astrodienst: introduction to houses", "https://www.astro.com/astrology/in_house1_e.htm"], ["Aspectori calculation method", "/method"]],
+  },
 ];
+export const GUIDES: Guide[] = [...CORE_GUIDES, ...RISING_GUIDES];
 export const guideBySlug = (slug: string) => GUIDES.find((guide) => guide.slug === slug);

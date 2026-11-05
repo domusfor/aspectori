@@ -23,13 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = shortName.length > 28
     ? `${shortName} Birth Chart`
     : `${shortName} Birth Chart & Zodiac Sign`;
-  const timeNote = s.rating === "X" ? "Birth time unknown; Rising omitted." : `Recorded time · Rodden ${s.rating}.`;
+  const timeNote = s.rating === "X" ? "No verified birth time; Rising omitted." : `Recorded time · Rodden ${s.rating}.`;
   return {
     title: { absolute: `${title} | Aspectori` },
     description: `${shortName}: ${both(s.sun)} Sun, ${both(s.moon)} Moon${s.rising ? `, ${s.rising} Rising` : ""}. ${timeNote} View the natal chart, source rating and comparison.`,
     alternates: { canonical: `/charts/${s.slug}` },
     ...(!isFamousIndexable(s.slug) ? { robots: { index: false, follow: true } } : {}),
-    openGraph: { title, type: "profile" },
   };
 }
 
@@ -59,7 +58,7 @@ async function FamousChartPage({ params }: Props) {
     [`What is ${f.name}'s Rising sign?`,
       summary!.rising
         ? `${summary!.rising}, from a birth time rated Rodden ${f.rating}.`
-        : `Unknown. The Rising sign needs a birth time, and ${f.name}'s is not recorded, so we do not guess it.`],
+        : `Not shown. The Rising sign needs a birth time, and we have not verified one for ${f.name}, so we do not guess it.`],
   ];
 
   return (

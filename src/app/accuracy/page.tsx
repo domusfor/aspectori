@@ -4,8 +4,8 @@ import Crumbs from "@/components/seo/Crumbs";
 import { accuracyReport } from "@/lib/accuracy";
 
 export const metadata: Metadata = {
-  title: "How Accurate Is Aspectori? Checked Against Astro.com",
-  description: "See Aspectori checked against Astro.com: Sun, Moon and Ascendant for 22 reference charts, including historical time-zone differences.",
+  title: "How Accurate Is Aspectori? Our Astro.com Checks",
+  description: "See Aspectori checked against Astro.com: Sun, Moon and Ascendant for 29 reference charts, including historical time-zone differences.",
   alternates: { canonical: "/accuracy" },
 };
 

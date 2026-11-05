@@ -29,7 +29,7 @@ export function explainChartRef(chart: Chart, requested: HouseSystem, ref: strin
   const aspect = chart.aspects.find((a) => aspectRef(a) === ref);
   const geometry = aspect ? (() => {
     const rule = ASPECT_BY_TYPE[aspect.type];
-    if (!chart.timeKnown) return `This ${aspect.type} meets our ${rule.orb}° orb limit at both local-day endpoints. The orb label summarizes the sampled offsets and, where applicable, a crossing inferred between them; it is not a continuous bound for every moment of the day.`;
+    if (!chart.timeKnown) return `This ${aspect.type} is within our ${rule.orb}° orb limit at both the start and end of your birth day. The orb shown is based on those two checks, so it may not hold at every moment of the day.`;
     const a = chart.points.find((p) => p.id === aspect.a)!;
     const b = chart.points.find((p) => p.id === aspect.b)!;
     return `The shorter angle between ${POINT_NAMES[a.id]} and ${POINT_NAMES[b.id]} is ${fmtOrb(separation(a.lon, b.lon))}. A ${rule.type} is exact at ${rule.angle}°. This contact is ${fmtOrb(aspect.orb)} from exact, within our ${rule.orb}° limit.`;
@@ -39,6 +39,6 @@ export function explainChartRef(chart: Chart, requested: HouseSystem, ref: strin
     theme: point ? POINT_THEMES[point.id] : "An aspect connects two chart themes through their angular relationship. A tighter orb means closer geometry, not a more certain life outcome.",
     geometry,
     prompt: point ? REFLECTIONS[point.id] : `Where do the themes of ${POINT_NAMES[aspect!.a]} and ${POINT_NAMES[aspect!.b]} support each other in your experience, and where do they ask for different things?`,
-    uncertainty: !chart.timeKnown ? "Birth time is unknown. Positions use the start and end of the local birth day. Matching signs at those endpoints do not rule out a brief crossing between them. Rising and houses are unavailable." : null,
+    uncertainty: !chart.timeKnown ? "Birth time is unknown, so positions use the start and end of your birth day. A brief sign change between them cannot be ruled out. Rising and houses are unavailable." : null,
   };
 }

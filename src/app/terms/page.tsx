@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Crumbs from "@/components/seo/Crumbs";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <main className="mx-auto w-full max-w-3xl px-4 pb-16 sm:px-8">
+      <Crumbs items={[["Home", "/"], ["Terms", "/terms"]]} />
       <p className="kicker mt-10 text-gold">Legal</p>
       <h1 className="mt-3 font-serif text-5xl font-medium leading-tight">Terms of use</h1>
       <p className="mt-5 text-sm text-muted">Last updated 1 November 2026</p>

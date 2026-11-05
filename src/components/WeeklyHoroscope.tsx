@@ -28,7 +28,7 @@ export default function WeeklyHoroscope({ chart }: { chart: Chart }) {
         <div className="max-w-xl">
           <p className="kicker text-gold">Your free weekly horoscope</p>
           <h2 id="week-heading" className="font-serif text-4xl sm:text-5xl mt-3">Your week ahead</h2>
-          <p className="mt-3 text-sm text-ink-2 leading-relaxed">A little perspective for the next seven days. Themes drawn from transits to your birth chart, with a question to make each one your own.</p>
+          <p className="mt-3 text-sm text-ink-2 leading-relaxed">Your next seven days, drawn from real transits to your birth chart, with a question to make each theme your own.</p>
         </div>
         <div className="sm:text-right">
           {week && <p className="text-sm text-gold tabular-nums">{fmtDate(week.from, week.from.slice(0, 4) !== week.to.slice(0, 4))} – {fmtDate(week.to)}<span className="block text-xs text-muted mt-1">Seven calendar days · UTC</span></p>}
@@ -38,13 +38,13 @@ export default function WeeklyHoroscope({ chart }: { chart: Chart }) {
       {loading && <div role="status" className="flex items-center gap-4 py-12 text-sm text-ink-2"><span className="spinner" aria-hidden />Finding this week’s transits to your chart…</div>}
       {error && <div role="alert" className="mt-6 rounded-lg border border-line p-5"><p className="text-sm text-tense">{error}</p><button className="btn mt-4" onClick={retry}>Try my week again</button></div>}
       {week && <>
-        {!week.timeKnown && <p className="mt-5 text-sm text-gold leading-relaxed">Your birth time is unknown. Moon, Rising and Midheaven themes are left out. Other contacts must meet the 1° limit at both ends of your birth day.</p>}
+        {!week.timeKnown && <p className="mt-5 text-sm text-gold leading-relaxed">Your birth time is unknown, so Moon, Rising and Midheaven themes are left out. Other contacts must be within 1° at both the start and end of your birth day.</p>}
         {week.transits.length ? <div className="grid gap-4 mt-7 lg:grid-cols-3">
           {week.transits.map((transit, index) => <WeekCard key={`${transit.planet}-${transit.target}-${transit.type}`} transit={transit} week={week} index={index} />)}
         </div> : <div className="mt-7 border border-line rounded-xl p-6"><h3 className="font-serif text-2xl">Room for your own priorities</h3><p className="text-sm text-ink-2 mt-3 leading-relaxed">No contacts met our weekly selection rules in this window. There is no need to invent a theme: choose one thing you would like to give your attention to, and return for a fresh calculation another day.</p></div>}
         <footer className="mt-6 border-t border-line pt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-muted">
-          <p>Days marked below each theme contain at least one qualifying sample. We check every six hours with a 1° limit; these are sampled dates, not exact start or end times.</p>
-          <p>Astrological interpretations are for reflection and entertainment, not predictions. Bookmark your chart link to return to a fresh week. <Link href="/method#week" className="text-gold underline">How we choose the themes</Link>.</p>
+          <p>We check the sky every six hours, and a day is marked if a contact is within 1° at any check. These are not exact start or end times.</p>
+          <p>Astrological interpretations are for reflection and entertainment, not predictions. Save your chart or bookmark the link to come back to a new week. <Link href="/method#week" className="text-gold underline">How we choose the themes</Link>.</p>
         </footer>
       </>}
     </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Crumbs from "@/components/seo/Crumbs";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function PrivacyPage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl px-4 pb-16 sm:px-8">
+      <Crumbs items={[["Home", "/"], ["Privacy", "/privacy"]]} />
       <p className="kicker mt-10 text-gold">Privacy</p>
       <h1 className="mt-3 font-serif text-5xl font-medium leading-tight">Privacy notice</h1>
       <p className="mt-5 text-sm text-muted">Last updated 2 November 2026</p>
@@ -76,8 +78,14 @@ export default function PrivacyPage() {
           <dt className="text-ink">Technical-log retention</dt><dd><Value>{retention}</Value></dd>
           <dt className="text-ink">International transfers</dt><dd><Value>{transfers}</Value></dd>
         </dl>
-        <p className="mt-4">Aspectori does not currently use advertising trackers, behavioral analytics, accounts or non-essential cookies.</p>
+        <p className="mt-4">Aspectori has no accounts and does not use advertising trackers.</p>
+        <p className="mt-3">If you choose Save on this device, your birth details are kept in your own browser&apos;s local storage so you can reopen the chart. They are not sent to us until you open it, and you can remove them with Forget it or by clearing your browser data. Nothing is saved unless you ask.</p>
       </Section>
+
+      <section id="analytics" className="scroll-mt-8"><Section title="Analytics, only if you accept">
+        <p>If you choose Accept, Aspectori loads Google Tag Manager and Google Analytics, provided by Google. They set cookies and send Google information such as the pages you visit, how far you scroll, links and downloads you use, your browser and device, and your approximate location. This helps us see which pages are useful. The legal basis is your consent.</p>
+        <p className="mt-3">We report the page path without the part of the address that holds birth details. We do not send your birth date, time or place, or a comparison label, to Google as analytics. If you choose Decline, or choose nothing, none of this loads. You can change your choice at any time from the link in the site footer.</p>
+      </Section></section>
 
       <Section title="Your choices and rights">
         <p>You can use an unknown birth time, avoid adding another person, keep the link private, or close the page without saving it. Because Aspectori has no account or chart database, it normally cannot retrieve a chart from your identity.</p>

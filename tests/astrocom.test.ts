@@ -24,6 +24,8 @@ describe("engine matches Astro.com (using Astro.com's own UTC offset)", () => {
 const KNOWN_TZ_DIFFERENCES: Record<string, string> = {
   "Sigmund Freud": "Astro.com uses Prague mean time for Příbor in 1856; tz data has LMT and PMT at the same offset, so we use Příbor's own mean time.",
   "Mohandas Gandhi": "Astro.com uses Porbandar mean time; tz data puts all of India on Howrah mean time from 1854.",
+  "Martin Luther King Jr.": "Astro.com has Atlanta on Central time in 1929; tz data groups Atlanta with New York. The published chart sets the offset by hand.",
+  "Bill Clinton": "Astro.com has Hope, Arkansas on standard time in August 1946; tz data applies Chicago's summer time. The published chart sets the offset by hand.",
 };
 
 describe("time zone pipeline agrees with Astro.com's atlas", () => {

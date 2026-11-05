@@ -3,7 +3,8 @@
 import { useSyncExternalStore } from "react";
 
 // Birth data lives in the URL fragment. Browsers never send the fragment to a server,
-// so it cannot end up in request logs, analytics, or Referer headers.
+// so it cannot end up in request logs or Referer headers. Analytics scripts run in the
+// page and could read it, so lib/analytics.ts reports only the origin and path.
 export const HASH_EVENT = "aspectori:hash";
 const EVENT = HASH_EVENT;
 

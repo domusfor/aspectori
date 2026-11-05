@@ -6,7 +6,10 @@ import Reveal from "../Reveal";
 import SkyNow from "./SkyNow";
 import ToTop from "./ToTop";
 import { CALCULATORS } from "@/data/calculators";
-import { GUIDES } from "@/data/guides";
+import { CORE_GUIDES } from "@/data/guides";
+import { REFERENCE } from "@/lib/astro/reference";
+import type { Chart } from "@/lib/astro/types";
+import ExampleResult from "./ExampleResult";
 
 const FEATURES = [
   {
@@ -16,17 +19,17 @@ const FEATURES = [
   },
   {
     k: "02", title: "Every sentence shows its source",
-    body: "Tap any word and the placement that produced it lights up: planet, sign, degree, house. Nothing is generated on the fly.",
+    body: "Tap any phrase to see the placement behind it: planet, sign, degree and house. Every sentence comes from a fixed, written library, not an AI.",
     art: <RowsArt />,
   },
   {
     k: "03", title: "Two house systems, one table",
-    body: "Placidus and whole sign side by side, with every disagreement marked. The end of “why does my app say a different house?”",
+    body: "See Placidus and whole sign side by side, with every difference marked, so you know why two apps can give you different houses.",
     art: <HousesArt />,
   },
   {
-    k: "04", title: "A fresh week. A wider perspective.",
-    body: "Your free weekly horoscope pairs up to three themes with dated transits and reflection prompts. Explore selected transits over the next twelve months when you want the longer view.",
+    k: "04", title: "A new reading every week",
+    body: "Each week brings up to three themes from dated transits, each with a question to reflect on. For the longer view, explore key transits over the next twelve months.",
     art: <YearArt />,
   },
 ];
@@ -40,22 +43,33 @@ const GUIDE = [
 
 const FAQ: [string, string][] = [
   ["Can I download my birth chart as a free PDF?", "Yes. Create your chart and choose Free PDF report. Your download includes a chart wheel, placements, a reading, major aspects and selected dated transits. No account, email or payment is required."],
-  ["Do I need my exact birth time?", "No. Without a time you still get your Sun, Moon and planets, and aspects supported by both local-day endpoint samples. These samples do not guarantee that a contact held at every moment between them. We hide the Rising sign and houses instead of guessing them, and if the Moon changed sign that day we show both signs and the time it switched."],
+  ["Do I need my exact birth time?", "No. Without a time you still get your Sun, Moon and planets, plus the aspects present at both the start and end of your birth day. We leave out the Rising sign and houses instead of guessing them. If the Moon changed sign that day, we show both signs and the time it switched."],
   ["Why do different calculators show different houses?", "Different house systems divide a chart differently. We show Placidus and whole sign side by side, with a Porphyry comparison too. Check the birth time, time zone and selected house system when comparing results."],
-  ["How accurate is Aspectori?", "Positions come from the Swiss Ephemeris, the engine Astro.com uses. Every release is tested against 22 charts from Astro-Databank and must match Astro.com's Sun, Moon and Ascendant to the arcminute."],
-  ["What happens to my birth data?", "Your birth details are sent to our server to calculate the chart, then kept in the fragment of your page address. We do not store them in a database. Anyone you share the chart link with can read those details."],
-  ["Do I get a free personalized weekly horoscope?", "Yes. Your week ahead appears automatically with your birth chart. It selects up to three themes from actual transits over the next seven UTC calendar days, with sampled dates, the underlying calculations and reflection prompts. Interpretations are for entertainment, not predictions. Missing birth times reduce the available themes. No account or payment is required."],
+  ["How accurate is Aspectori?", `Positions come from the Swiss Ephemeris, the engine Astro.com uses. Every release is tested against ${REFERENCE.length} charts from Astro-Databank and must match Astro.com's Sun, Moon and Ascendant to the arcminute.`],
+  ["What happens to my birth data?", "Your birth details are sent to our server to calculate the chart, then kept in your page address. We do not store them in a database. If you choose Save on this device, they stay in your browser until you remove them. Anyone you share the chart link with can read those details."],
+  ["Do I get a free personalized weekly horoscope?", "Yes. Your week ahead appears automatically with your birth chart. It picks up to three themes from real transits to your chart over the next seven days, and shows the calculation behind each one. Interpretations are for entertainment, not predictions. Without a birth time, fewer themes are available. No account or payment is required."],
 ];
 
-export default function HomeSections({ all }: { all: FamousSummary[] }) {
+export default function HomeSections({ all, example }: { all: FamousSummary[]; example: Chart }) {
   const featured = ["albert-einstein", "marie-curie", "marilyn-monroe", "david-bowie", "michael-jordan", "madonna"];
   const people = featured.flatMap((slug) => all.filter((person) => person.slug === slug));
   const total = all.length;
   return (
     <div className="mx-auto grid w-full max-w-[1120px] gap-20 px-4 pt-8 sm:gap-24 sm:pt-12 sm:px-8">
+      <ExampleResult chart={example} />
+
+      <section className="week-panel grid gap-6 p-6 sm:p-9 md:grid-cols-[1fr_auto] md:items-center">
+        <div>
+          <p className="kicker text-gold">Free every week · no sign-up</p>
+          <h2 className="mt-3 font-serif text-4xl font-medium leading-tight">Your chart keeps moving. Come back to it.</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-2">Get a personal week ahead from real transits to your chart. Save the chart in your browser and add a calendar reminder, with no email needed.</p>
+        </div>
+        <Link href="/weekly-horoscope" className="btn btn-solid justify-self-start">Read my week</Link>
+      </section>
+
       <section>
         <Reveal>
-          <SectionHead kicker="What you get" title="A little more understanding, at every step" />
+          <SectionHead kicker="Why people use it" title="More than a list of signs" />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
           {FEATURES.map((f) => (
@@ -92,7 +106,8 @@ export default function HomeSections({ all }: { all: FamousSummary[] }) {
           ))}
         </div>
         <Link href="/method" className="inline-flex min-h-11 items-center text-sm text-gold underline underline-offset-4">Read how your chart is calculated →</Link>
-        <div className="grid gap-4 mt-6 sm:grid-cols-2">{GUIDES.map((guide) => <Link key={guide.slug} href={`/learn/${guide.slug}`} className="panel p-5"><h3 className="font-serif text-xl text-gold">{guide.title}</h3><p className="mt-2 text-sm leading-relaxed text-ink-2">{guide.summary}</p></Link>)}</div>
+        <Link href="/learn" className="ml-6 inline-flex min-h-11 items-center text-sm text-gold underline underline-offset-4">All guides, including the 12 Rising signs →</Link>
+        <div className="grid gap-4 mt-6 sm:grid-cols-2">{CORE_GUIDES.map((guide) => <Link key={guide.slug} href={`/learn/${guide.slug}`} className="panel p-5"><h3 className="font-serif text-xl text-gold">{guide.title}</h3><p className="mt-2 text-sm leading-relaxed text-ink-2">{guide.summary}</p></Link>)}</div>
       </Reveal>
 
       <section>
@@ -108,7 +123,7 @@ export default function HomeSections({ all }: { all: FamousSummary[] }) {
       </section>
 
       <Reveal as="section">
-        <SectionHead kicker="Questions" title="Before you ask" />
+        <SectionHead kicker="Questions" title="Birth chart questions, answered" />
         <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {FAQ.map(([q, a]) => (
             <details key={q} className="group py-5">
@@ -123,7 +138,7 @@ export default function HomeSections({ all }: { all: FamousSummary[] }) {
       </Reveal>
 
       <Reveal as="section" className="panel glow relative overflow-hidden p-10 text-center sm:p-16">
-        <p className="kicker text-gold">Thirty seconds</p>
+        <p className="kicker text-gold">Free · No account</p>
         <h2 className="mx-auto mt-3 max-w-2xl font-serif text-4xl font-medium leading-tight sm:text-5xl">
           See the degree that makes your chart yours.
         </h2>

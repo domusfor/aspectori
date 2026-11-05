@@ -18,11 +18,20 @@ export interface Famous {
   /** Wikipedia language editions: a rough measure of how widely known someone is. */
   popularity: number;
   wikidata?: string;
+  /** ISO date a person last checked this record against its named source. */
+  verifiedOn?: string;
 }
+
+/**
+ * Which record wins when sources disagree, highest first. A sourced birth time always
+ * replaces a date-only import; the rating says how far to trust that time.
+ */
+export const SOURCE_PRIORITY = ["AA", "A", "B", "C", "X"] as const;
 
 const ADB = "Astro-Databank";
 // Curated charts outrank the imported ones in every list.
 const CURATED_POPULARITY = 1000;
+const VERIFIED_ON = "2026-11-05";
 
 /**
  * Seed list. Every entry matches Astro.com to the arcminute (see tests/astrocom.test.ts).
@@ -136,6 +145,41 @@ export const FAMOUS: Famous[] = [
     blurb: "Fourteen French Open titles: the most dominant run at one tournament in tennis.",
     birth: { date: "1986-06-03", time: "18:20", place: { label: "Manacor, Mallorca, Spain", lat: 39.5667, lon: 3.2, tz: "Europe/Madrid" } },
   },
+  {
+    slug: "donald-trump", name: "Donald Trump", category: "Politics", rating: "AA", source: `${ADB}, published birth certificate; some sources dispute the time`, popularity: CURATED_POPULARITY, wikidata: "Q22686", verifiedOn: VERIFIED_ON,
+    blurb: "45th and 47th President of the United States.",
+    birth: { date: "1946-06-14", time: "10:54", place: { label: "Queens, New York, USA", lat: 40.7, lon: -73.8164, tz: "America/New_York" } },
+  },
+  {
+    slug: "franklin-d-roosevelt", name: "Franklin D. Roosevelt", category: "Politics", rating: "AA", source: `${ADB}, birth record`, popularity: CURATED_POPULARITY, wikidata: "Q8007", verifiedOn: VERIFIED_ON,
+    blurb: "32nd President of the United States, elected four times.",
+    birth: { date: "1882-01-30", time: "20:45", place: { label: "Hyde Park, New York, USA", lat: 41.7833, lon: -73.9333, tz: "America/New_York" } },
+  },
+  {
+    slug: "martin-luther-king-jr", name: "Martin Luther King Jr.", category: "Politics", rating: "A", source: `${ADB}, from memory`, popularity: CURATED_POPULARITY, wikidata: "Q8027", verifiedOn: VERIFIED_ON,
+    blurb: "Baptist minister and leader of the American civil rights movement.",
+    birth: { date: "1929-01-15", time: "12:00", offset: -360, place: { label: "Atlanta, Georgia, USA", lat: 33.75, lon: -84.3833, tz: "America/New_York" } },
+  },
+  {
+    slug: "bill-clinton", name: "Bill Clinton", category: "Politics", rating: "A", source: `${ADB}, from memory`, popularity: CURATED_POPULARITY, wikidata: "Q1124", verifiedOn: VERIFIED_ON,
+    blurb: "42nd President of the United States.",
+    birth: { date: "1946-08-19", time: "08:51", offset: -360, place: { label: "Hope, Arkansas, USA", lat: 33.6667, lon: -93.5833, tz: "America/Chicago" } },
+  },
+  {
+    slug: "joe-biden", name: "Joe Biden", category: "Politics", rating: "A", source: `${ADB}, from memory`, popularity: CURATED_POPULARITY, wikidata: "Q6279", verifiedOn: VERIFIED_ON,
+    blurb: "46th President of the United States.",
+    birth: { date: "1942-11-20", time: "08:30", place: { label: "Scranton, Pennsylvania, USA", lat: 41.4167, lon: -75.6667, tz: "America/New_York" } },
+  },
+  {
+    slug: "winston-churchill", name: "Winston Churchill", category: "Politics", rating: "A", source: `${ADB}, from memory`, popularity: CURATED_POPULARITY, wikidata: "Q8016", verifiedOn: VERIFIED_ON,
+    blurb: "British Prime Minister during the Second World War.",
+    birth: { date: "1874-11-30", time: "01:30", place: { label: "Woodstock, England, UK", lat: 51.8667, lon: -1.35, tz: "Europe/London" } },
+  },
+  {
+    slug: "oprah-winfrey", name: "Oprah Winfrey", category: "Film", rating: "A", source: `${ADB}, from memory`, popularity: CURATED_POPULARITY, wikidata: "Q55800", verifiedOn: VERIFIED_ON,
+    blurb: "Talk-show host, actress and media owner.",
+    birth: { date: "1954-01-29", time: "04:30", place: { label: "Kosciusko, Mississippi, USA", lat: 33.05, lon: -89.5833, tz: "America/Chicago" } },
+  },
 ];
 
 export const RATING_LABEL: Record<Famous["rating"], string> = {
@@ -143,5 +187,5 @@ export const RATING_LABEL: Record<Famous["rating"], string> = {
   A: "From the person, family or a close source",
   B: "From a biography",
   C: "Uncertain; treat the Rising sign with caution",
-  X: "Birth date known, birth time not recorded",
+  X: "Birth date known; no birth time verified in our records yet",
 };

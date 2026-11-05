@@ -5,6 +5,7 @@ import NavLink from "./NavLink";
 export const NAV = [
   { href: "/calculators", label: "Calculators", short: "Tools" },
   { href: "/charts", label: "Famous charts", short: "Famous" },
+  { href: "/weekly-horoscope", label: "Your week", short: "Week" },
   { href: "/learn", label: "Learn", short: "Learn" },
   { href: "/birth-chart-report", label: "Free PDF", short: "Free PDF" },
 ];

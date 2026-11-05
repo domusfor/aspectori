@@ -71,7 +71,7 @@ export default function BirthForm({ initial, submitLabel, busy, onSubmit }: Prop
   );
 }
 
-function CityInput({ value, onChange }: { value: Place | null; onChange: (p: Place | null) => void }) {
+export function CityInput({ value, onChange }: { value: Place | null; onChange: (p: Place | null) => void }) {
   const [q, setQ] = useState(value?.label ?? "");
   const [open, setOpen] = useState(false);
   const [cursor, setCursor] = useState(0);

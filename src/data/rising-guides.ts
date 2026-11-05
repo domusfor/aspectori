@@ -1,0 +1,113 @@
+import type { Sign } from "@/lib/astro/zodiac";
+import type { Guide } from "./guides";
+
+interface Draft {
+  sign: Sign; opposite: Sign; ruler: string; modern?: string; hook: string; summary: string;
+  impression: string[]; pressure: string[]; relating: string[]; question: string;
+}
+
+// Written for this site. Interpretations describe an astrological convention, not established fact.
+const DRAFTS: Draft[] = [
+  { sign: "Aries", opposite: "Libra", ruler: "Mars", hook: "direct, quick to start and hard to ignore",
+    summary: "Aries Rising is read as a fast, direct way of entering a situation: act first, adjust afterwards. Here is what that tradition says, and how to test it against your own chart.",
+    impression: ["Astrologers describe Aries Rising as someone who arrives already in motion. The first impression in this tradition is candor: a quick answer, a visible reaction, little interest in warming up slowly.", "Because the Ascendant is about approach rather than core identity, a quiet person can still have it. The theme may show up only at the start of things, such as a new job or a first meeting, and fade once the situation feels familiar."],
+    pressure: ["The classic strength is nerve when nobody else wants to go first. The classic difficulty is starting a conflict or a project before checking whether it needs one.", "A useful question is whether speed is helping in a given moment or simply relieving the discomfort of waiting."],
+    relating: ["The Descendant falls in Libra, the sign of negotiation and balance. Read symbolically, Aries Rising is often said to learn most from people who slow the decision down and ask what the other side wants."],
+    question: "When did moving first help you, and when did it cost you something you later wanted back?" },
+  { sign: "Taurus", opposite: "Scorpio", ruler: "Venus", hook: "unhurried, steady and physically at ease",
+    summary: "Taurus Rising is read as a calm, unhurried approach that takes in a situation before committing to it. Here is what the tradition says, and how to check it against your chart.",
+    impression: ["The tradition pictures Taurus Rising as settled: someone who takes their time, notices food, fabric and comfort, and does not fill a silence just because it exists.", "Others may read this as confidence even when it is simply caution. A person with this Ascendant can feel uncertain and still look entirely unbothered."],
+    pressure: ["The strength usually named is staying power: finishing what others abandon once the novelty wears off. The difficulty is treating a reasonable request to change as an attack on something solid.", "It can help to separate what you have tested and still value from what you are keeping because it is familiar."],
+    relating: ["The Descendant falls in Scorpio. In this reading, relationships bring intensity and hidden depths into a life that prefers visible stability, and closeness tends to ask for more exposure than feels comfortable."],
+    question: "What are you holding onto because it works, and what because changing it would be uncomfortable?" },
+  { sign: "Gemini", opposite: "Sagittarius", ruler: "Mercury", hook: "curious, talkative and quick to adapt",
+    summary: "Gemini Rising is read as a curious, verbal way of meeting the world, led by questions and quick connections. Here is what the tradition says, and how to test it.",
+    impression: ["Gemini Rising is traditionally described as the person asking the second question, moving easily between topics and adjusting tone to whoever is in the room.", "That flexibility can read as lightness. Tradition treats it instead as a way of gathering information: talking is how this Ascendant works out what it thinks."],
+    pressure: ["The named strength is range: connecting people and ideas that would otherwise never meet. The named difficulty is scattering attention, or using wit to leave a conversation that has become serious.", "Notice whether changing the subject is curiosity at work or a way out."],
+    relating: ["The Descendant falls in Sagittarius. Symbolically, partners may supply the big picture, a belief or a direction where Gemini Rising supplies the detail and the doubts."],
+    question: "Which conversation have you kept light that you actually want to finish?" },
+  { sign: "Cancer", opposite: "Capricorn", ruler: "the Moon", hook: "watchful, protective and warm once trust exists",
+    summary: "Cancer Rising is read as a careful, protective approach that reads the mood before showing much. Here is what the tradition says, and how to test it against your chart.",
+    impression: ["Tradition describes Cancer Rising as reading the room before entering it. The first response is often indirect: friendly and attentive, with little given away until it feels safe.", "Because the Moon rules this Ascendant, astrologers expect its manner to vary with mood and setting more than most. The same person can seem shy at a party and fiercely capable when someone they love needs help."],
+    pressure: ["The strength usually named is care that notices needs before they are spoken. The difficulty is retreating and expecting others to guess why.", "Saying the hurt out loud, even briefly, is the usual advice astrologers give this placement."],
+    relating: ["The Descendant falls in Capricorn. In this reading, partners bring structure, realism and sometimes emotional reserve, which can feel steadying or cold depending on the day."],
+    question: "Who has to guess how you feel, and what would you tell them if you did not make them guess?" },
+  { sign: "Leo", opposite: "Aquarius", ruler: "the Sun", hook: "warm, visible and aware of being watched",
+    summary: "Leo Rising is read as a warm, noticeable presence that treats each room as worth showing up for. Here is what the tradition says, and how to check it against your chart.",
+    impression: ["Astrologers describe Leo Rising as carrying itself as though being seen is normal. Posture, hair and clothes get attention in the traditional descriptions, along with generosity toward whoever is nearby.", "Since the Sun rules this Ascendant, its sign and house are treated as especially important: a Leo Rising with a shy Sun placement may have the presence without enjoying the attention."],
+    pressure: ["The strength usually named is the ability to lift a group simply by taking it seriously. The difficulty is depending on the response: a lack of appreciation can land as a verdict.", "It helps to ask whose recognition you actually need."],
+    relating: ["The Descendant falls in Aquarius. Symbolically, the people who matter most may be the ones least impressed by display, valuing honesty, independence and equal footing over admiration."],
+    question: "What would you still do if nobody ever noticed that you did it?" },
+  { sign: "Virgo", opposite: "Pisces", ruler: "Mercury", hook: "observant, modest and quietly exact",
+    summary: "Virgo Rising is read as an observant, practical approach that looks for what needs doing. Here is what the tradition says, and how to test it against your own chart.",
+    impression: ["Tradition pictures Virgo Rising as neat, attentive and slightly reserved, quietly checking the details of a situation before offering an opinion.", "The manner can read as cool when it is really concentration. Help often comes in the form of a practical fix rather than a warm sentence, which is easy to miss if you are looking for the sentence."],
+    pressure: ["The named strength is competence that improves things without needing credit. The named difficulty is applying the same inspection to yourself and other people until nothing passes.", "A good test is whether a correction was asked for, and whether it needed making today."],
+    relating: ["The Descendant falls in Pisces. In this reading, close relationships ask Virgo Rising to tolerate ambiguity, forgive imperfection and stop trying to solve what someone only wanted heard."],
+    question: "Where would being useful be less helpful than simply being there?" },
+  { sign: "Libra", opposite: "Aries", ruler: "Venus", hook: "gracious, even-handed and attentive to others",
+    summary: "Libra Rising is read as a gracious, diplomatic approach that looks for common ground first. Here is what the tradition says, and how to check it against your chart.",
+    impression: ["Astrologers describe Libra Rising as easy to talk to: courteous, aware of how things look and quick to see the other person’s point.", "That pleasantness is not the same as agreement. Tradition suggests Libra Rising may hold firm opinions that surface only after it has worked out how to say them without damage."],
+    pressure: ["The strength usually named is fairness, along with a real talent for getting opposed people into one room. The difficulty is delaying a decision because any choice will disappoint someone.", "Notice whether you are weighing the options or waiting to see what others want."],
+    relating: ["The Descendant falls in Aries, so partners are traditionally pictured as direct and self-starting. They may say out loud the blunt thing Libra Rising has been carefully not saying."],
+    question: "What do you want here, before you take anyone else’s view into account?" },
+  { sign: "Scorpio", opposite: "Taurus", ruler: "Mars", modern: "Pluto", hook: "private, perceptive and hard to read",
+    summary: "Scorpio Rising is read as a private, intent approach that gives away little and notices a lot. Here is what the tradition says, and how to test it against your own chart.",
+    impression: ["Tradition describes Scorpio Rising as giving very little away at first, while taking in rather more. People may find the gaze or the stillness intense without being able to say why.", "This reserve is usually described as protective. Trust comes slowly and is tested before it is given, so an early impression of coldness may say more about the stage of the relationship than the person."],
+    pressure: ["The named strength is the ability to stay with what others avoid, whether a crisis, a secret or a hard truth. The named difficulty is assuming a hidden motive, or holding onto a grievance long after it has stopped being useful.", "It is worth checking a suspicion against evidence before acting on it."],
+    relating: ["The Descendant falls in Taurus. Symbolically, the partners who help most are steady, physically present and uninterested in drama, which can feel like relief or like not being understood."],
+    question: "Who has earned more of your trust than you have actually given them?" },
+  { sign: "Sagittarius", opposite: "Gemini", ruler: "Jupiter", hook: "open, frank and looking past the horizon",
+    summary: "Sagittarius Rising is read as an open, frank approach that treats each situation as a possible adventure. Here is what the tradition says, and how to check it against your chart.",
+    impression: ["Astrologers picture Sagittarius Rising as friendly, restless and frank, ready to talk about meaning, travel or belief within minutes of meeting someone.", "The optimism is usually sincere, though it may be doing some work. Looking at the next plan is a familiar way of not dwelling on the current difficulty."],
+    pressure: ["The strength usually named is perspective: seeing why something matters when everyone else is lost in the detail. The difficulty is overpromising, or saying a blunt truth and leaving before it has to be dealt with.", "Ask whether a commitment still looks good after the excitement passes."],
+    relating: ["The Descendant falls in Gemini. In this reading, partners bring questions, facts and alternatives, and they tend to puncture a grand theory by asking how it would work on Tuesday."],
+    question: "Which of your big plans needs a small, dull next step more than it needs more enthusiasm?" },
+  { sign: "Capricorn", opposite: "Cancer", ruler: "Saturn", hook: "composed, serious and older than their years",
+    summary: "Capricorn Rising is read as a composed, capable approach that treats most things as responsibilities. Here is what the tradition says, and how to test it against your chart.",
+    impression: ["Tradition describes Capricorn Rising as appearing mature early: reserved, measured and aware of who is in charge. Dry humor often arrives once the first impression is safely established.", "Astrologers commonly say this Ascendant loosens with age, as earned authority makes constant self-control less necessary. You can check that idea against your own life rather than taking it on trust."],
+    pressure: ["The named strength is reliability under pressure and a willingness to do the unglamorous work. The named difficulty is carrying everything alone and treating rest or need as failure.", "Notice who would gladly help if you ever let them know that you needed it."],
+    relating: ["The Descendant falls in Cancer. Symbolically, close relationships ask for softness, home and open feeling, the very things this Ascendant has often learned to keep behind the work."],
+    question: "What are you still proving, and to whom?" },
+  { sign: "Aquarius", opposite: "Leo", ruler: "Saturn", modern: "Uranus", hook: "friendly, independent and a little apart",
+    summary: "Aquarius Rising is read as a friendly yet detached approach that observes the group from slightly outside. Here is what the tradition says, and how to check it against your chart.",
+    impression: ["Astrologers describe Aquarius Rising as sociable and hard to pin down: at ease with almost anyone, and yet not entirely part of the group it is talking to.", "Having both a traditional and a modern ruler suits the common description: a Saturn side that holds firm principles and a Uranus side that wants to break the rule next."],
+    pressure: ["The strength usually named is independent thinking, including a readiness to say what the group would prefer not to hear. The difficulty is staying in the realm of ideas when someone needs a personal response.", "It is worth noticing when objectivity has become a way of keeping your distance."],
+    relating: ["The Descendant falls in Leo. In this reading, partners bring warmth, display and a wish to feel singled out, asking someone who treats everyone equally to say that this one person is special."],
+    question: "Who needs to hear how you feel about them, and not just what you think?" },
+  { sign: "Pisces", opposite: "Virgo", ruler: "Jupiter", modern: "Neptune", hook: "gentle, receptive and hard to define",
+    summary: "Pisces Rising is read as a gentle, receptive approach that takes on the mood of its surroundings. Here is what the tradition says, and how to test it against your own chart.",
+    impression: ["Tradition pictures Pisces Rising as soft-spoken, dreamy and a little hard to define. People may each describe a different person, because this Ascendant tends to reflect whoever it is with.", "That sensitivity can be real perceptiveness and it can also be exhausting. Astrologers often recommend regular time alone so that the person can tell which feelings actually belong to them."],
+    pressure: ["The named strength is compassion and imagination, including the art that can come from them. The named difficulty is drifting, or saying yes to avoid friction and only later working out it was a no.", "It helps to set one concrete boundary before you need it."],
+    relating: ["The Descendant falls in Virgo. Symbolically, partners bring practical care, routines and precise questions, offering structure that can feel either grounding or painfully literal."],
+    question: "Which feeling you are carrying this week actually belongs to someone else?" },
+];
+
+export const RISING_GUIDES: Guide[] = DRAFTS.map((d) => {
+  const rulerLabel = d.ruler.replace("the ", "");
+  return {
+    slug: `${d.sign.toLowerCase()}-rising`,
+    title: `${d.sign} Rising Meaning: Traits & Chart Ruler`,
+    description: `What ${d.sign} Rising means: ${d.hook}, with ${rulerLabel} as chart ruler and a ${d.opposite} Descendant. Test it against your chart.`,
+    summary: d.summary,
+    tool: "rising-sign",
+    published: "2026-11-05",
+    rising: d.sign,
+    sections: [
+      { title: `The ${d.sign} Rising first impression`, paragraphs: d.impression },
+      { title: "Strengths and difficulties", paragraphs: d.pressure },
+      { title: `${d.ruler[0].toUpperCase() + d.ruler.slice(1)}, your chart ruler`, paragraphs: [
+        `The planet ruling the Rising sign is called the chart ruler. For ${d.sign} Rising, traditional astrology names ${d.ruler}${d.modern ? `, and modern astrology adds ${d.modern}` : ""}. Find ${rulerLabel} in your own chart and note its sign and house: astrologers read that as the place where your ${d.sign} Rising approach is put to work.`,
+        "Two people with the same Rising sign can therefore read very differently, because their chart rulers fall in different places. The chart ruler calculator shows yours, with both conventions labeled.",
+      ] },
+      { title: `Relationships and the ${d.opposite} Descendant`, paragraphs: [
+        ...d.relating,
+        `The Descendant is always exactly opposite the Ascendant, so everyone with ${d.sign} Rising has ${d.opposite} on the cusp of the seventh house in whole sign charts. It says nothing about whom you will meet or whether a relationship will last.`,
+      ] },
+      { title: "Is this really your Rising sign?", paragraphs: [
+        `Your Rising sign depends on your exact birth time and birthplace. If the Ascendant sits in the first or last few degrees of ${d.sign}, a difference of a few minutes could change the sign, so a rounded family memory of the time may not be enough. If your time is approximate, use the Birth Time Explorer to see exactly when the sign changes.`,
+        `A question to try against your own experience: ${d.question} These interpretations are symbolic prompts from an astrological tradition. They are not validated personality measurements, and matching a description is not evidence of a birth time.`,
+      ] },
+    ],
+    sources: [["Astrodienst: rulers and chart rulership", "https://www.astro.com/astrology/in_ruler_e.htm"], ["Aspectori calculation method", "/method"]],
+  };
+});

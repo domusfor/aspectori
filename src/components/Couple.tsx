@@ -35,7 +35,7 @@ const CoupleCard = forwardRef<HTMLDivElement, { result: CoupleResult; themLabel?
       </div>
 
       {contacts.length === 0 && (
-        <p className="mt-6 text-sm text-ink-2">No tight contacts meet the comparison rules at all checked samples. Add birth times to see more.</p>
+        <p className="mt-6 text-sm text-ink-2">No close contacts hold across the whole birth day. Add birth times to see more.</p>
       )}
       <ol className="mt-5 grid gap-4">
         {contacts.map((c, i) => (

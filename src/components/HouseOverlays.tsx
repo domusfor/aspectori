@@ -15,12 +15,12 @@ export default function HouseOverlays({ result, name }: { result: CoupleResult; 
         {direction.notes.map((note) => <p key={note} className="text-xs leading-relaxed text-ink-2 mt-3">{note}</p>)}
         {direction.available && <>
           <table className="w-full text-xs tabular-nums mt-5 border-collapse">
-            <caption className="text-left text-gold pb-3">{direction.endpoints ? "House at day start → day end" : "House occupied at the supplied birth time"}</caption>
+            <caption className="text-left text-gold pb-3">{direction.endpoints ? "House at day start → day end" : "House at the birth time you entered"}</caption>
             <thead><tr className="text-left text-muted border-b border-[var(--line)]"><th scope="col" className="py-3 font-normal">Planet</th><th scope="col" className="py-3 px-1 text-center font-normal">Whole sign</th><th scope="col" className="py-3 text-center font-normal">Placidus</th></tr></thead>
             <tbody>{direction.rows.map((row) => <tr key={row.planet} className="border-b border-[var(--line)]"><th scope="row" className="py-3 text-left font-normal text-ink">{POINT_NAMES[row.planet]}</th><td className="py-3 px-1 text-center text-gold">{overlayHouses(row.whole)}</td><td className="py-3 text-center text-ink-2">{overlayHouses(row.placidus)}</td></tr>)}</tbody>
           </table>
           <details className="mt-4"><summary className="cursor-pointer text-xs text-gold py-2">View planetary degrees and house boundaries</summary>
-            <p className="text-xs text-muted mt-2">{direction.endpoints ? "Planetary degrees at the two local-day endpoints:" : "Planetary degrees at the supplied birth time:"}</p>
+            <p className="text-xs text-muted mt-2">{direction.endpoints ? "Planet degrees at the start and end of the birth day:" : "Planet degrees at the birth time you entered:"}</p>
             <ul className="text-xs text-ink-2 leading-relaxed mt-3 space-y-2">{direction.rows.map((row) => <li key={row.planet}>{POINT_NAMES[row.planet]}: {row.positions.map(fmtPos).join(" → ")}</li>)}</ul>
             <p className="text-xs text-muted mt-4">Receiving chart’s house boundaries:</p>
             <ol className="text-xs text-ink-2 leading-relaxed mt-3 space-y-2">{direction.cusps?.whole.map((cusp, i) => <li key={i}>House {i + 1}: Whole sign {fmtPos(cusp)} · Placidus {direction.cusps?.placidus ? fmtPos(direction.cusps.placidus[i]) : "unavailable"}</li>)}</ol>

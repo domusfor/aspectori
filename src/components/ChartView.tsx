@@ -30,6 +30,8 @@ export default function ChartView({ chart, title, fileName, cardFooter, children
   const [sysPref, setSys] = useState<HouseSystem>("placidus");
   const [active, setActive] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState("");
+  // A personal card leaves out birth details unless the person asks for them.
+  const [hideBirth, setHideBirth] = useState(!title);
   const cardRef = useRef<HTMLDivElement>(null);
   const sys: HouseSystem = chart.cusps?.placidus ? sysPref : "whole";
   const reading = buildReading(chart, sys);
@@ -47,8 +49,9 @@ export default function ChartView({ chart, title, fileName, cardFooter, children
   return (
     <section className="grid grid-cols-1 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] gap-8 md:gap-12 items-start">
       <div className="min-w-0 lg:sticky lg:top-6">
-        <Card ref={cardRef} chart={chart} sys={sys} active={active} onSelect={select} title={title} />
+        <Card ref={cardRef} chart={chart} sys={sys} active={active} onSelect={select} title={title} hideBirth={hideBirth} />
         <div className="rise flex flex-wrap gap-2 justify-center mt-5 no-print" style={{ "--i": 10 } as React.CSSProperties}>
+          {!title && <label className="basis-full flex min-h-11 items-center justify-center gap-2.5 text-sm text-ink-2 cursor-pointer"><input type="checkbox" className="accent-[var(--gold)] size-4" checked={hideBirth} onChange={(event) => setHideBirth(event.target.checked)} />Hide birth date, time and place on the card</label>}
           <DownloadCard cardRef={cardRef} fileName={fileName} />
           <Link className="btn btn-ghost" href={reportHref(chart, sys)}>{REPORT_OFFER.label}</Link>
           <button className="btn btn-ghost" onClick={async () => {
@@ -99,10 +102,10 @@ function UnknownTimeNote({ chart }: { chart: Chart }) {
   return (
     <div className="mb-5 rounded-[3px] border border-[var(--line)] px-4 py-3 text-sm text-ink-2 leading-relaxed">
       <p className="kicker text-gold !text-[0.6rem] mb-1.5">No birth time</p>
-      Planet positions and aspect orbs use the start and end of the local birth day. They are endpoint samples, not continuous bounds. Rising and houses need a birth time, so they are hidden.
+      Planet positions and aspects are checked at the start and end of your birth day, so they show a range and not one exact moment. Rising and houses need a birth time, so they are hidden.
       {moving.length > 0
         ? ` ${moving.map((p) => (p.id === "moon" ? "The Moon" : p.id[0].toUpperCase() + p.id.slice(1))).join(" and ")} changed sign that day, so both options are shown with the time it switched.`
-        : " Both endpoint samples share the displayed signs; a brief boundary crossing between samples is not ruled out."}
+        : " Each planet shows the same sign at both checks, though a brief sign change in between cannot be ruled out."}
     </div>
   );
 }

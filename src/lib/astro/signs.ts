@@ -65,6 +65,11 @@ export function elementBlend(sun: Element, moon: Element) {
   return `${sun} and ${moon.toLowerCase()} pull in different directions: what you want and what you need do not always agree, and much of your growth comes from making them cooperate.`;
 }
 
+/** Sign names do not take a plural: "Aries people", never "Ariess". */
+export const famousSignLabel = (sign: Sign) => `Famous ${sign} people`;
+
+export const risingGuideSlug = (sign: Sign) => `${sign.toLowerCase()}-rising`;
+
 export const comboSlug = (sun: Sign, moon: Sign) => `${sun.toLowerCase()}-sun-${moon.toLowerCase()}-moon`;
 export function parseCombo(slug: string): [Sign, Sign] | null {
   const m = /^([a-z]+)-sun-([a-z]+)-moon$/.exec(slug);

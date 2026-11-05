@@ -10,7 +10,7 @@ import { allSummaries } from "@/lib/famous-summary";
 import { CATEGORIES } from "@/data/people";
 
 export const metadata: Metadata = {
-  title: "Famous Birth Charts: Zodiac Signs of 8,000+ Celebrities",
+  title: "Famous Birth Charts: Signs of 8,000+ Celebrities",
   description:
     "Browse 8,000+ famous birth charts with Sun, Moon and Rising signs, exact degrees, source ratings and a comparison with your own chart.",
   alternates: { canonical: "/charts" },
@@ -29,14 +29,13 @@ export default async function ChartsIndex() {
           The birth charts of {people.length.toLocaleString("en")} famous people.
         </h1>
         <p className="rise mt-5 text-ink-2 leading-relaxed" style={{ "--i": 2 } as React.CSSProperties}>
-          Each chart says how much we know. Rated AA to C, a birth time is reported, with reliability ranging from a record to an uncertain account. Rated X,
-          we know the date but not the time, so we show the Sun and Moon and leave the Rising sign out rather than guess.
+          Every chart tells you how far to trust it. Ratings from AA to C mean a birth time was reported, from a birth record at best to an uncertain account at worst. X means we have the date but no verified time, so we show the Sun and Moon and leave out the Rising sign rather than guess.
         </p>
         <div className="rise relative z-30 mt-8" style={{ "--i": 3 } as React.CSSProperties}><FamousSearch total={people.length} /></div>
       </header>
 
       <section>
-        <SectionHead kicker="With a recorded birth time" title="Complete charts, checked against Astro.com" />
+        <SectionHead kicker="Birth time on record · checked against Astro.com" title="Complete charts with Sun, Moon and Rising" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {timed.slice(0, 9).map((p, i) => <PersonCard key={p.slug} p={p} i={i} />)}
         </div>
