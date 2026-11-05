@@ -1,10 +1,12 @@
-export type CalculatorMode = "moon" | "rising" | "big-three" | "houses" | "synastry" | "venus" | "mars" | "moon-phase" | "chart-ruler" | "profections";
+export type CalculatorMode = "moon" | "rising" | "big-three" | "houses" | "synastry" | "venus" | "mars" | "moon-phase" | "chart-ruler" | "profections" | "birth-time";
 export interface Calculator {
   slug: string; mode: CalculatorMode; title: string; description: string; intro: string;
   sections: { title: string; text: string }[];
   faq: [string, string][];
   guide: string;
   sources?: [string, string][];
+  /** Extra next steps, shown beside the guide link. */
+  related?: [string, string][];
 }
 export const CALCULATORS: Calculator[] = [
   {
@@ -16,7 +18,7 @@ export const CALCULATORS: Calculator[] = [
       { title: "Date, time and sign changes", text: "The calculation uses your local birth date and historical time zone. An unknown time produces a degree range. If Venus crosses a sign boundary during that day, you see both possible signs and the local transition time rather than a single invented answer." },
       { title: "Take the next useful step", text: "With a known birth time, the result includes whole sign and Placidus house assignments. Open your full chart to compare the rest of your placements, or use the synastry tool to compare two people. Your birth details can travel between tools in the private URL fragment." },
     ],
-    faq: [["What is my Venus sign?", "It is the tropical zodiac sign occupied by Venus at your birth. Enter your date, birthplace and recorded time, or mark the time unknown."], ["Can I find my Venus sign without a birth time?", "Often. The two local-day endpoints show the sampled sign and degrees. If their signs differ, both possibilities remain; a brief crossing between matching endpoints is not ruled out."], ["Does a Venus sign prove romantic compatibility?", "No. A Venus sign is one symbolic placement. It is not a relationship test or a prediction of attraction."]],
+    faq: [["What is my Venus sign?", "It is the tropical zodiac sign occupied by Venus at your birth. Enter your date, birthplace and recorded time, or mark the time unknown."], ["Can I find my Venus sign without a birth time?", "Usually. We check Venus at the start and end of your birth day. If the sign is the same at both, that sign is shown. If it differs, both possibilities are shown."], ["Does a Venus sign prove romantic compatibility?", "No. A Venus sign is one symbolic placement. It is not a relationship test or a prediction of attraction."]],
     guide: "how-to-read-a-birth-chart",
     sources: [["Cafe Astrology: Venus sign and unknown-time limitations", "https://cafeastrology.com/whats-my-venus-sign.html"]],
   },
@@ -73,12 +75,25 @@ export const CALCULATORS: Calculator[] = [
     sources: [["Astrodienst / The Mountain Astrologer: annual profections", "https://www.astro.com/astrology/tma_article190314_s.htm"]],
   },
   {
+    slug: "birth-time-explorer", mode: "birth-time", title: "Birth Time Explorer: Possible Rising Signs",
+    description: "Only know roughly when you were born? Enter a time range to see every possible Rising sign, the exact clock times it changes and what else moves.",
+    intro: "Know you were born “in the morning” or “around 8”? Enter the earliest and latest possible times. See every Rising sign in that window and exactly when each one begins.",
+    sections: [
+      { title: "Why not assume two hours per sign?", text: "A sign takes about two hours to rise only on average. Depending on your latitude and the sign, it can take well under an hour or more than three. This tool calculates your actual changes from the date and birthplace instead of using a fixed rule." },
+      { title: "How to choose your window", text: "Use the widest range you can honestly support. “Before school started” might mean 06:00 to 09:00. Enter times as they would have been read on a clock at the birthplace; the historical time zone is applied for you, including summer time." },
+      { title: "What this cannot do", text: "It shows what is possible, not which option is true. Reading the options and choosing the one that sounds most like you is not evidence of your birth time. A birth record is, and many registries or hospitals can help you look for one." },
+    ],
+    faq: [["Can this tell me my real birth time?", "No. It shows which results depend on the time. Only a record of the time itself can settle which one applies."], ["What if my window crosses midnight?", "This version covers one calendar date. Run the date before and the date after as separate windows, each ending or starting at midnight."], ["Why does the Moon sometimes appear too?", "The Moon changes sign about every two and a half days, so it can change within your window. When it does, the change time is shown because your Moon sign depends on the time too."]],
+    guide: "birth-chart-without-birth-time",
+    related: [["Calculate a Rising sign from a known time", "/calculators/rising-sign"]],
+  },
+  {
     slug: "moon-sign", mode: "moon", title: "Free Moon Sign Calculator",
     description: "Find your Moon sign and degree from your birth date, time and place. Unknown birth time? See both possible signs and the local time of a sign change.",
     intro: "Find the Moon’s zodiac sign at your birth. If you do not know the time, we check the local day and show the uncertainty instead of choosing a sign for you.",
     sections: [
       { title: "What your Moon result means", text: "The result shows a tropical zodiac sign and a position within that sign. In astrology, the Moon is associated with emotional responses, familiar habits and comfort. Those interpretations are symbolic; the position itself is an astronomical calculation." },
-      { title: "When the birth time is missing", text: "The Moon can move into a new sign during a birth day. Choose ‘I don’t know my birth time’ to see the day’s range. If it crosses a sign boundary, both signs appear with the local change time. A single sign means the Moon shares that sign at both local-day endpoints; the exact degree still needs a birth time." },
+      { title: "When the birth time is missing", text: "The Moon can move into a new sign during a birth day. Choose ‘I don’t know my birth time’ to see the day’s range. If it crosses a sign boundary, both signs appear with the local change time. A single sign means the Moon is in that sign at both the start and end of the day. The exact degree still needs a birth time." },
       { title: "Why the birthplace matters", text: "A calendar date at the birthplace must be converted to UTC before calculating positions. Enter the place where you were born, rather than where you live now. The historical time zone is selected automatically, including daylight-saving rules." },
     ],
     faq: [["Can I find my Moon sign without a birth time?", "Often, yes. If the Moon stays in one sign all day, that sign is shown. If it changes signs, both possibilities are shown; an exact answer needs a birth time."], ["Is this a Vedic Moon sign or Rashi calculator?", "No. This calculator uses the tropical zodiac. Sidereal and Vedic calculators use a different zodiac reference, so their result may differ."], ["Is the Moon sign the same as my Sun sign?", "No. The Sun and Moon are calculated separately. They can occupy the same sign, but one cannot be inferred from the other."]],
@@ -95,6 +110,7 @@ export const CALCULATORS: Calculator[] = [
     ],
     faq: [["Can I calculate my Rising sign without a birth time?", "Not reliably. The Ascendant changes during the day and depends on location. This calculator will explain the missing information rather than invent a Rising sign."], ["Why does another calculator give a different Ascendant?", "First compare the recorded time, AM/PM, birthplace, historical UTC offset and zodiac reference. A tropical and a sidereal calculator can label the same sky position differently."], ["Does changing houses change my Rising sign?", "Switching between Placidus and whole sign does not change the Ascendant’s astronomical position. It changes how houses are assigned around the chart."]],
     guide: "how-to-read-a-birth-chart",
+    related: [["Explore an uncertain birth time", "/calculators/birth-time-explorer"]],
   },
   {
     slug: "sun-moon-rising", mode: "big-three", title: "Sun, Moon & Rising Sign Calculator",
@@ -103,7 +119,7 @@ export const CALCULATORS: Calculator[] = [
     sections: [
       { title: "Three points, three roles", text: "Astrological tradition associates the Sun with identity and direction, the Moon with emotional habits, and the Rising sign with how you meet the world. These are interpretive lenses, not personality diagnoses. The calculator keeps their actual positions visible beside the interpretation." },
       { title: "Read the degrees as well as the signs", text: "Each zodiac sign spans 30 degrees. Two people with the same three signs can have different degrees, aspects and house placements. Use the full chart link after calculating to explore the connections and compare house systems." },
-      { title: "An honest result with incomplete data", text: "Without a birth time, your result keeps the Sun and Moon ranges and omits the Rising sign. If either luminary changes signs that day, both possibilities are shown. Your free report carries the same uncertainty forward." },
+      { title: "An honest result with incomplete data", text: "Without a birth time, your result shows the range for your Sun and Moon and leaves out the Rising sign. If the Sun or Moon changes sign that day, you see both options. Your free report shows the same uncertainty." },
     ],
     faq: [["What are the Big Three in astrology?", "The Big Three are your Sun sign, Moon sign and Rising sign, also called the Ascendant."], ["Can all three signs be the same?", "Yes. Each point is calculated independently, and they can fall in the same zodiac sign."], ["What do I need to calculate all three?", "Your birth date, recorded local birth time and birthplace. Without a time, the Rising sign remains unknown and the Moon may have two possibilities."]],
     guide: "how-to-read-a-birth-chart",
@@ -121,16 +137,16 @@ export const CALCULATORS: Calculator[] = [
     guide: "whole-sign-vs-placidus",
   },
   {
-    slug: "synastry", mode: "synastry", title: "Free Synastry & Birth Chart Compatibility Calculator",
+    slug: "synastry", mode: "synastry", title: "Free Synastry & Chart Compatibility Calculator",
     description: "Compare two birth charts with free synastry, planetary aspects and house overlays in both directions. Explore whole sign, Placidus and a free comparison PDF.",
     intro: "Compare two people’s planetary positions. Explore major aspects and house overlays in both directions, with the evidence behind each result and a free comparison PDF.",
     sections: [
       { title: "What this comparison includes", text: "The calculator compares major aspects between the two charts and ranks contacts involving personal planets first. The three highlighted contacts offer a starting point; the expanded list shows all contacts retained by this method. Slow-planet pairs, the Midheaven, node and Chiron contacts are outside this comparison." },
-      { title: "Birth times change the confidence", text: "When either time is unknown, the calculator keeps contacts within the configured orb at both local-day endpoints; these are sampled checks, not continuous bounds. It does not invent an Ascendant. Fewer contacts can be an honest consequence of incomplete information, not a sign that two people are incompatible." },
-      { title: "Your planets in their houses, and theirs in yours", text: "The house-overlay tables place each person’s ten planets in the other person’s whole sign and Placidus houses. Each direction needs the house owner’s birth time. If only the planet owner’s time is missing, clearly labelled start/end samples show the uncertainty without claiming a full-day assignment. Polar charts keep Placidus unavailable rather than silently substituting another system." },
+      { title: "Birth times change the confidence", text: "When either time is unknown, the calculator keeps only contacts within the orb at both the start and end of the birth day. It does not invent an Ascendant. Fewer contacts can be an honest consequence of incomplete information, not a sign that two people are incompatible." },
+      { title: "Your planets in their houses, and theirs in yours", text: "The house-overlay tables place each person’s ten planets in the other person’s whole sign and Placidus houses. Each direction needs the house owner’s birth time. If only the other person’s time is missing, their planets are shown at the start and end of the day, so you can see the uncertainty. Polar charts keep Placidus unavailable rather than silently substituting another system." },
       { title: "A conversation starter, not a relationship verdict", text: "Synastry is an astrological comparison of two charts. A composite chart is a different technique, and this calculator does not create one. We do not reduce the comparison to a percentage or claim that chart patterns determine whether a relationship succeeds." },
     ],
-    faq: [["Can I compare charts without birth times?", "Yes, with limits. Unknown-time charts omit the Rising sign and retain contacts supported by both local-day endpoint samples. House overlays require the house owner’s time; an unknown planet-owner time gives two labelled day-endpoint samples."], ["Does this predict whether a relationship will work?", "No. It describes symbolic astrological contacts, not a scientifically validated relationship prediction."], ["Does this include house overlays?", "Yes. Both directions show whole sign and Placidus houses, birth-time limitations and planetary degrees. They are also included in the free comparison PDF. This tool does not create a composite chart."]],
+    faq: [["Can I compare charts without birth times?", "Yes, with limits. Without a time, the Rising sign is left out and we keep only contacts present at both the start and end of the birth day. House overlays need the time of the person whose houses are being used."], ["Does this predict whether a relationship will work?", "No. It describes symbolic astrological contacts, not a scientifically validated relationship prediction."], ["Does this include house overlays?", "Yes. Both directions show whole sign and Placidus houses, birth-time limitations and planetary degrees. They are also included in the free comparison PDF. This tool does not create a composite chart."]],
     guide: "aspects-and-orbs",
   },
 ];

@@ -4,12 +4,14 @@ import sweph from "sweph";
 import { DateTime } from "luxon";
 import { ASPECT_BY_TYPE, stableAspects, findAspect, isEasy, separation, type Aspect, type Positions } from "./aspects";
 import { STAR_ORB, STARS } from "./stars";
-import { fmtOffset, resolveDay, resolveMoment } from "./time";
-import { ALL_BODY_IDS, BODY_IDS, norm, signIndex, SLOW, type BodyId, type PointId } from "./zodiac";
+import { fmtOffset, InputError, resolveDay, resolveMoment } from "./time";
+import { ALL_BODY_IDS, BODY_IDS, norm, signIndex, signOf, SLOW, type BodyId, type PointId } from "./zodiac";
 import type { BirthInput, Chart, Contact, CoupleResult, PointRow, SkyResult, StarContact, Transit, WeekResult, WeekTransit, YearResult } from "./types";
 import { weekTopic } from "./week-reading";
 import { moonPhaseName, type BirthMoonResult, type BirthMoonSample } from "./moon-phase";
 import { houseOf } from "./house-overlays";
+import type { BirthTimeResult, BirthTimeSegment } from "./birth-time";
+import type { Lunation, RetrogradePeriod } from "./sky-events";
 
 const C = sweph.constants;
 sweph.set_ephe_path(path.join(process.cwd(), "ephe"));
@@ -398,4 +400,118 @@ export function computeSky(now: DateTime = DateTime.utc()): SkyResult {
     },
     moon: { phase, illumination, waxing: elong < 180, ingress: moonIngress },
   };
+}
+
+// --- Birth Time Explorer: what changes across an uncertain birth time ---
+
+const SCAN_STEP = 2 / 1440; // Two minutes: shorter than any sign's passage outside the polar circles.
+
+/** Every Rising sign possible between two local clock times on one birth date. */
+export function computeBirthTimeRange(input: BirthInput, from: string, to: string): BirthTimeResult {
+  const { lat, lon, tz } = input.place;
+  const where = { tz, lon, offset: input.offset };
+  const a = resolveMoment(input.date, from, where), b = resolveMoment(input.date, to, where);
+  if (b.utc <= a.utc) throw new InputError("The latest time must be after the earliest time.");
+  const jdA = jdOf(a.utc), jdB = jdOf(b.utc);
+  const ascAt = (jd: number) => cuspsFor(jd, lat, lon, "O").asc;
+  const local = (jd: number) => {
+    const utc = jdToDateTime(jd).plus({ seconds: 30 }); // Nearest minute, so durations add up.
+    return (a.source === "tz" ? utc.setZone(tz) : utc.plus({ milliseconds: Math.round(a.offset * 60_000) })).toFormat("HH:mm");
+  };
+
+  const edges = [jdA];
+  let prev = jdA;
+  while (prev < jdB) {
+    const next = Math.min(prev + SCAN_STEP, jdB);
+    if (signIndex(ascAt(prev)) !== signIndex(ascAt(next))) {
+      const sign = signIndex(ascAt(prev));
+      let lo = prev, hi = next;
+      for (let i = 0; i < 30; i++) {
+        const mid = (lo + hi) / 2;
+        if (signIndex(ascAt(mid)) === sign) lo = mid;
+        else hi = mid;
+      }
+      edges.push(hi);
+    }
+    prev = next;
+  }
+  edges.push(jdB);
+
+  const segments: BirthTimeSegment[] = edges.slice(0, -1).map((start, i) => {
+    const end = edges[i + 1];
+    const mid = (start + end) / 2;
+    const ascSign = signIndex(ascAt(mid));
+    const wholeHouse = (id: BodyId) => ((signIndex(body(mid, id).lon) - ascSign + 12) % 12) + 1;
+    return {
+      rising: signOf(ascAt(mid)),
+      from: i === 0 ? from.slice(0, 5) : local(start),
+      to: i === edges.length - 2 ? to.slice(0, 5) : local(end),
+      minutes: Math.round((end - start) * 1440),
+      ascFrom: ascAt(start),
+      ascTo: ascAt(end - 1 / 86_400),
+      sunHouse: wholeHouse("sun"),
+      moonHouse: wholeHouse("moon"),
+    };
+  });
+
+  const signsAcross = (id: BodyId) => [...new Set([signOf(body(jdA, id).lon), signOf(body(jdB, id).lon)])];
+  const moonSigns = signsAcross("moon");
+  return {
+    from: from.slice(0, 5), to: to.slice(0, 5),
+    totalMinutes: Math.round((jdB - jdA) * 1440),
+    segments, moonSigns, sunSigns: signsAcross("sun"),
+    moonChangeAt: moonSigns.length > 1 ? local(ingress("moon", jdA, jdB)) : null,
+    notes: [...new Set([...a.notes, ...b.notes])],
+  };
+}
+
+// --- Dated sky events for the public calendars ---
+
+const bisect = (lo: number, hi: number, sideOf: (jd: number) => boolean) => {
+  const start = sideOf(lo);
+  for (let i = 0; i < 40; i++) {
+    const mid = (lo + hi) / 2;
+    if (sideOf(mid) === start) lo = mid;
+    else hi = mid;
+  }
+  return hi;
+};
+
+/** Retrograde loops of a planet that begin between two UTC dates, from its geocentric stations. */
+export function computeRetrogrades(planet: BodyId, from: DateTime, to: DateTime): RetrogradePeriod[] {
+  const out: RetrogradePeriod[] = [];
+  const end = jdOf(to);
+  let jd = jdOf(from);
+  let retro = body(jd, planet).speed < 0;
+  let start: number | null = null;
+  for (; jd < end + 60; jd += 1) {
+    const now = body(jd + 1, planet).speed < 0;
+    if (now === retro) continue;
+    const station = bisect(jd, jd + 1, (t) => body(t, planet).speed < 0);
+    if (now && station < end) start = station;
+    else if (!now && start !== null) {
+      out.push({ start: jdToDateTime(start).toISO()!, end: jdToDateTime(station).toISO()!, startLon: body(start, planet).lon, endLon: body(station, planet).lon });
+      start = null;
+    }
+    retro = now;
+  }
+  return out;
+}
+
+/** New and full Moons between two UTC dates, by the Sun-Moon longitude angle. */
+export function computeLunations(from: DateTime, to: DateTime): Lunation[] {
+  const elongation = (jd: number) => norm(body(jd, "moon").lon - body(jd, "sun").lon);
+  const out: Lunation[] = [];
+  const end = jdOf(to), step = 0.25;
+  for (let jd = jdOf(from); jd < end; jd += step) {
+    const x = elongation(jd), y = elongation(jd + step);
+    const isNew = x > y; // The angle wraps from 360 back to 0.
+    const isFull = x < 180 && y >= 180;
+    if (!isNew && !isFull) continue;
+    const at = isNew
+      ? bisect(jd, jd + step, (t) => elongation(t) > 180)
+      : bisect(jd, jd + step, (t) => elongation(t) >= 180);
+    out.push({ type: isNew ? "new" : "full", at: jdToDateTime(at).toISO()!, lon: body(at, "moon").lon });
+  }
+  return out;
 }

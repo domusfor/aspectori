@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CALCULATORS, type CalculatorMode } from "@/data/calculators";
 
 const category = (mode: CalculatorMode) => mode === "synastry" ? "Relationships" : mode === "profections" ? "Timing" : "Birth chart";
-const symbols: Record<CalculatorMode, string> = { moon: "☽", rising: "AC", "big-three": "☉", houses: "⌂", synastry: "↔", venus: "♀", mars: "♂", "moon-phase": "◐", "chart-ruler": "♜", profections: "↻" };
+const symbols: Record<CalculatorMode, string> = { moon: "☽", rising: "AC", "big-three": "☉", houses: "⌂", synastry: "↔", venus: "♀", mars: "♂", "moon-phase": "◐", "chart-ruler": "♜", profections: "↻", "birth-time": "◷" };
 
 export default function CalculatorDirectory() {
   const [query, setQuery] = useState("");

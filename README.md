@@ -12,7 +12,7 @@ six-hour samples within a 1° orb. Unknown birth times exclude Moon/Rising/Midhe
 endpoints to qualify. The current window refreshes on reopening, manually, or when an open tab crosses a UTC date.
 These symbolic readings do not predict events. See `/method#week` for selection and sampling limits.
 
-The searchable `/calculators` directory now includes ten tools: Venus, Mars, Moon, Rising, Big Three, birth Moon
+The searchable `/calculators` directory now includes eleven tools: Birth Time Explorer, Venus, Mars, Moon, Rising, Big Three, birth Moon
 phase, chart ruler, annual profections, house-system comparison and synastry. Results link between tools with birth
 details in the private fragment. Lunar illumination is calculated by Swiss Ephemeris; annual profections use explicit
 whole-sign/traditional-ruler conventions. Research and the 64-keyword opportunity map are in
@@ -30,14 +30,14 @@ npm run build
 
 ## Accuracy gate
 
-`tests/astrocom.test.ts` checks 22 Astro-Databank charts (reference data in `src/data/astrocom-reference.json`,
+`tests/astrocom.test.ts` checks 29 Astro-Databank charts (reference data in `src/data/astrocom-reference.json`,
 also published at `/accuracy`) (1856–1986, five continents, local mean time, war time,
 summer time). Two suites:
 
 1. **Engine**: with Astro.com's own UTC offset, Sun, Moon and Ascendant must equal Astro.com's printed values to
-   the arcminute. All 22 pass with zero tolerance.
+   the arcminute. All 29 pass with zero tolerance.
 2. **Time zones**: our offset (IANA + birthplace mean time before standard time) must equal Astro.com's atlas.
-   20 of 22 agree. The two known differences are documented in the test: 19th-century railway mean times
+   25 of 29 agree. The four known differences are documented in the test: 19th-century railway mean times
    (Prague, Howrah) that the tz database cannot tell apart from local mean time. Users can set the offset by hand.
 
 Add a chart to `src/data/astrocom-reference.json` whenever someone reports a mismatch.
@@ -57,11 +57,12 @@ Add a chart to `src/data/astrocom-reference.json` whenever someone reports a mis
   Sign", "[Sun] Sun [Moon] Moon".
 - Structured data: Organization, WebSite, WebApplication, Person and BreadcrumbList. Unsupported Google search-box
   and FAQ rich-result markup is deliberately omitted; visible search and FAQ content remains available to users.
-- `sitemap.xml` lists core pages, guides, tools, and category pagination. `/charts/sitemap.xml` contains the 1,000-profile search-launch cohort; other profiles stay usable but carry `noindex, follow`. Every famous profile remains linked from a category page. Private `/report` is excluded and carries `noindex`; crawlers can access it to read that instruction.
+- `sitemap.xml` lists core pages and category pagination. `/calculators/sitemap.xml`, `/learn/sitemap.xml` and `/zodiac/sitemap.xml` cover one page type each, so Search Console reports coverage by type. The 144 Sun-Moon pages stay browsable but are `noindex, follow` and outside the sitemaps until they have distinct content. `/charts/sitemap.xml` contains the 1,000-profile search-launch cohort; other profiles stay usable but carry `noindex, follow`. Every famous profile remains linked from a category page. Private `/report` is excluded and carries `noindex`; crawlers can access it to read that instruction.
 - `/calculators` includes Moon, Rising, Big Three, house-system comparison and synastry tools; `/learn` supplies four supporting guides. `/birth-chart-report` is the public PDF landing page.
 - `/about`, `/method`, `/accuracy`, `/contact`, `/privacy`, and `/terms` form the public trust and operator-information layer.
 - Keywords map to useful pages, not duplicate pages for synonyms. FAQ content remains visible without obsolete FAQ rich-result markup.
 - Unknown URLs under dynamic routes return a real 404 (`src/proxy.ts`).
+- Google Tag Manager (`GTM-PRGH9HDZ`) loads only after a visitor accepts the analytics banner. `src/lib/analytics.ts` reports the origin and path only, because the address fragment holds birth details. Check any new tag in the container against this before publishing it.
 - After launch, set `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` and submit the sitemap in both webmaster tools. These tokens are useful, but do not block a safe production build.
 
 ## How it fits together

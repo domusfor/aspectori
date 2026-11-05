@@ -15,6 +15,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 import JsonLd, { siteUrl, sourceUrl } from "@/components/seo/JsonLd";
 import Sky from "@/components/site/Sky";
+import Analytics from "@/components/site/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <div id="page-content" tabIndex={-1} className="flex-1">{children}</div>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

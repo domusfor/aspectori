@@ -65,7 +65,7 @@ export default function FamousChart({ famous: f, chart, summary, faq, sameSun, s
 
         {sameSun.length > 0 && sun && (
           <Reveal as="section">
-            <SectionHead kicker="Same Sun sign" title={`Other famous ${sun}s`} />
+            <SectionHead kicker="Same Sun sign" title={`Other famous ${sun} people`} />
             <div className="grid gap-4 sm:grid-cols-2">
               {sameSun.slice(0, 4).map((o, i) => <PersonCard key={o.slug} p={o} i={i} />)}
             </div>

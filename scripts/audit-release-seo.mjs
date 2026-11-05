@@ -40,6 +40,7 @@ function inspect(path, response, html) {
       add("ERROR", path, `invalid JSON-LD: ${error.message}`);
     }
   }
+  if (/\b(?:Ariess|Tauruss|Piscess|Aquariuss|Sagittariuss)\b/.test(html)) add("ERROR", path, "malformed zodiac plural in rendered content");
   const kb = Math.round(Buffer.byteLength(html) / 1024);
   if (kb > 900) add("ERROR", path, `HTML payload is ${kb} KB`);
   else if (kb > 400) add("WARN", path, `HTML payload is ${kb} KB`);
@@ -49,8 +50,12 @@ function inspect(path, response, html) {
 }
 
 try {
-  const { response: sitemapResponse, body: sitemap } = await get("/sitemap.xml");
-  if (sitemapResponse.status !== 200) add("ERROR", "/sitemap.xml", `HTTP ${sitemapResponse.status}`);
+  let sitemap = "";
+  for (const path of ["/sitemap.xml", "/calculators/sitemap.xml", "/learn/sitemap.xml", "/zodiac/sitemap.xml"]) {
+    const { response, body } = await get(path);
+    if (response.status !== 200) add("ERROR", path, `HTTP ${response.status}`);
+    sitemap += body;
+  }
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]));
   if (!urls.length) add("ERROR", "/sitemap.xml", "empty sitemap");
   if (urls.length !== new Set(urls.map((url) => url.href)).size) add("ERROR", "/sitemap.xml", "duplicate URLs");
@@ -61,7 +66,7 @@ try {
   if (urls.length > 50_000) add("ERROR", "/sitemap.xml", `${urls.length} URLs exceeds the single-sitemap limit`);
 
   const paths = urls.map((url) => url.pathname);
-  const strategic = ["/", "/calculators", "/calculators/moon-sign", "/charts", "/charts/albert-einstein", "/zodiac", "/zodiac/aries", "/learn", "/birth-chart-report", "/accuracy", "/method", "/about", "/contact", "/privacy", "/terms"];
+  const strategic = ["/", "/calculators", "/calculators/moon-sign", "/calculators/rising-sign", "/calculators/birth-time-explorer", "/learn/aries-rising", "/mercury-retrograde", "/moon-phases", "/weekly-horoscope", "/charts", "/charts/albert-einstein", "/zodiac", "/zodiac/aries", "/learn", "/birth-chart-report", "/accuracy", "/method", "/about", "/contact", "/privacy", "/terms"];
   const sampled = new Set([...strategic, ...paths.filter((_, index) => index % 137 === 0), paths.at(-1)].filter(Boolean));
   const titles = new Map();
   const descriptions = new Map();

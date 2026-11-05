@@ -41,21 +41,31 @@ for (const r of load("occ")) {
   occsByPerson.set(p, [...(occsByPerson.get(p) ?? []), qid(v(r, "occ")!)]);
 }
 // Where the occupation list misleads (Wikidata lists many occupations for public figures).
+// Reviewed by hand against the description text; the role-word rules below cannot read these.
 const CATEGORY_OVERRIDE: Record<string, string> = {
   Q317521: "Business", // Elon Musk
   Q36215: "Business", // Mark Zuckerberg
+  Q5816: "Politics", Q36014: "Politics", Q1317: "Politics", Q317219: "Politics", Q44220: "Politics", // Mao, Ho Chi Minh, bin Laden, Baradar, Breivik
+  Q182921: "Royalty", Q203768: "Royalty", Q153099: "Royalty", // Reza Shah, Abdülmecid II, Sophie of Hohenberg
+  Q37103: "Science", Q312961: "Science", Q212446: "Science", Q40224: "Science", Q167573: "Science", Q220520: "Science", Q181995: "Science", // Nightingale, Enders, Sikorsky, Benz, Kalashnikov, Browning, Sax
+  Q101054: "Thought", Q104273: "Thought", Q312549: "Thought", Q234898: "Thought", Q26168: "Thought", Q84177: "Thought", Q159726: "Thought", Q311669: "Thought", Q235069: "Thought", Q313456: "Thought", Q207359: "Thought", // religious founders and thinkers
+  Q82984: "Sport", Q78489: "Sport", Q172775: "Sport", Q40615: "Sport", Q80306: "Sport", Q152871: "Sport", Q44340: "Sport", // Coubertin and racing or football careers
+  Q190251: "Music", Q294531: "Music", Q230445: "Music", Q214813: "Music", Q60970: "Music", Q487473: "Music", Q204218: "Music", // musicians described as recording artists or founders
+  Q6105: "Film", Q515161: "Film", Q295855: "Film", // Hebe Camargo, Kevin Feige, Carlos Saura
+  Q60039: "Politics", Q75849: "Politics", Q60045: "Politics", Q21089561: "Politics", Q217154: "Politics", Q152850: "Politics", // political careers listed as "architect"
+  Q154759: "Science", Q116774: "Writing",
 };
 // The description names the primary role first ("American inventor and businessman"), so the
 // earliest role word wins. Occupations are the fallback.
 const ROLE_WORDS: [string, RegExp][] = [
   ["Royalty", /\b(king|queen|prince|princess|emperor|empress|monarch|duke|duchess|sultan|tsar|czar|royal)\b/i],
   ["Politics", /\b(politician|president|prime minister|chancellor|statesman|stateswoman|dictator|revolutionary|diplomat|senator|governor|general|military|activist|lawyer|judge|first lady)\b/i],
-  ["Sport", /\b(footballer|player|athlete|tennis|boxer|racing driver|cyclist|swimmer|chess|golfer|skater|gymnast|wrestler|sprinter|runner|coach|cricketer|jockey|skier|fighter|mountaineer|olympi\w*)\b/i],
+  ["Sport", /\b(martial artist|mixed martial|footballer|player|athlete|tennis|boxer|racing driver|cyclist|swimmer|chess|golfer|skater|gymnast|wrestler|sprinter|runner|coach|cricketer|jockey|skier|fighter|mountaineer|olympi\w*)\b/i],
   ["Music", /\b(singer|musician|composer|rapper|songwriter|guitarist|pianist|conductor|band|dj|drummer|violinist|cellist|vocalist)\b/i],
-  ["Film", /\b(actor|actress|film|director|filmmaker|comedian|model|television|presenter|screenwriter|animator|youtuber)\b/i],
-  ["Business", /\b(businessman|businesswoman|businessperson|entrepreneur|investor|industrialist|executive|founder|magnate|banker)\b/i],
+  ["Film", /\b(game designer|actor|actress|film|director|filmmaker|comedian|model|television|presenter|screenwriter|animator|youtuber)\b/i],
+  ["Business", /\b(businessman|businesswoman|businessperson|entrepreneur|investor|industrialist|executive|founder of (?:the )?[A-Z][\w ]*(?:Group|Inc|Corporation)|founder of Panasonic|co-founder of (?:Microsoft|Intel|Twitter|Wikipedia)|magnate|banker|financier)\b/i],
   ["Science", /\b(physicist|chemist|mathematician|biologist|scientist|engineer|inventor|astronomer|physician|psychologist|astronaut|cosmonaut|neurologist|geologist|naturalist|programmer)\b/i],
-  ["Art", /\b(painter|sculptor|artist|architect|photographer|designer|illustrator|cartoonist)\b/i],
+  ["Art", /\b(painter|sculptor|(?<!martial )(?<!recording )artist|architect|photographer|(?<!game )designer|illustrator|cartoonist)\b/i],
   ["Writing", /\b(writer|novelist|poet|author|journalist|playwright|essayist)\b/i],
   ["Thought", /\b(philosopher|theologian|economist|historian|sociologist|pope|priest|saint|religious)\b/i],
 ];

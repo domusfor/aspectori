@@ -6,7 +6,7 @@
   --panel: rgba(14, 22, 42, 0.72);
   --ink: #efe6d2;
   --ink-2: #bdb6a5;
-  --muted: #828a9d;
+  --muted: #939bad;
   --line: rgba(239, 230, 210, 0.14);
   --line-2: rgba(239, 230, 210, 0.3);
   /* Sampled from the Aspectori logo. */
@@ -32,6 +32,8 @@
   --font-serif: "Cormorant Garamond";
   --font-sans: "Jost";
 }
+
+h1, h2 { text-wrap: balance; }
 
 html { background: var(--bg); color-scheme: dark; scroll-behavior: smooth; }
 html, body { overflow-x: clip; }

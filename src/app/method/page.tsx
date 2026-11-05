@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Crumbs from "@/components/seo/Crumbs";
 
 export const metadata: Metadata = {
-  title: "How the chart is calculated",
+  title: "How Aspectori Calculates Your Birth Chart",
   description: "How Aspectori calculates planetary positions, historical time zones, houses and transits, and handles your birth details.",
   alternates: { canonical: "/method" },
 };
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
 export default function Method() {
   return (
     <main className="mx-auto w-full max-w-2xl px-4 sm:px-8 pb-16">
+      <Crumbs items={[["Home", "/"], ["Method", "/method"]]} />
       <p className="kicker text-gold mt-10">Method</p>
       <h1 className="font-serif text-5xl font-medium leading-tight mt-3">How the chart is calculated</h1>
 
       <Section title="Positions">
         Planet positions come from the Swiss Ephemeris with its full data files, the same engine Astro.com uses.
-        Tropical zodiac, geocentric, apparent positions. Every release is checked against 22 charts from
+        We calculate apparent geocentric positions, as seen from Earth, in the tropical zodiac. Every release is checked against 29 charts from
         Astro-Databank: the Sun, Moon and Ascendant must match Astro.com to the printed arcminute.
       </Section>
 
@@ -28,8 +30,8 @@ export default function Method() {
 
       <Section title="Unknown birth time">
         The Ascendant moves through all twelve signs in a day, and the houses move with it. Without a time we do not
-        guess. We show planetary positions at the start and end of the local birth day and retain aspects present at both endpoints. These samples do not establish continuous bounds, particularly near a station or boundary. If the Moon changed sign
-        that day, both signs are shown with the time it switched. We do not infer a missing birth time.
+        guess. We show where each planet was at the start and end of the local birth day and keep only aspects present at both moments. A contact could still come and go between those two checks, especially when a planet is turning or near a sign change. If the Moon changed sign
+        that day, we show both signs and the time it switched. We never infer a missing birth time.
       </Section>
 
       <Section title="Houses">

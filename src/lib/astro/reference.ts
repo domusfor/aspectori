@@ -9,8 +9,8 @@ export const REFERENCE: Reference[] = data.charts;
 export function coords(s: string) {
   const [la, lo] = s.split(" ");
   const p = (v: string, pos: string) => {
-    const m = /^(\d+)([nsew])(\d*)$/.exec(v)!;
-    const x = Number(m[1]) + Number(m[3] || 0) / 60;
+    const m = /^(\d+)([nsew])(\d{0,2})(\d{0,2})$/.exec(v)!;
+    const x = Number(m[1]) + Number(m[3] || 0) / 60 + Number(m[4] || 0) / 3600;
     return m[2] === pos ? x : -x;
   };
   return { lat: p(la, "n"), lon: p(lo, "e") };

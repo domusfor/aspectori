@@ -38,9 +38,9 @@ describe("chart explanations", () => {
     expect(explainChartRef(unknown, "placidus", "asc")).toBeNull();
     const moon = explainChartRef(unknown, "placidus", "moon")!;
     expect(moon.entry.evidence[0].house).toBeUndefined();
-    expect(moon.uncertainty).toContain("endpoint");
+    expect(moon.uncertainty).toContain("start and end of your birth day");
     const aspect = explainChartRef(unknown, "whole", aspectRef(unknown.aspects[0]))!;
-    expect(aspect.geometry).toContain("not a continuous bound");
+    expect(aspect.geometry).toContain("may not hold at every moment");
     expect(aspect.geometry).not.toContain("shorter angle between");
   });
   it("preserves both interpretations when endpoint signs differ", () => {

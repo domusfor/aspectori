@@ -46,7 +46,7 @@ export function DateField({ value, onChange }: { value: string; onChange: (iso: 
 }
 
 /** Hour and minute selects, 24-hour with the 12-hour reading beside it so nobody has to convert. */
-export function TimeField({ value, onChange, disabled }: { value: string; onChange: (hhmm: string) => void; disabled?: boolean }) {
+export function TimeField({ value, onChange, disabled, legend = "Time of birth" }: { value: string; onChange: (hhmm: string) => void; disabled?: boolean; legend?: string }) {
   const [h0, m0] = value ? value.split(":") : ["", ""];
   const [parts, setParts] = useState({ h: h0, m: m0 });
 
@@ -59,7 +59,7 @@ export function TimeField({ value, onChange, disabled }: { value: string; onChan
 
   return (
     <fieldset className="grid gap-1.5" disabled={disabled}>
-      <legend className="caps text-muted mb-1.5">Time of birth</legend>
+      <legend className="caps text-muted mb-1.5">{legend}</legend>
       <div className="grid grid-cols-2 gap-2">
         <select className="field" aria-label="Hour" data-empty={parts.h === ""} value={disabled ? "" : parts.h} onChange={(e) => update({ h: e.target.value })} required={!disabled}>
           <option value="" disabled>Hour</option>

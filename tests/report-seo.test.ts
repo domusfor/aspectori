@@ -8,6 +8,9 @@ import { CALCULATORS } from "@/data/calculators";
 import { GUIDES } from "@/data/guides";
 import sitemap from "@/app/sitemap";
 import chartsSitemap from "@/app/charts/sitemap";
+import calculatorsSitemap from "@/app/calculators/sitemap";
+import learnSitemap from "@/app/learn/sitemap";
+import zodiacSitemap from "@/app/zodiac/sitemap";
 import robots from "@/app/robots";
 import { NextRequest } from "next/server";
 import { proxy } from "@/proxy";
@@ -70,7 +73,7 @@ describe("crawlable information architecture", () => {
       expect(proxy(new NextRequest(`https://example.com${path}`))?.status, path).toBe(404);
     }
     expect(proxy(new NextRequest("https://example.com/charts/category/film/page/2"))).toBeUndefined();
-    expect(proxy(new NextRequest("https://example.com/charts/sitemap.xml"))).toBeUndefined();
+    for (const section of ["charts", "calculators", "learn", "zodiac"]) expect(proxy(new NextRequest(`https://example.com/${section}/sitemap.xml`))).toBeUndefined();
   });
   it("keeps pagination counts in sync with the entire famous collection", () => {
     let linked = 0;
@@ -86,7 +89,7 @@ describe("crawlable information architecture", () => {
     expect(linked).toBe(ALL_FAMOUS.length);
   });
   it("lists unique public URLs, every category page and all new tools and guides", () => {
-    const urls = sitemap().map((u) => new URL(u.url).pathname);
+    const urls = [sitemap(), calculatorsSitemap(), learnSitemap(), zodiacSitemap()].flat().map((u) => new URL(u.url).pathname);
     expect(new Set(urls).size).toBe(urls.length);
     expect(urls).not.toContain("/report");
     expect(urls).toContain("/birth-chart-report");
@@ -109,10 +112,7 @@ describe("crawlable information architecture", () => {
     expect(profilePaths).toEqual(INDEXABLE_FAMOUS.map((person) => `/charts/${person.slug}`));
     expect(new Set(profilePaths).size).toBe(profilePaths.length);
     expect(profiles.every((entry) => !("priority" in entry) && !("changeFrequency" in entry))).toBe(true);
-    expect(robots().sitemap).toEqual([
-      expect.stringMatching(/\/sitemap\.xml$/),
-      expect.stringMatching(/\/charts\/sitemap\.xml$/),
-    ]);
+    expect((robots().sitemap as string[]).map((url) => new URL(url).pathname)).toEqual(["/sitemap.xml", "/calculators/sitemap.xml", "/learn/sitemap.xml", "/zodiac/sitemap.xml", "/charts/sitemap.xml"]);
   });
   it("keeps the profile indexing boundary aligned with the launch cohort", () => {
     expect(isFamousIndexable(INDEXABLE_FAMOUS.at(-1)!.slug)).toBe(true);

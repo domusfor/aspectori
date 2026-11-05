@@ -19,8 +19,11 @@ const IMPORTED: Famous[] = (raw as Row[]).map((r) => ({
   birth: { date: r.b, time: null, place: { label: r.p, lat: r.la, lon: r.lo, tz: r.tz } },
 }));
 
+// A curated record has a sourced birth time, so it always replaces its date-only twin.
+const CURATED_IDS = new Set(FAMOUS.flatMap((f) => (f.wikidata ? [f.wikidata] : [])));
+
 /** Every famous chart, curated first, then by how widely known the person is. */
-export const ALL_FAMOUS: Famous[] = [...FAMOUS, ...IMPORTED].sort((a, b) => b.popularity - a.popularity);
+export const ALL_FAMOUS: Famous[] = [...FAMOUS, ...IMPORTED.filter((f) => !CURATED_IDS.has(f.wikidata!))].sort((a, b) => b.popularity - a.popularity);
 
 /**
  * Search launch cohort. Keep the full directory available to people while only

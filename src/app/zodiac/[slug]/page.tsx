@@ -6,7 +6,7 @@ import PersonCard, { PersonRow } from "@/components/famous/PersonCard";
 import { SectionHead } from "@/components/Reading";
 import Crumbs from "@/components/seo/Crumbs";
 import { MOON, RISING, SUN } from "@/lib/astro/library";
-import { comboSlug, elementBlend, parseCombo, signBySlug, signInfo, SIGN_INFO } from "@/lib/astro/signs";
+import { comboSlug, elementBlend, famousSignLabel, parseCombo, risingGuideSlug, signBySlug, signInfo, SIGN_INFO } from "@/lib/astro/signs";
 import { SIGN_GLYPHS, SIGNS, type Sign } from "@/lib/astro/zodiac";
 import { allSummaries, type FamousSummary } from "@/lib/famous-summary";
 import RouteLoading from "@/components/site/RouteLoading";
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = signBySlug(slug);
   if (s) {
     return {
-      title: `${s.sign} Zodiac Sign: Dates, Traits and Famous ${s.sign}s`,
-      description: `${s.sign} (${s.dates}) is a ${s.modality.toLowerCase()} ${s.element.toLowerCase()} sign ruled by ${s.ruler}. What ${s.sign} means as a Sun, Moon and Rising sign, and the famous people born with the Sun in ${s.sign}.`,
+      title: { absolute: `${s.sign} Zodiac Sign: Dates, Traits & Famous People` },
+      description: `${s.sign} (${s.dates}): a ${s.modality.toLowerCase()} ${s.element.toLowerCase()} sign ruled by ${s.ruler}. Its meaning as a Sun, Moon and Rising sign, with famous ${s.sign} people.`,
       alternates: { canonical: `/zodiac/${slug}` },
     };
   }
@@ -37,6 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${sun} Sun & ${moon} Moon Meaning`,
     description: `What it means to have the Sun in ${sun} and the Moon in ${moon}: the personality, how the two signs get along, and famous people born with this combination.`,
     alternates: { canonical: `/zodiac/${slug}` },
+    // Useful for browsing, but too similar to each other to ask search engines to index yet.
+    robots: { index: false, follow: true },
   };
 }
 
@@ -87,7 +89,7 @@ function SignPage({ sign, people }: { sign: Sign; people: FamousSummary[] }) {
           <p className="rise mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-ink-2" style={{ "--i": 2 } as React.CSSProperties}>{s.about}</p>
           <p className="rise mt-4 text-sm text-muted" style={{ "--i": 3 } as React.CSSProperties}>Keywords: {s.keywords.join(", ")}</p>
         </div>
-        <span className="glyph float text-[9rem] leading-none text-gold opacity-80" aria-hidden>{SIGN_GLYPHS[i]}</span>
+        <span className="glyph float hidden text-[9rem] leading-none text-gold opacity-80 md:block" aria-hidden>{SIGN_GLYPHS[i]}</span>
       </header>
       <Facts sign={sign} />
 
@@ -100,9 +102,10 @@ function SignPage({ sign, people }: { sign: Sign; people: FamousSummary[] }) {
           </div>
         ))}
       </section>
+      <p className="mt-5 text-sm"><Link className="text-gold underline underline-offset-4" href={`/learn/${risingGuideSlug(sign)}`}>Read the full {sign} Rising guide</Link></p>
 
       <section className="mt-20">
-        <SectionHead kicker={`${famous.length.toLocaleString("en")} charts`} title={`Famous ${sign}s`}>
+        <SectionHead kicker={`${famous.length.toLocaleString("en")} charts`} title={famousSignLabel(sign)}>
           People with the Sun in {sign} for certain. Charts where the Sun changed sign on the birth day are left out.
         </SectionHead>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -15,10 +15,12 @@ interface Props {
   onSelect: (ref: string) => void;
   /** Shown top left instead of the date, e.g. a famous person's name. */
   title?: string;
+  /** Leave the birth date, time and place off the card, for sharing. */
+  hideBirth?: boolean;
 }
 
 /** The shareable card. Every word on it is a link to the row that produced it. */
-const Card = forwardRef<HTMLDivElement, Props>(function Card({ chart, sys, active, onSelect, title }, ref) {
+const Card = forwardRef<HTMLDivElement, Props>(function Card({ chart, sys, active, onSelect, title, hideBirth }, ref) {
   const pts = pointMap(chart);
   const sig = signatureAspect(chart);
   const link = (id: string, children: React.ReactNode) => (
@@ -48,7 +50,7 @@ const Card = forwardRef<HTMLDivElement, Props>(function Card({ chart, sys, activ
     >
       <div className="flex justify-between caps text-muted !text-[0.58rem]">
         <span className="font-display tracking-[0.3em] text-gold">{title ?? "Aspectori"}</span>
-        <span>{fmtDate(chart.input.date)}</span>
+        {!hideBirth && <span>{fmtDate(chart.input.date)}</span>}
       </div>
 
       <Wheel chart={chart} sys={sys} active={active} onSelect={onSelect} className="w-[78%] mx-auto mt-2" animate />
@@ -76,7 +78,7 @@ const Card = forwardRef<HTMLDivElement, Props>(function Card({ chart, sys, activ
         <span>{chart.timeKnown ? `AC ${deg("asc")}` : "AC · no time"}</span>
       </div>
       <p className="caps !text-[0.52rem] text-muted text-center mt-2 truncate">
-        {chart.input.place.label.split(",")[0]} · {chart.timeKnown ? chart.input.time : "time unknown"}
+        {hideBirth ? "aspectori.com" : <>{chart.input.place.label.split(",")[0]} · {chart.timeKnown ? chart.input.time : "time unknown"}</>}
       </p>
     </div>
   );

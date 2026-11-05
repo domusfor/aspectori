@@ -18,6 +18,10 @@ import WeeklyHoroscope from "./WeeklyHoroscope";
 import ChartToolLinks from "./ChartToolLinks";
 import HeroSky from "./home/HeroSky";
 import Horizon from "./home/Horizon";
+import ReturnVisit from "./home/ReturnVisit";
+import GuidedTour from "./GuidedTour";
+import SaveChart from "./SaveChart";
+import WeeklyReminder from "./WeeklyReminder";
 
 const OFFSET_SOURCE = { tz: "historical time zone", lmt: "local mean time", manual: "set by hand" } as const;
 
@@ -87,6 +91,7 @@ export default function App({ home }: { home?: React.ReactNode }) {
           <div className="flex flex-wrap gap-2 mt-5">{chart.points.filter((p) => ["sun", "moon", "asc"].includes(p.id)).map((p) => <span className="match-reason" key={p.id}>{signsOf(p).join(" or ")} {POINT_NAMES[p.id]}</span>)}</div>
           <button type="button" onClick={() => document.getElementById("your-chart")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })} className="inline-flex items-center min-h-11 text-sm text-gold underline mt-4">Explore your full birth chart ↓</button>
         </header>
+        <GuidedTour key={`tour-${birthKey}`} chart={chart} />
         <ChartToolLinks birth={chart.input} />
         <WeeklyHoroscope key={`week-${birthKey}`} chart={chart} />
         <ComparisonHub key={birthKey} chart={chart} />
@@ -99,6 +104,8 @@ export default function App({ home }: { home?: React.ReactNode }) {
           cardFooter={
             <>
               <button className="btn btn-ghost" onClick={() => setEditing(true)}>Edit</button>
+              <WeeklyReminder />
+              <SaveChart encoded={encodeBirth(chart.input)} />
               <p className="basis-full mt-2 text-center text-xs text-muted leading-relaxed">
                 {chart.moment.localLabel} · {chart.input.place.label}
                 <br />
@@ -109,9 +116,9 @@ export default function App({ home }: { home?: React.ReactNode }) {
           }
         >
           <Reveal as="section" id="year" className="scroll-mt-16">
-            <SectionHead kicker="The next twelve months" title="This year is a calendar, not a horoscope">
-              Six dated transits to your actual chart: the planet, the point it hits, and when. Bookmark this page. The
-              address holds your chart, so nothing is stored on our side.
+            <SectionHead kicker="The next twelve months" title="Your year, with real dates">
+              Six dated transits to your chart: which planet, which point it reaches and when. Save your chart or bookmark
+              this page to come back. The address holds your chart, so nothing is stored on our servers.
             </SectionHead>
             {yearRequest.error && <p role="alert" className="mb-4 text-sm text-tense">{yearRequest.error}</p>}
             {year ? (
@@ -133,7 +140,7 @@ function Hero({ children, partnerName, full }: { children: React.ReactNode; part
   return (
     <section className={`relative isolate overflow-hidden ${full ? "md:min-h-[min(calc(100dvh-72px),860px)]" : ""}`}>
       {full && <HeroSky />}
-      <div className="relative z-10 mx-auto grid w-full max-w-[1120px] items-center gap-10 px-4 pb-40 pt-6 sm:px-8 md:grid-cols-[1.15fr_1fr] md:gap-14 md:pb-56 md:pt-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1120px] items-center gap-6 md:gap-10 px-4 pb-32 pt-4 sm:px-8 md:grid-cols-[1.15fr_1fr] md:gap-14 md:pb-56 md:pt-10">
         <div>
           {partnerName ? (
             <>
@@ -147,22 +154,19 @@ function Hero({ children, partnerName, full }: { children: React.ReactNode; part
             </>
           ) : (
             <>
-              <p className="rise kicker text-gold">Free birth chart calculator · exact to the degree</p>
-              <h1 className="rise font-serif text-[2.9rem] sm:text-[4.6rem] font-medium leading-[0.98] mt-5 text-balance" style={{ "--i": 1 } as React.CSSProperties}>
-                Your birth chart. <span className="text-gold-grad italic">Every degree,</span> explained.
+              <p className="rise kicker text-gold">Every degree, explained</p>
+              <h1 className="rise font-serif text-[2.5rem] sm:text-[3.7rem] font-medium leading-[1.02] mt-5 text-balance" style={{ "--i": 1 } as React.CSSProperties}>
+                Free Birth Chart Calculator: <span className="text-gold-grad italic">Your Sun, Moon &amp; Rising</span> Signs
               </h1>
               <p className="rise mt-6 text-ink-2 text-[1.05rem] leading-relaxed max-w-lg" style={{ "--i": 2 } as React.CSSProperties}>
-                Discover your Sun, Moon and Rising, explore your personalized week ahead, and compare your chart with famous people, a partner or a friend. Keep your birth chart reading in a beautifully designed free PDF. No account required.
+                Enter your birth date, time and birthplace for exact planetary positions, a personal reading and your week ahead. Includes chart comparisons and a free PDF. No account required.
               </p>
               <div className="rise mt-6 flex flex-wrap items-center gap-4" style={{ "--i": 3 } as React.CSSProperties}>
-                <button className="btn btn-solid md:hidden" onClick={() => {
-                  document.querySelector<HTMLSelectElement>("#birth-form select")?.focus({ preventScroll: true });
-                  document.getElementById("birth-form")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-                }}>Create my chart <span aria-hidden>↓</span></button>
                 <Link href="/charts/albert-einstein" className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--gold)] text-sm text-gold hover:text-ink">Explore an example chart <span aria-hidden>↗</span></Link>
                 <span className="hidden text-xs text-muted md:inline">See what you’ll get before you begin</span>
               </div>
-              <ul className="rise mt-6 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted" style={{ "--i": 3 } as React.CSSProperties}>
+              <ReturnVisit />
+              <ul className="rise mt-6 hidden flex-wrap gap-x-6 gap-y-3 text-xs text-muted md:flex" style={{ "--i": 3 } as React.CSSProperties}>
                 {["Swiss Ephemeris", "Checked against Astro.com", "No account, no email"].map((t) => (
                   <li key={t} className="flex items-center gap-2"><span className="size-1.5 rotate-45 bg-[var(--gold)]" />{t}</li>
                 ))}
