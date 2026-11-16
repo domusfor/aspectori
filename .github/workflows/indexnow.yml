@@ -1,8 +1,9 @@
 name: IndexNow
 
-# Vercel reports each deployment back to GitHub; ping IndexNow once production is live.
+# Vercel reports each deploy as a "Vercel" commit status (not a GitHub deployment);
+# ping IndexNow once the deploy of a main commit (production) has succeeded.
 on:
-  deployment_status:
+  status:
   workflow_dispatch:
 
 permissions:
@@ -10,7 +11,10 @@ permissions:
 
 jobs:
   ping:
-    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.context == 'Vercel' && github.event.state == 'success' &&
+       contains(github.event.branches.*.name, 'main'))
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
