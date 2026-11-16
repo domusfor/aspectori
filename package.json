@@ -19,7 +19,8 @@
     "release:check": "node scripts/validate-release.mjs",
     "data:import": "tsx scripts/import-famous.ts && tsx --conditions=react-server scripts/build-summaries.ts",
     "data:audit": "tsx scripts/audit-famous-data.ts",
-    "data:summaries": "tsx --conditions=react-server scripts/build-summaries.ts"
+    "data:summaries": "tsx --conditions=react-server scripts/build-summaries.ts",
+    "indexnow": "tsx --conditions=react-server scripts/indexnow.ts"
   },
   "dependencies": {
     "@fontsource/cinzel": "^5.3.0",
