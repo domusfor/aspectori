@@ -29,7 +29,7 @@ export const ALL_FAMOUS: Famous[] = [...FAMOUS, ...IMPORTED.filter((f) => !CURAT
  * Search launch cohort. Keep the full directory available to people while only
  * asking search engines to index the strongest profiles initially.
  */
-export const FAMOUS_INDEX_LIMIT = 1_000;
+export const FAMOUS_INDEX_LIMIT = 150;
 export const INDEXABLE_FAMOUS = ALL_FAMOUS.slice(0, FAMOUS_INDEX_LIMIT);
 const INDEXABLE_SLUGS = new Set(INDEXABLE_FAMOUS.map((f) => f.slug));
 export const isFamousIndexable = (slug: string) => INDEXABLE_SLUGS.has(slug);
