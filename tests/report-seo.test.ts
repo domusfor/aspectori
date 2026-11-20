@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { computeChart, computeCouple } from "@/lib/astro/engine";
 import { buildReport, reportHref, REPORT_OFFER } from "@/lib/report";
 import { decodeBirth } from "@/lib/url";
-import { ALL_FAMOUS, CATEGORIES, FAMOUS_INDEX_LIMIT, INDEXABLE_FAMOUS, isFamousIndexable } from "@/data/people";
+import { ALL_FAMOUS, CATEGORIES, FAMOUS_INDEX_LIMIT, INDEXABLE_FAMOUS, SEARCH_TRACTION_SLUGS, isFamousIndexable } from "@/data/people";
 import { CATEGORY_COUNTS, CATEGORY_PAGE_SIZE, categoryHref, categoryPages } from "@/lib/category-pages";
 import { CALCULATORS } from "@/data/calculators";
 import { GUIDES } from "@/data/guides";
@@ -108,7 +108,7 @@ describe("crawlable information architecture", () => {
     const profiles = chartsSitemap();
     const profilePaths = profiles.map((u) => new URL(u.url).pathname);
     expect(core.every((u) => !new URL(u.url).pathname.match(/^\/charts\/[^/]+$/) || new URL(u.url).pathname === "/charts")).toBe(true);
-    expect(profiles).toHaveLength(FAMOUS_INDEX_LIMIT);
+    expect(profiles.length).toBeGreaterThanOrEqual(FAMOUS_INDEX_LIMIT);
     expect(profilePaths).toEqual(INDEXABLE_FAMOUS.map((person) => `/charts/${person.slug}`));
     expect(new Set(profilePaths).size).toBe(profilePaths.length);
     expect(profiles.every((entry) => !("priority" in entry) && !("changeFrequency" in entry))).toBe(true);
@@ -116,6 +116,8 @@ describe("crawlable information architecture", () => {
   });
   it("keeps the profile indexing boundary aligned with the launch cohort", () => {
     expect(isFamousIndexable(INDEXABLE_FAMOUS.at(-1)!.slug)).toBe(true);
-    expect(isFamousIndexable(ALL_FAMOUS[FAMOUS_INDEX_LIMIT].slug)).toBe(false);
+    const firstOutside = ALL_FAMOUS.slice(FAMOUS_INDEX_LIMIT).find((f) => !SEARCH_TRACTION_SLUGS.has(f.slug))!;
+    expect(isFamousIndexable(firstOutside.slug)).toBe(false);
+    for (const slug of SEARCH_TRACTION_SLUGS) expect(isFamousIndexable(slug)).toBe(true);
   });
 });
